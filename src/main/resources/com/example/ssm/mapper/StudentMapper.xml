@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ssm.mapper.StudentMapper">
+
+    <resultMap id="coachInfoResultMap" type="com.example.ssm.pojo.Coach">
+        <id column="coach_id" property="coachId"/>
+        <result column="coach_name" property="coachName"/>
+        <result column="coach_phone" property="coachPhone"/>
+        <result column="coach_gender" property="coachGender"/>
+        <result column="coach_experience" property="coachExperience"/>
+    </resultMap>
+
+    <resultMap id="stuCarCardInfoResultMap" type="com.example.ssm.pojo.StuCarCard">
+        <id column="card_id"/>
+        <result column="card_name" property="cardName"/>
+        <result column="card_number" property="cardNumber"/>
+        <result column="card_cosume" property="cardCosume"/>
+        <result column="stu_id" property="stuId"/>
+        <result column="car_state" property="cardState"/>
+    </resultMap>
+
+    <resultMap id="coachCarInfoResultMap" type="com.example.ssm.pojo.CoachCar">
+        <id column="car_id" property="carId"/>
+        <result column="car_brand" property="carBrand"/>
+        <result column="car_type" property="carType"/>
+        <result column="car_number" property="carNumber"/>
+        <result column="car_desc" property="carDesc"/>
+    </resultMap>
+
+    <resultMap id="studentInfoResultMap" type="com.example.ssm.pojo.Student">
+        <id column="stu_id" property="stuId"/>
+        <result column="stu_name" property="stuName"/>
+        <result column="sex" property="sex"/>
+        <result column="email" property="email"/>
+        <result column="age" property="age"/>
+        <result column="sex" property="sex"/>
+        <association property="coach" javaType="com.example.ssm.pojo.Coach" resultMap="coachInfoResultMap"/>
+        <association property="stuCarCard" resultMap="stuCarCardInfoResultMap"/>
+    </resultMap>
+
+    <select id="getAllStudentInfo" resultMap="studentInfoResultMap">
+        select * from t_student stu
+            left join t_car_coach tcc on stu.stu_coach_id = tcc.coach_id
+            left join t_stu_carcard tsc on stu.stu_id = tsc.stu_id
+    </select>
+
+    <select id="getStudentInfoById" resultMap="studentInfoResultMap">
+        select * from t_student
+            left join t_car_coach tcc on t_student.stu_coach_id = tcc.coach_id
+            left join t_stu_carcard tsc on t_student.stu_id = tsc.stu_id
+        where t_student.stu_id=#{id}
+    </select>
+
+</mapper>

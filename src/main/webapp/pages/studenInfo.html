@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学员信息</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h2>学员信息查看与修改</h2>
+<br>
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">学员ID</label>
+        <div class="col-sm-8">
+            <input class="form-control" id="stuId" type="text" placeholder="该输入框禁止输入..." disabled>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">学员姓名</label>
+        <div class="col-sm-8">
+            <input class="form-control" id="stuName" type="text" placeholder="请输入">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">学员年龄</label>
+        <div class="col-sm-8">
+            <input class="form-control" id="age" type="text" value="该输入框获得焦点...">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label" >性别</label>
+        <div class="col-sm-8">
+            <select class="form-control" id="sex">
+                <option value="m">男</option>
+                <option value="f">女</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">电子邮箱</label>
+        <div class="col-sm-8">
+            <input class="form-control" id="email" type="text" placeholder="请输入">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">教练</label>
+        <div class="col-sm-8">
+            <select class="form-control" id="coach">
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">禁用</label>
+        <div class="col-sm-8">
+            <input class="form-control" id="disabledInput" type="text" placeholder="该输入框禁止输入..." disabled>
+        </div>
+    </div>
+</form>
+
+<script>
+
+    // 获取当前也买你的url
+    let URL = window.location.href;
+
+    function getUrlParams(url) {
+        // 通过 ? 分割获取后面的参数字符串
+        let urlStr = url.split('?')[1]
+        // 创建空对象存储参数
+        let obj = {};
+        // 再通过 & 将每一个参数单独分割出来
+        let paramsArr = urlStr.split('&')
+        for (let i = 0, len = paramsArr.length; i < len; i++) {
+            // 再通过 = 将每一个参数分割为 key:value 的形式
+            let arr = paramsArr[i].split('=')
+            obj[arr[0]] = arr[1];
+        }
+        return obj
+    }
+
+    const stuIdEl = document.querySelector('#stuId');
+    const stuNameEl = document.querySelector('#stuName')
+    const ageEl = document.querySelector('#age')
+    const sexEl = document.querySelector('#sex')
+    const emailEl = document.querySelector('#email')
+    const coachEl = document.querySelector('#coach')
+
+
+    function setStudentInfoShow(data){
+        stuIdEl.value = data.stuId;
+        ageEl.value = data.age;
+        stuIdEl.value = data.stuName;
+        coachEl.value = data.coach.coachId;
+        sexEl.value = data.sex;
+        emailEl.value = data.email;
+        stuNameEl.value = data.stuName;
+    }
+
+    async function getStudentInfoById() {
+        let {id} = getUrlParams(URL)
+        console.log('id',id)
+        if (id) {
+            const data = await fetch(`/student/${id}`).then(res=>res.json())
+            if(data.statu === 100){
+                console.log(data)
+                setStudentInfoShow(data)
+            }else{
+                alert(data.msg)
+            }
+        }
+    }
+
+    getStudentInfoById()
+
+
+
+</script>
+</body>
+</html>

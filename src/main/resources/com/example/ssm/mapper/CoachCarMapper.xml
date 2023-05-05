@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ssm.mapper.CoachCarMapper">
+
+    <resultMap id="coachCarResultMap" type="com.example.ssm.pojo.CoachCar">
+        <id property="carId" column="car_id"></id>
+        <result property="carBrand" column="car_brand"></result>
+        <result property="carNumber" column="car_number"></result>
+        <result property="carType" column="car_type"></result>
+        <result property="carDesc" column="car_desc"></result>
+    </resultMap>
+
+    <update id="updateCoachCarById">
+        update t_coachcar
+        <set>
+            <if test="carBrand != null and carBrand !=''">
+                car_brand = #{carBrand}
+            </if>
+            <if test="carNumber != null and carNumber != '' ">
+                car_number=#{carNumber}
+            </if>
+            <if test="carType != null and carType != ''">
+                car_type=#{carType}
+            </if>
+            <if test="carDesc != null and carDesc !=''">
+                car_desc=#{carDesc}
+            </if>
+        </set>
+        where car_id=#{carId}
+    </update>
+
+    <select id="getAllCoachCar" resultMap="coachCarResultMap">
+            select * from t_coachcar;
+    </select>
+    <select id="getCoachCarById" resultMap="coachCarResultMap">
+        select * from t_coachcar where car_id = #{id}
+    </select>
+    <select id="getCoachCarsByStuId" resultMap="coachCarResultMap">
+        select * from t_coachcar
+            left join t_coachcar_stu tcs on t_coachcar.car_id = tcs.car_id
+        where tcs.stu_id = #{id}
+    </select>
+
+</mapper>
