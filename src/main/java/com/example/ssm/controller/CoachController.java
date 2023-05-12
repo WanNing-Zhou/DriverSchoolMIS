@@ -6,11 +6,13 @@ import com.example.ssm.service.CoachService;
 import com.example.ssm.util.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 周万宁
@@ -29,5 +31,13 @@ public class CoachController {
     public ServerResponse<List<Coach>> getAllCoachInfo(){
         return coachService.getAllCoachInfo();
     }
+
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> deleteCoachInfo(@RequestBody Map<String,Object> requestMap){
+        return null;
+    }
+
+
 
 }

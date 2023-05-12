@@ -68,14 +68,11 @@
 <!--学员教练车使用权限-->
 <h3>学员教练车使用权限</h3>
 <div>
-    <div class="form-group text-center">
+    <div class="form-group">
         <!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
         <button type="button" onclick="addStudentCar()" class="btn btn-primary">添加教练车</button>
         <select class="form-select" aria-label="Default select example" id="selectCar">
             <option selected>选择教练车辆为学生增加权限</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
         </select>
 
     </div>
@@ -96,6 +93,7 @@
 <h3>学员练车卡信息</h3>
 <div>
     <form class="form-horizontal" role="form">
+
         <div class="form-group">
             <label class="col-sm-2 control-label">练车卡ID</label>
             <div class="col-sm-8">
@@ -122,26 +120,8 @@
                 <input class="form-control" id="cardCosume" disabled type="text" placeholder="请输入">
             </div>
         </div>
-
-
     </form>
 </div>
-
-
-
-<!--
-<div class="addStudentDialog" id="AddInfoForm">
-    <table class="table table-hover" id="carsTable">
-        <tr>
-            <th>Id</th>
-            <th>品牌</th>
-            <th>车牌号</th>
-            <th>车型</th>
-            <th>描述</th>
-        </tr>
-    </table>
-</div>
--->
 
 
 <script>
@@ -183,11 +163,11 @@
     let studentInfo = {}
 
     //设置学员信息
-    function setStudentInfo(){
+    function setStudentInfo() {
         studentInfo.stuId = stuIdEl.value;
         studentInfo.age = ageEl.value
         studentInfo.coachId = coachEl.value
-        studentInfo.sex =  sexEl.value;
+        studentInfo.sex = sexEl.value;
         studentInfo.email = emailEl.value;
         studentInfo.stuName = stuNameEl.value;
     }
@@ -201,15 +181,24 @@
         emailEl.value = data.email;
         stuNameEl.value = data.stuName;
 
-        const {stuCarCard,coachCars} = data;
+        const {stuCarCard, coachCars} = data;
         cardIdEl.value = stuCarCard.cardId;
         cardNameEl.value = stuCarCard.cardName;
         cardCosumeEl.value = stuCarCard.cardCosume;
         cardNumberEl.value = stuCarCard.cardNumber;
 
         //渲染车辆列表
-        let htmlContent = ''
-        for(let car of coachCars){
+        let htmlContent = `
+        <tr>
+            <th>ID</th>
+            <th>品牌</th>
+            <th>车牌号</th>
+            <th>车型</th>
+            <th>描述</th>
+            <th>操作</th>
+        </tr>
+        `
+        for (let car of coachCars) {
             htmlContent += `
             <tr>
                 <td>${car.carId}</td>
@@ -217,20 +206,48 @@
                 <td>${car.carNumber}</td>
                 <td>${car.carType}</td>
                 <td>${car.carDesc}</td>
-                <td><a onclick="">删除</a></td>
+                <td>
+                    <button onclick="cancelUseCarAuth(${car.carId})" type="button" class="btn btn-outline-secondary">删除</button>
+                </td>
             </tr>
             `
         }
-        studentCarTableEl.innerHTML += htmlContent
+        studentCarTableEl.innerHTML = htmlContent
     }
 
-    //取消学成的车辆的使用授权
-    function cancelUseCarAuth(carId){
-        fetch('')
+    //取消学员的车辆的使用授权
+    async function cancelUseCarAuth(carId) {
+        console.log('取消学员的车辆使用权限被点击', carId)
+        const reqData = {stuId: studentInfo.stuId, carId: carId}
+        const data = await fetch('/student/carAuth/delete', {
+            method: "post",
+            body: JSON.stringify(reqData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        if(data && data.statu === 100){
+            alert("权限删除成功")
+        }else {
+            alert(data.msg)
+        }
     }
 
+    //获取教练车数据
+    async function getAllCoachCarData() {
+        const data = await fetch('/coachcar').then(res => res.json())
+        console.log('教练车', data)
+        if (data.statu == 100) {
+            setCoachCarSelection(data.data)
+        } else {
+            alert(data.message)
+        }
+    }
 
-    function setCoachCarSelection(){
+    // 显示教练车选择数据数据
+    function setCoachCarSelection(coachCars) {
+
         let optionsHtml = '';
         //渲染教练车选择信息
         for (let car of coachCars) {
@@ -244,13 +261,16 @@
 
 
     //获取学员西信息
-    async function getStudentInfoById() {
-        let {id} = getUrlParams(URL)
+    async function getStudentInfoById(id) {
+        if (!id) {
+            id = getUrlParams(URL).id
+        }
         // console.log('id',id)
         if (id) {
             const data = await fetch(`/student/${id}`).then(res => res.json())
             if (data.statu === 100) {
-                console.log(data)
+                // console.log(data)
+                studentInfo = data.data;
                 setStudentInfoShow(data.data)
             } else {
                 alert(data.msg)
@@ -276,54 +296,87 @@
         if (data.statu === 100) {
             // console.log(data)
             setCoachSelection(data.data)
+
         } else {
             alert('获取信息失败,请检查网络状态')
         }
-
     }
 
     //修改学员信息
-    async function updateStudentInfo(){
-        const res = await fetch("/student/update",{
-            method:"post",
-            body:JSON.stringify(studentInfo),
+    async function updateStudentInfo() {
+        const res = await fetch("/student/update", {
+            method: "post",
+            body: JSON.stringify(studentInfo),
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(res=>res.json())
-        if(res.statu === 100){
+        }).then(res => res.json())
+        if (res.statu === 100) {
             alert("修改成功")
             // console.log("修改成功")
             await getStudentInfoById();
-        }else{
+        } else {
             alert(res.msg)
         }
     }
 
     //添加学员信息
-    async function addStudentInfo(){
+    async function addStudentInfo() {
 
     }
 
     //提交学员信息
-    function subStudentInfo(){
+    function subStudentInfo() {
         setStudentInfo();
         let {id} = getUrlParams(URL)
         //如果id存在则为修改学员信息
-        if(id){
+        if (id) {
             updateStudentInfo();
-        }else{
+        } else {
 
         }
     }
 
-    //添加学员教练车
-    function addStudentCar(){
 
+    //添加学员教练车
+    async function addStudentCar() {
+        const value = selectCarEl.value;
+        let isStudentHasAuth = false;
+        if (studentInfo.coachCars) {
+            const {coachCars} = studentInfo;
+            const index = coachCars.findIndex(item => item.carId == value)
+            if (index > -1) {
+                isStudentHasAuth = true;
+            }
+        }
+
+        if (isStudentHasAuth) {
+            alert('该学生已拥有该车辆时候权限, 无需添加')
+        } else {
+            const reqData = {stuId: studentInfo.stuId, carId: value}
+            const data = await fetch('/student/carAuth/add', {
+                method: "post",
+                body: JSON.stringify(reqData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+            if (data && data.statu === 100) {
+                alert('添加成功')
+                getStudentInfoById();
+
+            } else {
+                alert(data.msg)
+            }
+        }
     }
 
+    //获所有取教练信息
     getCoachInfo()
+    //根据Id获取学员信息
     getStudentInfoById()
+    //获取所有教练车信息
+    getAllCoachCarData()
 
 
 </script>

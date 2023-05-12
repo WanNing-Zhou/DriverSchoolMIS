@@ -1,6 +1,6 @@
 package com.example.ssm.pojo;
 
-import javax.lang.model.element.NestingKind;
+import java.util.List;
 
 /**
  * @author 周万宁
@@ -8,22 +8,21 @@ import javax.lang.model.element.NestingKind;
  * @create 2023/4/30-21:59
  * @description 教练pojo
  */
+
 public class Coach {
     private String coachName;
     private int coachId;
     private String coachPhone;
     private String coachGender;
     private String coachExperience;
+    private List<Student> students;
 
-    public Coach() {
+    public List<Student> getStudents() {
+        return students;
     }
 
-    public Coach(String coachName, int coachId, String coachPhone, String coachGender, String coachExperience) {
-        this.coachName = coachName;
-        this.coachId = coachId;
-        this.coachPhone = coachPhone;
-        this.coachGender = coachGender;
-        this.coachExperience = coachExperience;
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
     public String getCoachName() {

@@ -46,5 +46,15 @@ public interface StudentMapper {
      * @return int
      **/
     int deleteStudentInfo(@Param("id") int id);
+
+    /**
+     * @MethodName addStudentInfo
+     * @Author 周万宁
+     * @Description 添加学员信息
+     * @Date 13:38 2023/5/12
+     * @Param [params]
+     * @return int
+     **/
+    int addStudentInfo(@Param("params") Map<String,Object> params);
 }
 

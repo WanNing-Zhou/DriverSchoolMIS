@@ -1,6 +1,9 @@
 package com.example.ssm.service;
 
 import com.example.ssm.pojo.CoachCar;
+import com.example.ssm.util.ServerResponse;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -10,6 +13,7 @@ import java.util.List;
  * @create 2023/5/12-10:54
  * @description
  */
+
 public interface CoachCarService {
-    List<CoachCar> getAllCoachCar();
+    ServerResponse<List<CoachCar>> getAllCoachCar();
 }

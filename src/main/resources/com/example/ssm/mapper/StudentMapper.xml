@@ -40,6 +40,11 @@
         <association property="stuCarCard" resultMap="stuCarCardInfoResultMap"/>
     </resultMap>
 
+    <insert id="addStudentInfo" useGeneratedKeys="true" keyProperty="stuId">
+        insert into t_student (stu_name, age, sex, email, stu_coach_id)
+        values (#{params.stuName},#{params.age},#{params.sex},#{params.email},#{params.coachId})
+    </insert>
+
     <update id="updateStudentInfo" parameterType="java.util.Map">
         update t_student
         <set>

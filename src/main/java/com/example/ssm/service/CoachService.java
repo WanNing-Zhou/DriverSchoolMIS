@@ -13,10 +13,13 @@ import java.util.List;
  * @description
  */
 public interface CoachService {
-    //查看教练信息
+    //获取所有教练信息
     ServerResponse<List<Coach>> getAllCoachInfo();
 
     // 根据id获取教练信息
     Coach getCoachById();
+
+    //根据id删除教练西悉尼
+
 
 }

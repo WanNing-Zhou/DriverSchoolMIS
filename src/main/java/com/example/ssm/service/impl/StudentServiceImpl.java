@@ -123,6 +123,58 @@ public class StudentServiceImpl implements StudentService {
      **/
     @Override
     public ServerResponse<String> cancelStudentUseCarAuth(Map<String, Object> map) {
-        return null;
+        int i = coachCarStuMapper.deleteStudentCarMap(map);
+        if(i>0){
+            return ServerResponse.createBySuccess("删除成功","success");
+        }else{
+           return ServerResponse.createByError("对应关系不存在");
+        }
     }
+
+    /**
+     * @MethodName addStudentUseCarAuth
+     * @Author 周万宁
+     * @Description 添加学员使用车帘权限
+     * @Date 11:49 2023/5/12
+     * @Param [map]
+     * @return com.example.ssm.util.ServerResponse<java.lang.String>
+     **/
+    @Override
+    public ServerResponse<String> addStudentUseCarAuth(Map<String, Object> map) {
+        int i = coachCarStuMapper.addStudentCarMap(map);
+        if(i>0){
+            return ServerResponse.createBySuccess("添加成功","success");
+        }else{
+            return ServerResponse.createByError("添加失败");
+        }
+    }
+
+    /**
+     * @MethodName addStudentInfo
+     * @Author 周万宁
+     * @Description 添加学员信息
+     * @Date 13:35 2023/5/12
+     * @Param [map]
+     * @return com.example.ssm.util.ServerResponse<java.lang.String>
+     **/
+    @Override
+    public ServerResponse<String> addStudentInfo(Map<String, Object> map) {
+        int affectedRows = studentMapper.addStudentInfo(map);
+        if (affectedRows > 0) {
+            // 获取生成的主键id，并将其作为参数传递给 addCarCard 方法
+            int stuId = (int) map.get("stuId");
+            map.put("stuId", stuId);
+
+            // 添加学生卡信息
+            int rows = stuCarCardMapper.addCarCard(map);
+            if(rows > 0){
+                return ServerResponse.createBySuccess("创建成功","success" + stuId);
+            } else{
+                return ServerResponse.createByError("创建失败");
+            }
+        } else {
+            return ServerResponse.createByError("创建失败");
+        }
+    }
+
 }

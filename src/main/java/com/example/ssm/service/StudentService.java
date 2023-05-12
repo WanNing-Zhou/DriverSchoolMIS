@@ -32,4 +32,11 @@ public interface StudentService {
     //取消学员使用车辆的权限
     ServerResponse<String> cancelStudentUseCarAuth(Map<String,Object> map);
 
+    //添加学员使用车辆权限
+    ServerResponse<String> addStudentUseCarAuth(Map<String,Object> map);
+
+    //添加学员信息
+    ServerResponse<String> addStudentInfo(Map<String,Object> map);
+
+
 }

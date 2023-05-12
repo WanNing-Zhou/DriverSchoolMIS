@@ -1,8 +1,10 @@
 package com.example.ssm.controller;
 
+import com.alibaba.druid.sql.dialect.mysql.ast.MysqlForeignKey;
 import com.example.ssm.pojo.Student;
 import com.example.ssm.service.StudentService;
 import com.example.ssm.util.ServerResponse;
+import com.mysql.cj.log.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -71,18 +73,33 @@ public class StudentController {
         return studentService.updateStudentInfo(requestMap);
     }
 
-    @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<String> deleteStudentInfo(@PathVariable("id")int id){
+    public ServerResponse<String> deleteStudentInfo(@RequestBody Map<String,Object> requestMap){
+        int id = (int) requestMap.get("stuId");
         return  studentService.deleteStudentInfo(id);
     }
 
-    @RequestMapping(value = "/carAuth/delete/",method = RequestMethod.POST)
+    @RequestMapping(value = "/carAuth/delete",method = RequestMethod.POST)
     @ResponseBody
     public  ServerResponse<String> cancelStudentUseCarAuth(@RequestBody Map<String,Object> requestMap){
-        return null;
+
+        return studentService.cancelStudentUseCarAuth(requestMap);
     }
 
+    @RequestMapping(value = "/carAuth/add",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> addStudentUseCarAuth(@RequestBody Map<String,Object> requestMap){
+        return studentService.addStudentUseCarAuth(requestMap);
+    }
+
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> addStudentInfo(@RequestBody Map<String, Object> requestMap){
+//        System.out.println("卡卡西");
+//        System.out.println(requestMap);
+        return studentService.addStudentInfo(requestMap);
+    }
 
 
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>学生信息</title>
+    <title>教练信息</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -10,11 +10,9 @@
 <body>
 <div class="form-group">
     <h2>学员信息总览</h2>
-    <!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
     <a href="addStudentInfo.html">
-        <button type="button" class="btn btn-primary">添加学员</button>
+        <button type="button" class="btn btn-primary">教练入职</button>
     </a>
-
 </div>
 
 
@@ -22,9 +20,9 @@
     <tr>
         <th>id</th>
         <th>姓名</th>
-        <th>年龄</th>
+        <th>电话</th>
         <th>性别</th>
-        <th>邮箱</th>
+        <th>介绍</th>
         <th>操作</th>
     </tr>
 </table>
@@ -33,34 +31,34 @@
     let studentTable = document.querySelector('#studentTable')
 
 
-    function showStudentInfos(studentList) {
+    function showCoachInfos(coachList) {
         let htmlContent = `
-        <tr>
-            <th>id</th>
-            <th>姓名</th>
-            <th>年龄</th>
-            <th>性别</th>
-            <th>邮箱</th>
-            <th>操作</th>
-        </tr>
+      <tr>
+         <th>id</th>
+        <th>姓名</th>
+        <th>电话</th>
+        <th>性别</th>
+        <th>介绍</th>
+        <th>操作</th>
+    </tr>
     `
-        for (let student of studentList) {
-            if (student.sex === 'm') {
-                student.sex = '男'
+        for (let coach of coachList) {
+            if (coach.sex === 'm') {
+                coach.sex = '男'
             }
-            if (student.sex === 'f') {
-                student.sex = '女'
+            if (coach.sex === 'f') {
+                coach.sex = '女'
             }
             htmlContent += `
          <tr>
-            <td>${student.stuId}</td>
-            <td>${student.stuName}</td>
-            <td>${student.age}</td>
-            <td>${student.sex}</td>
-            <td>${student.email}</td>
+            <td>${coach.coachId}</td>
+            <td>${coach.coachName}</td>
+            <td>${coach.coachPhone}</td>
+            <td>${coach.coachGender}</td>
+            <td>${coach.coachExperience}</td>
             <td>
-                <span><a href="/pages/studenInfo.html?id=${student.stuId}">查看或编辑</a></span>
-                <span onclick="deleteStudentInfoById(${student.stuId})"><a>删除</a></span>
+                <span><a href="/pages/studenInfo.html?id=${coach.coachId}">查看或编辑</a></span>
+                <span onclick="deleteStudentInfoById(${coach.coachId})"><a>删除</a></span>
             </td>
         </tr>`
 
@@ -69,18 +67,18 @@
     }
 
     //获取学员信息列表
-    let getAllStudentInfo = async function () {
-        const data = await fetch("/student").then(res => res.json());
+    let getAllCoachInfo = async function () {
+        const data = await fetch("/coach").then(res => res.json());
         if (data.statu === 100) {
-            showStudentInfos(data.data)
+            showCoachInfos(data.data)
         } else {
             alert(data.msg)
         }
     }
 
-    let deleteStudentInfoById = async function (id) {
+    let deleteCoachInfoById = async function (id) {
         const reqData = {
-            stuId:id
+            coachId:id
         }
         const data = await fetch("/student/delete", {
             method: "post",
