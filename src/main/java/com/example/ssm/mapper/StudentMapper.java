@@ -56,5 +56,7 @@ public interface StudentMapper {
      * @return int
      **/
     int addStudentInfo(@Param("params") Map<String,Object> params);
+
+    List<Student> getByCoachId(@Param("coachId") int coachId);
 }
 

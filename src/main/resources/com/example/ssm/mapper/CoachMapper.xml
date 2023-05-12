@@ -11,7 +11,39 @@
         <result column="coach_gender" property="coachGender"/>
         <result column="coach_experience" property="coachExperience"/>
     </resultMap>
+    <insert id="addCoachInfo">
+        insert into t_car_coach ( coach_name, coach_phone, coach_gander, coach_experience)
+        value (#{params.coachName},#{params.coachPhone},#{params.coachGender},#{params.coachExperience})
+    </insert>
+    <update id="updateCoachInfo">
+        update t_car_coach
+        <set>
+            <if test="params.coachName != null and params.coachName != ''">
+                coach_name = #{params.coachName},
+            </if>
+            <if test="params.coachPhone!= null and params.coachPhone != ''">
+                coach_phone = #{params.coachPhone},
+            </if>
+            <if test="params.coachGender != null and params.coachGender != ''">
+                coach_gander = #{params.coachGender},
+            </if>
+            <if test="params.coachExperience != null and params.coachExperience != ''">
+                coach_experience = #{params.coachExperience},
+            </if>
+
+        </set>
+        where coach_id = #{params.coachId}
+    </update>
+
+    <delete id="deleteByCoachIdInt">
+        delete from t_car_coach where coach_id = #{coachId}
+    </delete>
+
     <select id="getAllCoaches" resultMap="coachInfoResultMap">
         select * from t_car_coach
+    </select>
+
+    <select id="getCoachByIdCoach" resultMap="coachInfoResultMap">
+        select * from t_car_coach where coach_id = #{coachId}
     </select>
 </mapper>

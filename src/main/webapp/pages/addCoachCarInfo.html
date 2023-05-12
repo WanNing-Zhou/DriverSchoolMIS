@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>车辆引入信息</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<h2 class="text-center">练习车引入信息</h2>
+<form class="form-horizontal" role="form">
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">品牌</label>
+        <div class="col-sm-8">
+            <input class="form-control" id="carBrand" type="text" placeholder="请输入">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">车牌号</label>
+        <div class="col-sm-8">
+            <input class="form-control" id="carNumber" type="text" value="该输入框获得焦点...">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">车型</label>
+        <div class="col-sm-8">
+            <input class="form-control" id="carType" type="text" value="该输入框获得焦点...">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">描述</label>
+        <div class="col-sm-8">
+            <input class="form-control" id="carDesc" type="text" placeholder="请输入">
+        </div>
+    </div>
+
+
+    <div class="form-group text-center">
+        <!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
+        <button type="button" onclick="addCoachCar()" class="btn btn-primary">添加学员信息</button>
+    </div>
+
+</form>
+
+<script>
+
+    const carBrandEl = document.querySelector('#carBrand')
+    const carNumberEl = document.querySelector('#carNumber')
+    const carTypeEl = document.querySelector('#carType')
+    const carDescEl = document.querySelector('#carDesc')
+
+    let coachCarInfo = {}
+
+
+    //设置提交信息
+    function setInfo() {
+        coachCarInfo.carBrand = carBrandEl.value
+        coachCarInfo.carNumber = carNumberEl.value;
+        coachCarInfo.carType = carTypeEl.value;
+        coachCarInfo.carDesc = carDescEl.value;
+    }
+
+
+    //添加教练车
+    async function addCoachCar() {
+        setInfo();
+        const data = await fetch('/coachcar/add', {
+            method: "post",
+            body: JSON.stringify(coachCarInfo),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+
+        if (data && data.statu == 100) {
+            await alert('添加成功')
+            location.replace('allCoachCarInfo.html');
+        } else {
+            console.log('添加失败,请检查网路状态')
+        }
+    }
+
+</script>
+</body>
+</html>

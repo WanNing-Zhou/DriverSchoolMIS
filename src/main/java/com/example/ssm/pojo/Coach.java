@@ -10,6 +10,7 @@ import java.util.List;
  */
 
 public class Coach {
+
     private String coachName;
     private int coachId;
     private String coachPhone;

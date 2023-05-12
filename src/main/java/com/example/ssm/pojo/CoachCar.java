@@ -7,6 +7,7 @@ package com.example.ssm.pojo;
  * @description 教练车pojo
  */
 public class CoachCar {
+
     private int carId;
     private String carBrand;//车品牌
     private String carNumber; //车牌号

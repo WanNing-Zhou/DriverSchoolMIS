@@ -6,10 +6,7 @@ import com.example.ssm.service.CoachService;
 import com.example.ssm.util.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -35,9 +32,24 @@ public class CoachController {
     @RequestMapping(value = "/delete",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> deleteCoachInfo(@RequestBody Map<String,Object> requestMap){
-        return null;
+        return coachService.deleteCoachInfo((int) requestMap.get("coachId"));
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public ServerResponse<Coach> getCoachInfoById(@PathVariable("id") Integer id){
+        return coachService.getCoachById(id);
+    }
 
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> addCoachInfo(@RequestBody Map<String, Object> requestMap){
+        return coachService.addCoachInfo(requestMap);
+    }
 
+    @RequestMapping(value="/update",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> updateCoachInfo(@RequestBody Map<String,Object> requestMap){
+        return coachService.updateCoachInfo(requestMap);
+    }
 }

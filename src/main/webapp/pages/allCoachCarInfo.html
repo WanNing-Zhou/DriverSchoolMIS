@@ -9,9 +9,9 @@
 </head>
 <body>
 <div class="form-group">
-    <h2>教练信息总览</h2>
+    <h2>学员信息总览</h2>
     <a href="addStudentInfo.html">
-        <button type="button" class="btn btn-primary">教练入职</button>
+        <button type="button" class="btn btn-primary">车辆引入</button>
     </a>
 </div>
 
@@ -19,45 +19,40 @@
 <table class="table table-hover" id="studentTable">
     <tr>
         <th>id</th>
-        <th>姓名</th>
-        <th>电话</th>
-        <th>性别</th>
-        <th>介绍</th>
+        <th>品牌</th>
+        <th>车牌号</th>
+        <th>车型</th>
+        <th>描述</th>
         <th>操作</th>
     </tr>
 </table>
-
 <script>
+
     let studentTable = document.querySelector('#studentTable')
 
-    function showCoachInfos(coachList) {
+
+    function showCoachCarInfos(carList) {
         let htmlContent = `
       <tr>
          <th>id</th>
-        <th>姓名</th>
-        <th>电话</th>
-        <th>性别</th>
-        <th>介绍</th>
+        <th>品牌</th>
+        <th>车牌号</th>
+        <th>车型</th>
+        <th>描述</th>
         <th>操作</th>
     </tr>
     `
-        for (let coach of coachList) {
-            if (coach.coachGender === 'male') {
-                coach.coachGender = '男'
-            }
-            if (coach.coachGender === 'female') {
-                coach.coachGender = '女'
-            }
+        for (let car of carList) {
+
             htmlContent += `
          <tr>
-            <td>${coach.coachId}</td>
-            <td>${coach.coachName}</td>
-            <td>${coach.coachPhone}</td>
-            <td>${coach.coachGender}</td>
-            <td>${coach.coachExperience}</td>
+            <td>${car.carId}</td>
+            <td>${car.carBrand}</td>
+            <td>${car.carNumber}</td>
+            <td>${car.carType}</td>
+            <td>${car.carDesc}</td>
             <td>
-                <span><a href="/pages/studenInfo.html?id=${coach.coachId}">查看或编辑</a></span>
-                <span onclick="deleteStudentInfoById(${coach.coachId})"><a>删除</a></span>
+                <span onclick="deleteStudentInfoById(${car.carId})"><a>删除</a></span>
             </td>
         </tr>`
 
@@ -66,21 +61,21 @@
     }
 
     //获取学员信息列表
-    let getAllCoachInfo = async function () {
-        const data = await fetch("/coach").then(res => res.json());
+    let getAllCoachCarInfo = async function () {
+        const data = await fetch("/coachcar").then(res => res.json());
         if (data.statu === 100) {
-            showCoachInfos(data.data)
+            showCoachCarInfos(data.data)
         } else {
             alert(data.msg)
         }
     }
 
-    let deleteCoachInfoById = async function (id) {
+    let deleteCoachCarInfoById = async function (id) {
         const reqData = {
-            coachId:id
+            coachId: id
         }
 
-        const data = await fetch("/coach/delete", {
+        const data = await fetch("/coachcar/delete", {
             method: "post",
             body: JSON.stringify(reqData),
             headers: {
