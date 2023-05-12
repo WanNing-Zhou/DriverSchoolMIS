@@ -1,6 +1,8 @@
 package com.example.ssm.service;
 
 import com.example.ssm.pojo.Coach;
+import com.example.ssm.pojo.Student;
+import com.example.ssm.util.ServerResponse;
 
 import java.util.List;
 
@@ -12,7 +14,7 @@ import java.util.List;
  */
 public interface CoachService {
     //查看教练信息
-    List<Coach> getAllCoachInfo();
+    ServerResponse<List<Coach>> getAllCoachInfo();
 
     // 根据id获取教练信息
     Coach getCoachById();

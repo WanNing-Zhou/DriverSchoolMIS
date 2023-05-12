@@ -1,5 +1,7 @@
 package com.example.ssm.mapper;
 
+import org.apache.ibatis.annotations.Param;
+
 /**
  * @author 周万宁
  * @className CoachCarStu
@@ -7,4 +9,5 @@ package com.example.ssm.mapper;
  * @description
  */
 public interface CoachCarStuMapper {
+    int deleteCoachCarInfo(@Param("stuId")int stuId);
 }

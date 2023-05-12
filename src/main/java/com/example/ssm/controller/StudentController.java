@@ -3,15 +3,12 @@ package com.example.ssm.controller;
 import com.example.ssm.pojo.Student;
 import com.example.ssm.service.StudentService;
 import com.example.ssm.util.ServerResponse;
-import com.mysql.cj.log.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 周万宁
@@ -56,6 +53,36 @@ public class StudentController {
     public ServerResponse<Student> getStudentInfoById(@PathVariable("id") Integer id){
         return studentService.getStudentInfoById(id);
     }
+
+    /**
+     * @MethodName upDataStudentInfo
+     * @Author 周万宁
+     * @Description 学生数据修改
+     * @Date 17:36 2023/5/5
+     * @Param [requestMap]
+     * @return com.example.ssm.util.ServerResponse<java.lang.String>
+     **/
+    @RequestMapping(value="/update",method=RequestMethod.POST)
+    @ResponseBody
+    public  ServerResponse<String> upDataStudentInfo(@RequestBody Map<String,Object> requestMap){
+/*        System.out.println("输出resquestMap");
+        System.out.println(requestMap.get("stuName"));
+        System.out.println(requestMap);*/
+        return studentService.updateStudentInfo(requestMap);
+    }
+
+    @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
+    @ResponseBody
+    public ServerResponse<String> deleteStudentInfo(@PathVariable("id")int id){
+        return  studentService.deleteStudentInfo(id);
+    }
+
+    @RequestMapping(value = "/carAuth/delete/",method = RequestMethod.POST)
+    @ResponseBody
+    public  ServerResponse<String> cancelStudentUseCarAuth(@RequestBody Map<String,Object> requestMap){
+        return null;
+    }
+
 
 
 }

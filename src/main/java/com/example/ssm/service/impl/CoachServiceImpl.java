@@ -3,7 +3,9 @@ package com.example.ssm.service.impl;
 import com.example.ssm.mapper.CoachMapper;
 import com.example.ssm.mapper.StudentMapper;
 import com.example.ssm.pojo.Coach;
+import com.example.ssm.pojo.Student;
 import com.example.ssm.service.CoachService;
+import com.example.ssm.util.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,8 +25,12 @@ public class CoachServiceImpl implements CoachService {
     @Autowired
     private CoachMapper coachMapper;
     @Override
-    public List<Coach> getAllCoachInfo() {
-        return null;
+    public ServerResponse<List<Coach>> getAllCoachInfo() {
+        List<Coach> allCoaches = coachMapper.getAllCoaches();
+        if(allCoaches.size()>0){
+            return ServerResponse.createBySuccess("查询成功",allCoaches);
+        }
+        return ServerResponse.createByError("查询失败");
     }
 
     @Override

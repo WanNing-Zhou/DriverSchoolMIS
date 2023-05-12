@@ -40,6 +40,31 @@
         <association property="stuCarCard" resultMap="stuCarCardInfoResultMap"/>
     </resultMap>
 
+    <update id="updateStudentInfo" parameterType="java.util.Map">
+        update t_student
+        <set>
+            <if test="params.stuName != null and params.stuName != ''">
+                stu_name=#{params.stuName},
+            </if>
+            <if test="params.age!= null and params.age != ''">
+                age = #{params.age},
+            </if>
+            <if test="params.sex != null and params.sex != ''">
+                sex = #{params.sex},
+            </if>
+            <if test="params.email != null and params.email != ''">
+                email = #{params.email},
+            </if>
+            <if test="params.coachId != null">
+                stu_coach_id = #{params.coachId},
+            </if>
+        </set>
+        where stu_id = #{params.stuId}
+    </update>
+    <delete id="deleteStudentInfo">
+        delete from t_student where stu_id=#{id}
+    </delete>
+
     <select id="getAllStudentInfo" resultMap="studentInfoResultMap">
         select * from t_student stu
             left join t_car_coach tcc on stu.stu_coach_id = tcc.coach_id

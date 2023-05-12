@@ -11,4 +11,5 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface StuCarCardMapper {
     StuCarCard getCarCardByStuId(@Param("id") int stuId);
+    int deleteCarCardByStuId(@Param("stuId") int stuId);
 }

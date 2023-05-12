@@ -13,6 +13,14 @@ import java.util.Map;
  * @description
  */
 public interface CoachCarMapper {
+    /**
+     * @MethodName getAllCoachCar
+     * @Author 周万宁
+     * @Description 获取所有教练车西信息
+     * @Date 9:40 2023/5/12
+     * @Param []
+     * @return java.util.List<com.example.ssm.pojo.CoachCar>
+     **/
     List<CoachCar> getAllCoachCar();
     CoachCar getCoachCarById(@Param("id") int id);
     int updateCoachCarById(@Param("coachCar") Map<String,Object> coachCar);

@@ -4,6 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.ssm.mapper.StuCarCardMapper">
 
+    <delete id="deleteCarCardByStuId">
+        delete from t_stu_carcard where stu_id=#{stuId}
+    </delete>
+
     <select id="getCarCardByStuId" resultType="com.example.ssm.pojo.StuCarCard">
         select * from t_stu_carcard where stu_id=#{id}
     </select>

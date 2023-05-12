@@ -34,6 +34,7 @@
     <select id="getAllCoachCar" resultMap="coachCarResultMap">
             select * from t_coachcar;
     </select>
+
     <select id="getCoachCarById" resultMap="coachCarResultMap">
         select * from t_coachcar where car_id = #{id}
     </select>
@@ -42,5 +43,7 @@
             left join t_coachcar_stu tcs on t_coachcar.car_id = tcs.car_id
         where tcs.stu_id = #{id}
     </select>
+
+
 
 </mapper>

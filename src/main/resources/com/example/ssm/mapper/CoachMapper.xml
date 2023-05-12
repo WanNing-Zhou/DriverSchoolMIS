@@ -4,4 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.ssm.mapper.CoachMapper">
 
+    <resultMap id="coachInfoResultMap" type="com.example.ssm.pojo.Coach">
+        <id column="coach_id" property="coachId"/>
+        <result column="coach_name" property="coachName"/>
+        <result column="coach_phone" property="coachPhone"/>
+        <result column="coach_gender" property="coachGender"/>
+        <result column="coach_experience" property="coachExperience"/>
+    </resultMap>
+    <select id="getAllCoaches" resultMap="coachInfoResultMap">
+        select * from t_car_coach
+    </select>
 </mapper>

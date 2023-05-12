@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 周万宁
@@ -33,5 +34,17 @@ public interface StudentMapper {
      * @return com.example.ssm.pojo.Student
      **/
     Student getStudentInfoById(@Param("id") int id);
+
+    int updateStudentInfo(@Param("params") Map<String,Object> params);
+
+    /**
+     * @MethodName deleteStudentInfo
+     * @Author 周万宁
+     * @Description 删除学生信息
+     * @Date 15:21 2023/5/5
+     * @Param [id]
+     * @return int
+     **/
+    int deleteStudentInfo(@Param("id") int id);
 }
 

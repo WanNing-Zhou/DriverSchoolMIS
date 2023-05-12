@@ -1,6 +1,9 @@
 package com.example.ssm.mapper;
 
+import com.example.ssm.pojo.Coach;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author 周万宁
@@ -10,4 +13,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository("coachMapperDao")
 public interface CoachMapper {
+    List<Coach> getAllCoaches();
 }
