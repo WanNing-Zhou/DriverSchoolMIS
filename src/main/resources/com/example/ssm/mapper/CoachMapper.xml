@@ -11,6 +11,7 @@
         <result column="coach_gender" property="coachGender"/>
         <result column="coach_experience" property="coachExperience"/>
     </resultMap>
+
     <insert id="addCoachInfo">
         insert into t_car_coach ( coach_name, coach_phone, coach_gander, coach_experience)
         value (#{params.coachName},#{params.coachPhone},#{params.coachGender},#{params.coachExperience})

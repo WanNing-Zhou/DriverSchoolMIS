@@ -10,7 +10,7 @@
 <body>
 <div class="form-group">
     <h2>教练信息总览</h2>
-    <a href="addStudentInfo.html">
+    <a href="./addCoachInfo.html">
         <button type="button" class="btn btn-primary">教练入职</button>
     </a>
 </div>
@@ -56,8 +56,8 @@
             <td>${coach.coachGender}</td>
             <td>${coach.coachExperience}</td>
             <td>
-                <span><a href="/pages/studenInfo.html?id=${coach.coachId}">查看或编辑</a></span>
-                <span onclick="deleteStudentInfoById(${coach.coachId})"><a>删除</a></span>
+                <span><a href="/pages/coachInfo.html?id=${coach.coachId}">查看或编辑</a></span>
+                <span onclick="deleteCoachInfoById(${coach.coachId})"><a>删除</a></span>
             </td>
         </tr>`
 
@@ -68,6 +68,7 @@
     //获取学员信息列表
     let getAllCoachInfo = async function () {
         const data = await fetch("/coach").then(res => res.json());
+        console.log(data)
         if (data.statu === 100) {
             showCoachInfos(data.data)
         } else {
@@ -95,7 +96,7 @@
         }
     }
 
-    getAllCoachCarInfo();
+    getAllCoachInfo();
 
 </script>
 </body>
