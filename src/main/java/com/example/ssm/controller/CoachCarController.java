@@ -38,6 +38,7 @@ public class CoachCarController {
         return coachCarService.addCoachCar(requestMap);
     }
 
+    //删除车辆信息接口
     @RequestMapping(value = "/delete",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> deleteCoachCarInfo(@RequestBody Map<String,Object> requestMap){

@@ -18,14 +18,6 @@ public class Coach {
     private String coachExperience;
     private List<Student> students;
 
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<Student> students) {
-        this.students = students;
-    }
-
     public String getCoachName() {
         return coachName;
     }
@@ -34,29 +26,12 @@ public class Coach {
         this.coachName = coachName;
     }
 
-    @Override
-    public String toString() {
-        return "Coach{" +
-                "coachId=" + coachId +
-                ", coachPhone='" + coachPhone + '\'' +
-                ", coachGender='" + coachGender + '\'' +
-                ", coachExperience='" + coachExperience + '\'' +
-                '}';
-    }
-
     public int getCoachId() {
         return coachId;
     }
 
     public void setCoachId(int coachId) {
         this.coachId = coachId;
-    }
-
-    public Coach(int coachId, String coachPhone, String coachGender, String coachExperience) {
-        this.coachId = coachId;
-        this.coachPhone = coachPhone;
-        this.coachGender = coachGender;
-        this.coachExperience = coachExperience;
     }
 
     public String getCoachPhone() {
@@ -83,4 +58,11 @@ public class Coach {
         this.coachExperience = coachExperience;
     }
 
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
 }

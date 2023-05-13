@@ -8,7 +8,7 @@
         <id column="coach_id" property="coachId"/>
         <result column="coach_name" property="coachName"/>
         <result column="coach_phone" property="coachPhone"/>
-        <result column="coach_gender" property="coachGender"/>
+        <result column="coach_gander" property="coachGender"/>
         <result column="coach_experience" property="coachExperience"/>
     </resultMap>
 

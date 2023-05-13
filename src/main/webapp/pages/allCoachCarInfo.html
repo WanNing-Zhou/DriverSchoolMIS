@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="form-group">
-    <h2>教练车信息总览</h2>
+    <h2 class="text-center">教练车信息总览</h2>
     <a href="./addCoachCarInfo.html">
         <button type="button" class="btn btn-primary">车辆引入</button>
     </a>
@@ -52,7 +52,7 @@
             <td>${car.carType}</td>
             <td>${car.carDesc}</td>
             <td>
-                <span onclick="deleteStudentInfoById(${car.carId})"><a>删除</a></span>
+                <span onclick="deleteCoachCarInfoById(${car.carId})"><a>删除</a></span>
             </td>
         </tr>`
 
@@ -72,7 +72,7 @@
 
     let deleteCoachCarInfoById = async function (id) {
         const reqData = {
-            coachId: id
+            carId: id
         }
 
         const data = await fetch("/coachcar/delete", {
@@ -84,7 +84,7 @@
         }).then(res => res.json());
         if (data.statu === 100) {
             alert('删除成功')
-            await getAllCoachInfo()
+            await getAllCoachCarInfo()
         } else {
             alert('删除失败请检查网络状态')
         }
