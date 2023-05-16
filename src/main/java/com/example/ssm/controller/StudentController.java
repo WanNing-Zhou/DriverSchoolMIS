@@ -96,8 +96,8 @@ public class StudentController {
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> addStudentInfo(@RequestBody Map<String, Object> requestMap){
-//        System.out.println("卡卡西");
-//        System.out.println(requestMap);
+        System.out.println("卡卡西");
+        System.out.println(requestMap);
         return studentService.addStudentInfo(requestMap);
     }
 

@@ -38,5 +38,4 @@ public interface StudentService {
     //添加学员信息
     ServerResponse<String> addStudentInfo(Map<String,Object> map);
 
-
 }

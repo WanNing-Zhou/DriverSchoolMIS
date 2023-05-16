@@ -161,15 +161,18 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public ServerResponse<String> addStudentInfo(Map<String, Object> map) {
         int affectedRows = studentMapper.addStudentInfo(map);
+        System.out.println("affectedRows");
+        System.out.println(affectedRows);
         if (affectedRows > 0) {
+
             // 获取生成的主键id，并将其作为参数传递给 addCarCard 方法
-            int stuId = (int) map.get("stuId");
-            map.put("stuId", stuId);
+//            int stuId = (int) map.get("stuId");
+//            map.put("stuId", stuId);
 
             // 添加学生卡信息
             int rows = stuCarCardMapper.addCarCard(map);
             if(rows > 0){
-                return ServerResponse.createBySuccess("创建成功","success" + stuId);
+                return ServerResponse.createBySuccess("创建成功","success");
             } else{
                 return ServerResponse.createByError("创建失败");
             }
