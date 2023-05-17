@@ -43,4 +43,15 @@
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
     </bean>
 
+    <!--<mvc:interceptors>
+        &lt;!&ndash; 注册拦截器 &ndash;&gt;
+        <bean id="authInterceptor" class="com.example.ssm.interceptor.AuthInterceptor"></bean>
+
+        &lt;!&ndash; 拦截所有路径 &ndash;&gt;
+        <mvc:interceptor>
+            <mvc:mapping path="/**"></mvc:mapping>
+            <bean class="com.example.ssm.interceptor.AuthInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>-->
+
 </beans>

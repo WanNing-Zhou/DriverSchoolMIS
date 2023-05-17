@@ -1,54 +1,67 @@
 package com.example.ssm.util;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import com.example.ssm.pojo.User;
+import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
 
 
+import java.security.Key;
 import java.util.Date;
 
 
-/**
- * @author 周万宁
- * @className TokenUtils
- * @create 2023/5/16-11:27
- * @description
- */
-// Java 工具类 TokenUtils.java
 public class TokenUtils {
 
-    private static String SECRET_KEY = "mySecretKey";    //密钥
-    private static long EXPIRE_TIME = 30 * 60 * 1000;     //30分钟到期
+    // token有效期，默认为1天
+    private long expiration = 86400000L;
 
-    public static String sign(User user) {
-        String token = null;
-        try {
-            Date expireTime = new Date(System.currentTimeMillis() + EXPIRE_TIME);
-            Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
-            token = JWT.create()
-                    .withIssuer("auth0")  //设置签发者
-                    .withIssuedAt(new Date())  //设置签发时间
-                    .withExpiresAt(expireTime)  //设置过期时间
-                    .withClaim("id", user.getUserId())  //添加自定义字段
-                    .sign(algorithm); //生成jwt签名
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return token;
+    private String secret = "zwn";
+
+    public long getExpiration() {
+        return expiration;
     }
 
-    public static boolean verify(String token) {
+    public void setExpiration(long expiration) {
+        this.expiration = expiration;
+    }
+
+    public String getSecret() {
+        return secret;
+    }
+
+    public void setSecret(String secret) {
+        this.secret = secret;
+    }
+
+    /**
+     * 生成JWT Token
+     */
+    public String generateToken(String username) {
+        long nowMillis = System.currentTimeMillis();
+        Date now = new Date(nowMillis);
+
+        Key key = Keys.hmacShaKeyFor(secret.getBytes());
+
+        JwtBuilder builder = Jwts.builder()
+                .setSubject(username)
+                .setIssuedAt(now)
+                .setExpiration(new Date(nowMillis + expiration))
+                .signWith(key, SignatureAlgorithm.HS256);
+
+        return builder.compact();
+    }
+
+    /**
+     * 验证JWT Token是否合法，并返回 Token 中包含的用户名。Token 验证失败则返回 null。
+     */
+    public String getUsernameFromToken(String token) {
         try {
-            Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
-            JWTVerifier verifier = JWT.require(algorithm)
-                    .withIssuer("auth0").build(); // Reusable verifier instance
-            DecodedJWT jwt = verifier.verify(token);  //验证token
-            return true;
-        } catch (JWTVerificationException exception){
-            return false;
+            Claims claims = Jwts.parser()
+                    .setSigningKey(secret.getBytes())
+                    .parseClaimsJws(token)
+                    .getBody();
+            return claims.getSubject();
+        } catch (Exception e) {
+            // Token 验证失败，则直接返回 null
+            return null;
         }
     }
 }

@@ -38,5 +38,4 @@ public class UserServiceImpl implements UserService {
     public ServerResponse<String> updateUserInfo(Map<String, Object> map) {
         return null;
     }
-
 }

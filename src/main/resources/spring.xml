@@ -21,6 +21,8 @@ https://www.springframework.org/schema/context/spring-context.xsd http://www.spr
         <property name="password" value="${jdbc.password}"></property>
     </bean>
 
+
+
     <!--配置事务管理器-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"></property>
@@ -60,6 +62,20 @@ https://www.springframework.org/schema/context/spring-context.xsd http://www.spr
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.example.ssm.mapper"></property>
     </bean>
+
+    <bean id="propertyPlaceholderConfigurer" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:configuration.properties</value>
+            </list>
+        </property>
+    </bean>
+
+<!--    <bean id="tokenUtils" class="com.example.ssm.util.TokenUtils">
+        <property name="secret" value="${token.secret}" />
+        <property name="expiration" value="${token.expiration}" />
+    </bean>-->
+
 
 
 

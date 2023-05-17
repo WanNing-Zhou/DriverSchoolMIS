@@ -11,12 +11,5 @@ import org.junit.Test;
  * @description
  */
 public class JWTTest {
-    @Test
-    public void jwtTest(){
-        User user1 = new User();
-        user1.setUserId(123);
-        String sign = TokenUtils.sign(user1);
-        System.out.println(sign);
-        System.out.println(TokenUtils.verify(sign));
-    }
+
 }
