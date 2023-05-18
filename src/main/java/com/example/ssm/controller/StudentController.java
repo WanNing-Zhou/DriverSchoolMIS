@@ -1,10 +1,8 @@
 package com.example.ssm.controller;
 
-import com.alibaba.druid.sql.dialect.mysql.ast.MysqlForeignKey;
 import com.example.ssm.pojo.Student;
 import com.example.ssm.service.StudentService;
 import com.example.ssm.util.ServerResponse;
-import com.mysql.cj.log.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -35,9 +33,9 @@ public class StudentController {
      **/
     @RequestMapping(value = "", method = RequestMethod.GET)
     @ResponseBody
-    public ServerResponse<List<Student>> getAllStudentInfo(){
+    public ServerResponse<List<Student>> getAllStudentInfo(@RequestBody Map<String,Object> map){
 
-        return studentService.getAllStudentInfo();
+        return studentService.getAllStudentInfo(map);
     }
 
 
@@ -96,8 +94,6 @@ public class StudentController {
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> addStudentInfo(@RequestBody Map<String, Object> requestMap){
-        System.out.println("卡卡西");
-        System.out.println(requestMap);
         return studentService.addStudentInfo(requestMap);
     }
 

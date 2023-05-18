@@ -52,4 +52,5 @@ public class CoachController {
     public ServerResponse<String> updateCoachInfo(@RequestBody Map<String,Object> requestMap){
         return coachService.updateCoachInfo(requestMap);
     }
+
 }

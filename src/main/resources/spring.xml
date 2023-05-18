@@ -42,6 +42,22 @@ https://www.springframework.org/schema/context/spring-context.xsd http://www.spr
         设置映射文件的路径
         若映射文件所在路径和mapper接口所在路径一致，则不需要设置
         -->
+
+
+        <!-- 传入PageHelper的插件 -->
+        <property name="plugins">
+            <array>
+                <!-- 传入插件的对象 -->
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <props>
+                            <prop key="helperDialect">mysql</prop>
+                            <prop key="reasonable">true</prop>
+                        </props>
+                    </property>
+                </bean>
+            </array>
+        </property>
         <!--
         <property name="mapperLocations" value="classpath:mapper/*.xml">
         </property>
@@ -75,8 +91,6 @@ https://www.springframework.org/schema/context/spring-context.xsd http://www.spr
         <property name="secret" value="${token.secret}" />
         <property name="expiration" value="${token.expiration}" />
     </bean>-->
-
-
 
 
 </beans>

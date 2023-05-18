@@ -15,7 +15,7 @@ import java.util.Map;
 
 public interface StudentService {
     // 获取所有学员信息
-    ServerResponse<List<Student>> getAllStudentInfo();
+    ServerResponse<List<Student>> getAllStudentInfo(Map<String,Object> map);
 
     // 根据学员ID获取学员信息
     ServerResponse<Student> getStudentInfoById(Integer id);

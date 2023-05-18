@@ -11,5 +11,18 @@ import org.junit.Test;
  * @description
  */
 public class JWTTest {
+    @Test
+    public void authTest() {
+        User u = new User();
+        u.setUsername("卡卡西");
+        u.setRoleId(2);
+        System.out.println(u.getUsername());
 
+        TokenUtils tokenUtils = new TokenUtils();
+        String token = tokenUtils.generateToken("卡卡西",u.getRoleId());
+
+        System.out.println(token);
+        System.out.println(tokenUtils.getUsernameFromToken(token));
+        System.out.println(tokenUtils.getRoleCode(token));
+    }
 }

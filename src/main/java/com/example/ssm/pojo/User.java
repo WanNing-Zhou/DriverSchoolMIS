@@ -57,6 +57,14 @@ public class User {
         this.roleCode = roleCode;
     }
 
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
     public String getCreateTime() {
         return createTime;
     }
