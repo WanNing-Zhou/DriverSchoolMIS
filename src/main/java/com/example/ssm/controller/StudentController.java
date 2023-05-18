@@ -2,6 +2,7 @@ package com.example.ssm.controller;
 
 import com.example.ssm.pojo.Student;
 import com.example.ssm.service.StudentService;
+import com.example.ssm.util.Permission;
 import com.example.ssm.util.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,10 +32,11 @@ public class StudentController {
      * @Param []
      * @return com.example.ssm.util.ServerResponse<java.util.List<com.example.ssm.pojo.Student>>
      **/
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    @ResponseBody
-    public ServerResponse<List<Student>> getAllStudentInfo(@RequestBody Map<String,Object> map){
 
+    @RequestMapping(value = "", method = RequestMethod.POST)
+    @ResponseBody
+    @Permission(1)
+    public ServerResponse<List<Student>> getAllStudentInfo(@RequestBody Map<String,Object> map){
         return studentService.getAllStudentInfo(map);
     }
 

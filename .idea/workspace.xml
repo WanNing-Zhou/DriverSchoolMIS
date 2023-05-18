@@ -9,30 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="238aaeca-eb95-49de-896a-35574acbf3d0" name="Changes" comment="阶段四: 添加登录功能">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/StudentCardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/StudentCarCardService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/StudentCarCardImpl.java" afterDir="false" />
+    <list default="true" id="238aaeca-eb95-49de-896a-35574acbf3d0" name="Changes" comment="阶段五: 权限校验功能实现">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachCarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachCarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/interceptor/AuthInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/interceptor/AuthInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/CoachCarStuMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/CoachCarStuMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/StuCarCardMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/StuCarCardMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/pojo/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/StudentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/StudentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/StudentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/util/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/util/Permission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/util/TokenUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/util/TokenUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/ssm/mapper/CoachCarStuMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/ssm/mapper/CoachCarStuMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/ssm/mapper/StuCarCardMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/ssm/mapper/StuCarCardMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/ssm/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/ssm/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/springmvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/springmvc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/ssm/test/JWTTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/ssm/test/JWTTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/allStudent.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/allStudent.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,8 +242,8 @@
       <item itemvalue="HTTP Request.generated-requests#3" />
       <item itemvalue="JUnit.TestUtils.jwtTest" />
       <item itemvalue="JUnit.JWTTest.jwtTest" />
-      <item itemvalue="Tomcat Server.Tomcat 9.0.65" />
       <item itemvalue="JUnit.JWTTest.authTest" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.65" />
     </list>
     <recent_temporary>
       <list>
@@ -300,7 +283,8 @@
       <workItem from="1684292329551" duration="13353000" />
       <workItem from="1684381593057" duration="16906000" />
       <workItem from="1684400991672" duration="2212000" />
-      <workItem from="1684403778849" duration="4960000" />
+      <workItem from="1684403778849" duration="8286000" />
+      <workItem from="1684415827112" duration="2807000" />
     </task>
     <task id="LOCAL-00001" summary="简单的提交">
       <created>1683860243861</created>
@@ -386,7 +370,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684398572580</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="阶段五: 权限校验功能实现">
+      <created>1684410066820</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1684410066820</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -411,7 +402,8 @@
     <MESSAGE value="完成学员管理" />
     <MESSAGE value="完成阶段二与阶段三" />
     <MESSAGE value="阶段四: 添加登录功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="阶段四: 添加登录功能" />
+    <MESSAGE value="阶段五: 权限校验功能实现" />
+    <option name="LAST_COMMIT_MESSAGE" value="阶段五: 权限校验功能实现" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

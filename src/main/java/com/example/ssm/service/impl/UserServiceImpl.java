@@ -39,7 +39,9 @@ public class UserServiceImpl implements UserService {
         //如果用户不为null
         if(user!=null && user.getUsername() != null){
             //为用户分配权限
-            String token = tokenUtils.generateToken(user.getUsername(), user.getRoleCode());
+            System.out.println("用户名"+ user.getUsername());
+            String token = tokenUtils.generateToken(user.getUsername(), user.getRoleId());
+            System.out.println("解签后的用户名"+tokenUtils.getUsernameFromToken(token));
             //附带响应信息
             response.setHeader("Authorization",token);
             return ServerResponse.createBySuccess("登录成功",user);

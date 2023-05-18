@@ -7,6 +7,7 @@ import com.example.ssm.util.ServiceResult;
 import com.example.ssm.util.TokenUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
-//@Component
+@Component
 public class AuthInterceptor implements HandlerInterceptor {
 
     @Autowired
@@ -26,6 +27,7 @@ public class AuthInterceptor implements HandlerInterceptor {
                              HttpServletResponse response,
                              Object handler) throws Exception {
 
+        response.setContentType("application/json;charset=UTF-8");
         String requestURI = request.getRequestURI();
         // 判断请求是否为登录请求 或者是静态资源
         if (requestURI.endsWith("/login") || requestURI.contains("/pages") || requestURI.contains("/static")) {
@@ -33,6 +35,8 @@ public class AuthInterceptor implements HandlerInterceptor {
             System.out.println(requestURI);
             return true;
         }
+
+        System.out.println("有请求经过");
 
         // 校验权限
         if (handler instanceof HandlerMethod) {
@@ -43,6 +47,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 
                 // 获取请求头中的 token 值
                 String token = request.getHeader("Authorization");
+                System.out.println("token:"+token);
                 if (token == null || token.isEmpty()) {
                     // 如果没有 token 则直接返回未授权错误
                     ServiceResult result = new ServiceResult(ResponseDataCode.UNAUTHORIZED, "未授权，请登录后再试");
@@ -52,6 +57,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 
                 // 校验 token 是否合法
                 String username = tokenUtils.getUsernameFromToken(token);
+                System.out.println("用户名"+username);
 
                 if (username == null) {
                     // 如果 token 不合法则也返回未授权错误
@@ -65,6 +71,7 @@ public class AuthInterceptor implements HandlerInterceptor {
                 // 检查的权限是否都被允许
                 Permission annotation = method.getAnnotation(Permission.class);
                 int roleId = tokenUtils.getRoleCode(token);
+                System.out.println("roleId:" + roleId);
                 int permissionCode = annotation.value();
                 boolean isPermitted = true;
                 if (roleId != permissionCode) {
@@ -81,7 +88,9 @@ public class AuthInterceptor implements HandlerInterceptor {
             }
         }
 
+
         // 没有 Permission 注解，则直接通过拦截器
         return true;
+
     }
 }
