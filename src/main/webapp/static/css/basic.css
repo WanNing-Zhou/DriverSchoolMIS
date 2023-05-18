@@ -1,0 +1,43 @@
+
+
+.page-header{
+    position: absolute;
+    height: 40px;
+    padding: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color:#ffffff;
+    color:#2c353c;
+    font-size: 22px;
+    line-height: 40px;
+    text-align: center;
+    user-select: none;
+  }
+  
+  .page-navbar {
+    position: absolute;
+    width: 200px;
+    top: 40px;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    background-color: #29333a;
+    color: #e1ffff;
+  }
+  .page-main {
+    position: absolute;
+    top: 40px;
+    left: 200px;
+    right: 0;
+    bottom: 0;
+    background-color: #d9e0e7;
+    overflow:hidden;
+    
+  }
+
+  .page-content{
+    width: 100%;
+    height: 100%;
+      overflow: hidden;
+  }

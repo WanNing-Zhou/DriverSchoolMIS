@@ -8,12 +8,10 @@ package com.example.ssm.util;
  */
 public enum RoleCode {
     STUDENT(0b1),
-    COACHER(0b11),
+    COACH(0b11),
     MANAGER(0b111);
 
-
     private final int roleCode;
-
 
     RoleCode(int roleCode){
         this.roleCode = roleCode;
@@ -22,6 +20,5 @@ public enum RoleCode {
     public int getRoleCode() {
         return roleCode;
     }
-
 
 }

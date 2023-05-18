@@ -12,19 +12,20 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class ServerResponse<T> {
 
     //状态码
-    private int statu;
+    private int status;
     //数据
     private T data;
     //描述信息
     private String msg;
 
     //setter、getter方法
-    public int getStatu() {
-        return statu;
+    public int getStatus() {
+        return status;
     }
 
-    public void setStatu(int statu) {
-        this.statu = statu;
+    //获取状态
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public T getData() {
@@ -45,34 +46,34 @@ public class ServerResponse<T> {
 //构造函数
     /**
      * 操作成功时，返回数据
-     * @param statu
+     * @param status
      * @param data
      * @param msg
      */
-    public ServerResponse(int statu, T data, String msg) {
-        this.statu = statu;
+    public ServerResponse(int status, T data, String msg) {
+        this.status = status;
         this.data = data;
         this.msg = msg;
     }
 
-    public ServerResponse(int statu) {
-        this.statu = statu;
+    public ServerResponse(int status) {
+        this.status = status;
     }
 
     /**
      * 操作失败时，不返回数据
-     * @param statu
+     * @param status
      * @param msg
      */
-    public ServerResponse(int statu, String msg) {
-        this.statu = statu;
+    public ServerResponse(int status, String msg) {
+        this.status = status;
         this.msg = msg;
     }
 
     //使之不在序列化结果中
     @JsonIgnore
     public boolean checkIsSuccess(){
-        return this.statu==ResponseCode.SUCCESS.getCode();
+        return this.status==ResponseDataCode.SUCCESS.getCode();
     }
 //泛型方法
 
@@ -84,7 +85,7 @@ public class ServerResponse<T> {
      * @return
      */
     public static <T> ServerResponse<T> createBySuccess(String msg,T data){
-        return new ServerResponse<T>(ResponseCode.SUCCESS.getCode(),data,msg);
+        return new ServerResponse<T>(ResponseDataCode.SUCCESS.getCode(),data,msg);
     }
 
     /**
@@ -93,7 +94,7 @@ public class ServerResponse<T> {
      * @return
      */
     public static <T> ServerResponse<T> createByCheckSuccess(){
-        return new ServerResponse<T>(ResponseCode.SUCCESS.getCode());
+        return new ServerResponse<T>(ResponseDataCode.SUCCESS.getCode());
     }
 
     /**
@@ -103,10 +104,13 @@ public class ServerResponse<T> {
      * @return
      */
     public static <T> ServerResponse<T> createByError(String msg){
-        return new ServerResponse<T>(ResponseCode.ERROR.getCode(),msg);
+        return new ServerResponse<T>(ResponseDataCode.NOT_FOUND.getCode(),msg);
     }
 
+
     public static <T> ServerResponse<T> createByNeedLogin(){
-        return new ServerResponse<T>(ResponseCode.NEED_LOG.getCode(),"请先登录！");
+        return new ServerResponse<T>(ResponseDataCode.UNAUTHORIZED.getCode(),"请先登录！");
     }
+
+
 }

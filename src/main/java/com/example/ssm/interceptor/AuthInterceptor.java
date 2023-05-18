@@ -30,6 +30,8 @@ public class AuthInterceptor implements HandlerInterceptor {
         String requestURI = request.getRequestURI();
         // 判断请求是否为登录请求 或者是静态资源
         if (requestURI.endsWith("/login") || requestURI.contains("/pages")||requestURI.contains("/static")) {
+            System.out.println("kakxi");
+            System.out.println(requestURI);
             return true;
         }
 

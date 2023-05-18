@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/basic.css">
+    <!-- 引入 layui.css -->
+    <!-- <link href="//unpkg.com/layui@2.8.0/dist/css/layui.css" rel="stylesheet"> -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/css/layui.css" rel="stylesheet">
+    <!-- 引入 layui.js -->
+    <!-- <script src="//unpkg.com/layui@2.8.0/dist/layui.js" /> -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/layui.js"></script>
+</head>
+
+<body>
+    <header class="page-header"> <span>驾校管理学员系统</span></header>
+
+    <!-- 导航栏 -->
+    <div class="page-navbar">
+        <ul class="layui-nav layui-nav-tree">
+            <li class="layui-nav-item">
+                <a href="javascript:;">学员管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;" onclick="changePage('allStudent.html')">学员信息管理</a></dd>
+                    <dd><a href="javascript:;" onclick="changePage('addStudentInfo.html')">学员信息登入</a></dd>
+                    <dd><a href="javascript:;">学员积分充值</a></dd>
+                </dl>
+            </li>
+
+            <li class="layui-nav-item">
+                <a href="javascript:;">教练车管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;">教练车信息管理</a></dd>
+                    <dd><a href="javascript:;">教练车信息登入</a></dd>
+                </dl>
+            </li>
+
+            <li class="layui-nav-item">
+                <a href="javascript:;">教练管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;">教练信息管理</a></dd>
+                    <dd><a href="javascript:;">教练信息登入</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">用户管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;">用户信息查看</a></dd>
+                    <dd><a href="javascript:;">用户注册</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+    <!-- 内容区 -->
+    <div class="page-main">
+        <iframe id="contentScreen" class="page-content" src="allStudent.html"></iframe>
+    </div>
+
+    <script>
+        const contentScreen = document.querySelector('#contentScreen')
+        function changePage(pageUrl){
+            contentScreen.src = pageUrl;
+        }
+    </script>
+
+</body>
+</html>

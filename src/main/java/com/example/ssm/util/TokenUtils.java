@@ -2,18 +2,21 @@ package com.example.ssm.util;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.stereotype.Component;
 
 
 import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
-
+@Component
 public class TokenUtils {
 
     // token有效期，默认为1天
     private long expiration = 86400000L;
 
-    private String secret = "zwn";
+    private String secret = "1212121hsodhsdhasdhsaldhsalhdlsahdlsad";
 
     public long getExpiration() {
         return expiration;
@@ -34,7 +37,8 @@ public class TokenUtils {
     /**
      * 生成JWT Token
      */
-    public String generateToken(String username) {
+    public String generateToken(String username,int userRoleCode) {
+
         long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
 
@@ -45,6 +49,7 @@ public class TokenUtils {
                 .setIssuedAt(now)
                 .setExpiration(new Date(nowMillis + expiration))
                 .signWith(key, SignatureAlgorithm.HS256);
+        builder.claim("roleCode",userRoleCode);
 
         return builder.compact();
     }
