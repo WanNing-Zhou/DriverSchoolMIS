@@ -11,7 +11,7 @@
             width: 100%;
         }
 
-        tableInfo{
+        .tableInfo{
             width: 100%;
             overflow: hidden;
         }
@@ -84,7 +84,6 @@
     let getAllStudentInfo = async function () {
         const data = await fetch("/student",{
             method: "GET",
-
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': localStorage.getItem('token')
