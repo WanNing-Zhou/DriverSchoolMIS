@@ -5,72 +5,80 @@
     <title>教练信息</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
+    <link href="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/css/layui.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/layui.js"></script>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/basic.css">
 
-    </style>
 </head>
 <body>
-<h2>教练信息查看与修改</h2>
-<br>
-<form class="form-horizontal" role="form">
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="coachId">教练ID</label>
-        <div class="col-sm-8">
-            <input class="form-control" id="coachId" type="text" placeholder="该输入框禁止输入..." disabled>
+    <div style="padding: 15px; ">
+        <blockquote class="layui-elem-quote layui-text">
+            <h2>教练信息查看与修改</h2>
+        </blockquote>
+    </div>
+<div class="formConent formList">
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <label class=" layui-form-label" for="coachId">教练ID</label>
+            <div class="layui-input-inline">
+                <input class="form-control layui-input" id="coachId" type="text" placeholder="该输入框禁止输入..." disabled>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="coachName">姓名</label>
-        <div class="col-sm-8">
-            <input class="form-control" id="coachName" type="text" placeholder="请输入">
+        <div class="layui-form-item">
+            <label class=" layui-form-label" for="coachName">姓名</label>
+            <div class="layui-input-inline">
+                <input class="form-control layui-input" id="coachName" type="text" placeholder="请输入">
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="coachPhone">联系电话:</label>
-        <div class="col-sm-8">
-            <input class="form-control" id="coachPhone" type="text" value="">
+        <div class="layui-form-item">
+            <label class=" layui-form-label" for="coachPhone">联系电话:</label>
+            <div class="layui-input-inline">
+                <input class="form-control layui-input" id="coachPhone" type="text" value="">
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="coachGender">性别</label>
-        <div class="col-sm-8">
-            <select class="form-control" id="coachGender">
-                <option value="male">男</option>
-                <option value="female">女</option>
-            </select>
+        <div class="layui-form-item">
+            <label class=" layui-form-label" for="coachGender">性别</label>
+            <div class="layui-input-inline">
+                <select class="form-control layui-input" id="coachGender">
+                    <option value="male">男</option>
+                    <option value="female">女</option>
+                </select>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="coachExperience">经验介绍</label>
-        <div class="col-sm-8">
-            <input class="form-control" id="coachExperience" type="text" placeholder="请输入">
+        <div class="layui-form-item">
+            <label class=" layui-form-label" for="coachExperience">经验介绍</label>
+            <div class="layui-input-inline">
+                <textarea class="form-control layui-textarea" id="coachExperience" type="text" placeholder="请输入"></textarea>
+             
+            </div>
         </div>
+
+
+        <div class="layui-form-item text-center">
+            <!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
+            <button type="button" onclick="subCoachInfo()" class="btn layui-btn">修改教练信息</button>
+        </div>
+
+    </form>
+</div>
+
+<div class="tableOut">
+    <div class="tableInfo">
+        <h3 class="text-center">所带学员信息</h3>
+        <table class="layui-table" id="studentsTable">
+            <tr>
+                <th>id</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>邮箱</th>
+                <th>操作</th>
+            </tr>
+        </table>
     </div>
-
-
-    <div class="form-group text-center">
-        <!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
-        <button type="button" onclick="subCoachInfo()" class="btn btn-primary">修改教练信息</button>
-    </div>
-
-</form>
-
-
-<div>
-    <h3 class="text-center">所带学员信息</h3>
-    <table class="table table-hover" id="studentsTable">
-        <tr>
-            <th>id</th>
-            <th>姓名</th>
-            <th>年龄</th>
-            <th>性别</th>
-            <th>邮箱</th>
-            <th>操作</th>
-        </tr>
-    </table>
 </div>
 
 

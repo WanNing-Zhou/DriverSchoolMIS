@@ -5,28 +5,32 @@
     <title>教练信息</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/css/layui.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/layui.js"></script>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/basic.css">
 </head>
 <body>
-<div class="form-group">
-    <h2>教练信息总览</h2>
-    <a href="./addCoachInfo.html">
-        <button type="button" class="btn btn-primary">教练入职</button>
-    </a>
+
+<div style="padding: 15px; ">
+    <blockquote class="layui-elem-quote layui-text">
+        <h2>教练信息总览</h2>
+    </blockquote>
 </div>
-
-
-<table class="table table-hover" id="studentTable">
-    <tr>
-        <th>id</th>
-        <th>姓名</th>
-        <th>电话</th>
-        <th>性别</th>
-        <th>介绍</th>
-        <th>操作</th>
-    </tr>
-</table>
-
+<div class="tableOut">
+    <div class="tableInfo">
+        <table class="layui-table" id="studentTable">
+            <tr>
+                <th>id</th>
+                <th>姓名</th>
+                <th>电话</th>
+                <th>性别</th>
+                <th>介绍</th>
+                <th>操作</th>
+            </tr>
+        </table>
+    </div>
+</div>
 <script>
     let studentTable = document.querySelector('#studentTable')
 

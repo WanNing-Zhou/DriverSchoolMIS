@@ -1,0 +1,50 @@
+
+.content{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.btn{
+  text-align: center;
+}
+.formConent{
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid gray;
+}
+.formConent  .layui-form-item  .layui-form-label{
+  width: 100px;
+} 
+/* 一列的表单 */
+.formList form >.layui-form-item .layui-input-inline{
+  width: 700px;
+}
+
+h3{
+  line-height: 60px
+}
+
+tableInfo{
+  width: 100%;
+  overflow: hidden;
+}
+
+.layui-form-item > a > .btn{
+  margin: 0 20px;
+}
+
+.tableOut{
+ display: flex;
+ justify-content: center;
+}
+.tableInfo{
+  width: 80%;
+}
+.tableInfo tr:nth-child(1){
+  background-color: #5781b1;
+  color: aliceblue;
+}
+.tableInfo tr:nth-child(1):hover{
+  background-color:#33333380;
+  transition: all 0.5s;
+}

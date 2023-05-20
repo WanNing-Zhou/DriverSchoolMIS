@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>教练信息</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+  .header {
+    height: 50px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    /* 增加一个阴影效果 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  }
+  
+  .sidebar {
+    position: absolute;
+    left: 0;
+    top: 50px; /* 将其放置在头部之下 */
+    width: 200px;
+    /* 增加一个阴影效果 */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.26);
+  }
+  
+  .content {
+    margin-top: 100px; /* 为头部和侧边栏留出空间 */
+  }
+  
+  .sticky {
+    position: fixed;
+    top: 50px; /* 与头部固定在同一高度 */
+    width: 200px;
+  }
+</style>
+
+<body>
+	<div class="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <!-- 代表一个100%宽度的容器 -->
+        <div class="container-fluid">
+            <!-- 代表品牌logo或标题 -->
+            <div class="navbar-header">
+                驾校学员管理系统
+            </div>
+            <!-- 通常代表菜单内容 -->
+            <div class="collapse navbar-collapse">
+
+            </div>
+        </div>
+    </nav>
+</div>
+
+ <div class="col-xs-2 sidebarBox">
+    <div class="sideNav">
+        <nav id="sidebar" class="sidebar" >
+            <ul id="menu" class="nav nav-sidebar">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Messages</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+        
+    </div>
+    
+ </div>
+
+
+
+
+
+<content class="col-xs-10" style="height: 3000px;">
+    <div class="layui-form-item">
+        <h2 class="text-center">教练车信息总览</h2>
+        <a href="./addCoachCarInfo.html">
+            <button type="button" class="btn layui-btn">车辆引入</button>
+        </a>
+    </div>
+
+
+    <table class="layui-table" id="studentTable">
+        <tr>
+            <th>id</th>
+            <th>品牌</th>
+            <th>车牌号</th>
+            <th>车型</th>
+            <th>描述</th>
+            <th>操作</th>
+        </tr>
+    </table>
+</content>
+</body>
+
+<script>
+  window.onload = function () {
+    // 获取元素以及计算相对位置
+    const sidebar = document.querySelector('#sidebar');
+    const rect = sidebar.getBoundingClientRect();
+    const offsetTop = rect.top;
+    const offsetLeft = rect.left;
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > offsetTop) {
+        sidebar.classList.add('sticky');
+        sidebar.style.left = `${offsetLeft}px`; // 保持左侧偏移量不变
+      } else {
+        sidebar.classList.remove('sticky');
+      }
+    });
+  };
+</script>
+</html>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal" created-in="IU-212.5284.40">
+  <component name="dataSourceStorageLocal">
     <data-source name="driverschooldb@localhost" uuid="e0a50746-9c5f-4fcf-8e39-9184c80514f9">
       <database-info product="MySQL" version="8.0.31" jdbc-version="3.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.7 ( Revision: ${svn.Revision} )" dbms="MYSQL" exact-version="8.0.31" exact-driver-version="5.1">
         <extra-name-characters>#@</extra-name-characters>

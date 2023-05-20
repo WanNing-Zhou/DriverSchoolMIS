@@ -5,27 +5,31 @@
     <title>教练信息</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
+    <link href="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/css/layui.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/layui.js"></script>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/basic.css"></head>
 <body>
-<div class="form-group">
-    <h2 class="text-center">教练车信息总览</h2>
-    <a href="./addCoachCarInfo.html">
-        <button type="button" class="btn btn-primary">车辆引入</button>
-    </a>
+    <div style="padding: 15px; ">
+        <blockquote class="layui-elem-quote layui-text">
+            <h2>教练车信息总览</h2>
+        </blockquote>
+    </div>
+
+<div class="tableOut">
+    <div class="tableInfo">
+        <table class="layui-table" id="studentTable">
+            <tr>
+                <th>id</th>
+                <th>品牌</th>
+                <th>车牌号</th>
+                <th>车型</th>
+                <th>描述</th>
+                <th>操作</th>
+            </tr>
+        </table>
+    </div>
 </div>
-
-
-<table class="table table-hover" id="studentTable">
-    <tr>
-        <th>id</th>
-        <th>品牌</th>
-        <th>车牌号</th>
-        <th>车型</th>
-        <th>描述</th>
-        <th>操作</th>
-    </tr>
-</table>
 <script>
 
     let studentTable = document.querySelector('#studentTable')
