@@ -37,19 +37,21 @@ public class TokenUtils {
     /**
      * 生成JWT Token
      */
-    public String generateToken(String username,int userRoleCode) {
+    public String generateToken(String username, int userRoleCode) {
 
         long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
 
         Key key = Keys.hmacShaKeyFor(secret.getBytes());
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("roleCode", userRoleCode);
 
         JwtBuilder builder = Jwts.builder()
+                .setClaims(claims)  // 设置自定义的 claim 项
                 .setSubject(username)
                 .setIssuedAt(now)
                 .setExpiration(new Date(nowMillis + expiration))
                 .signWith(key, SignatureAlgorithm.HS256);
-        builder.claim("roleCode",userRoleCode);
 
         return builder.compact();
     }
@@ -64,6 +66,22 @@ public class TokenUtils {
                     .parseClaimsJws(token)
                     .getBody();
             return claims.getSubject();
+        } catch (Exception e) {
+            // Token 验证失败，则直接返回 null
+            return null;
+        }
+
+
+    }
+
+    public Integer getRoleCode(String token) {
+        try {
+            Claims claims = Jwts.parser()
+                    .setSigningKey(secret.getBytes())
+                    .parseClaimsJws(token)
+                    .getBody();
+
+            return (Integer) claims.get("roleCode");
         } catch (Exception e) {
             // Token 验证失败，则直接返回 null
             return null;

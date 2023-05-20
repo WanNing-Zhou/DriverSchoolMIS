@@ -2,7 +2,9 @@ package com.example.ssm.mapper;
 
 import com.example.ssm.pojo.User;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -49,6 +51,17 @@ public interface UserMapper {
      * @Param [params]
      * @return int
      **/
+
     int updateUserInfo(@Param("params") Map<String,Object> params);
+
+    /**
+     * @MethodName getAllUser
+     * @Author 周万宁
+     * @Description 获取所有用户信息
+     * @Date 19:04 2023/5/18
+     * @Param []
+     * @return java.util.List<com.example.ssm.pojo.User>
+     **/
+    List<User> getAllUser();
 
 }

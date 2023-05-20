@@ -15,4 +15,8 @@
     <select id="getCarCardByStuId" resultType="com.example.ssm.pojo.StuCarCard">
         select * from t_stu_carcard where stu_id=#{id}
     </select>
+
+    <update id="rechargeCardConsume">
+        update t_stu_carcard set card_cosume = CAST(card_cosume AS DECIMAL(10,2)) + #{params.AmountMoney} where card_id = #{params.cardId}
+    </update>
 </mapper>

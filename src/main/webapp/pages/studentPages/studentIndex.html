@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学员信息页面</title>
+    <link rel="stylesheet" href="/static/css/basic.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/css/layui.css" rel="stylesheet">
+    <!-- 引入 layui.js -->
+    <!-- <script src="//unpkg.com/layui@2.8.0/dist/layui.js" /> -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/layui.js"></script>
+    <style>
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table caption{
+            font-size: 2em;
+            font-weight: bold;
+            margin: 1em 0;
+        }
+
+        th,td{
+            border: 1px solid #999;
+            text-align: center;
+            padding: 5px 0;
+        }
+
+        table thead tr, th{
+            background-color: rgba(71, 101, 64, 0.6);
+            color: #fff;
+        }
+
+        table tbody tr:nth-child(odd){
+            background-color: #eee;
+        }
+
+/*        table tbody tr:hover{
+            background-color: #ccc;
+        }*/
+
+        table tbody tr td:first-child{
+            color: black;
+        }
+
+        table tfoot tr td{
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .info-content{
+            width: 100%;
+        }
+        .info-content .info-table{
+            width: 80%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div>输入学员id查看该学员的信息信息,包括信息卡积分余额</div>
+<form class="layui-form">
+    <div class="layui-form-item">
+        <label>学生姓名</label>
+
+    </div>
+</form>
+<script>
+
+</script>
+</body>
+</html>

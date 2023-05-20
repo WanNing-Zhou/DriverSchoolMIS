@@ -33,6 +33,7 @@ public interface CoachCarMapper {
      * @Param [id]
      * @return java.util.List<com.example.ssm.pojo.CoachCar>
      **/
+
     List<CoachCar> getCoachCarsByStuId(@Param("id") int id);
 
     int addCoachCar(@Param("params")Map<String,Object> params);

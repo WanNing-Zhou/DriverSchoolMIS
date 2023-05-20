@@ -25,6 +25,7 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserService userService;
+
     @Autowired
     private TokenUtils tokenUtils;
     @RequestMapping(value = "/login", method = RequestMethod.POST)
