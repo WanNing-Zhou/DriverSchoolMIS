@@ -12,6 +12,7 @@
     <link href="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/css/layui.css" rel="stylesheet">
     <!-- 引入 layui.js -->
     <!-- <script src="//unpkg.com/layui@2.8.0/dist/layui.js" /> -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/layui/2.7.6/layui.min.js"></script>
     <style>
 
 
@@ -63,15 +64,103 @@
                 <th>操作</th>
             </tr>
         </table>
+        <div id="page-container"></div>
     </div>
 </div>
 
 
+
+
+
 <script>
+    //数据总数
+    var total = 100;
+    //每页显示条数
+    var limit = 10;
+    // 获取分页数据
+    
+    postPage(1,10)
+    async function postPage(curr,limit){
+        let postdata = JSON.stringify({
+            page : curr,
+            size : limit
+        })
+        const data = await fetch("/student",{
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
+            },
+            body:{
+                postdata
+            }
+        }).then(res => {
+            studentList = res.data.data
+            showStudentInfos(studentList)
+            total = res.data.total
 
+        })
+    }
+    // 初始化分页组件
+    layui.use(['laypage', 'jquery'], function(){
+        var laypage = layui.laypage;
+        var $ = layui.jquery;
+        //执行一个laypage实例
+        laypage.render({
+            elem: 'page-container', //注意，这里的 test1 是 ID，不用加 # 号
+            count: total, //数据总数，从服务端得到
+            limit: limit, //每页显示条数
+            jump: function(obj, first){
+            //首次不执行
+            if(!first){
+                postPage(obj.curr,obj.limit)
+            }
+            }
+        });
+    });
+    
     let studentTable = document.querySelector('#studentTable')
+    var studentList = []
+    
+    // 测试假数据
+    showNotStudentInfos(studentList);
 
+    function showNotStudentInfos(studentList){
+        let htmlContent = `
+        <tr>
+            <th>id</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>邮箱</th>
+            <th>操作</th>
+        </tr>
+    `
+        
 
+        for (let student of studentList) {
+            if (student.sex === 'm') {
+                student.sex = '男'
+            }
+            if (student.sex === 'f') {
+                student.sex = '女'
+            }
+            htmlContent += `
+         <tr>
+            <td>${student.stuId}</td>
+            <td>${student.stuName}</td>
+            <td>${student.age}</td>
+            <td>${student.sex}</td>
+            <td>${student.email}</td>
+            <td>
+                <span><a href="/pages/coachPages/studentInfo.html?id=${student.stuId}">查看或编辑</a></span>
+                <span onclick="deleteStudentInfoById(${student.stuId})"><a>删除</a></span>
+            </td>
+        </tr>`
+
+        }
+        studentTable.innerHTML = htmlContent
+    }
     function showStudentInfos(studentList) {
         let htmlContent = `
         <tr>
@@ -83,6 +172,8 @@
             <th>操作</th>
         </tr>
     `
+        
+
         for (let student of studentList) {
             if (student.sex === 'm') {
                 student.sex = '男'
