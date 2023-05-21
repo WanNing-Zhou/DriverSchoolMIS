@@ -61,10 +61,36 @@
     </div>
 
     <script>
+
+        const layer = layui.layer;
         const contentScreen = document.querySelector('#contentScreen')
+        //切换页面
         function changePage(pageUrl){
             contentScreen.src = pageUrl;
         }
+
+        //验证token是否有效
+        async function checkToken(){
+            const token = localStorage.getItem('token');
+            const respData = fetch("/user/token",{
+                method:'GET',
+                headers:{
+                    "Authorization":token
+                }
+            }).then(res => res.json())
+
+            if(respData.status !== 200){
+                //验证失败跳转到登录页面
+                layer.msg("登录时效过期,重新登录",{time: 1000}, () => {
+                    location.replace("/static/login/login.index")
+                })
+            }else if(!respData){
+                layer.msg("登录失败请检查网络状态, 稍后再试")
+            }
+        }
+
+
+
     </script>
 
 </body>

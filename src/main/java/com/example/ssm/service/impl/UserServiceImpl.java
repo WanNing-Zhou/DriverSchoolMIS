@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.http.HttpResponse;
 import java.util.Map;
@@ -89,5 +90,26 @@ public class UserServiceImpl implements UserService {
         }else{
             return  ServerResponse.createByError("更改用户失败");
         }
+    }
+
+
+    /**
+     * @MethodName checkToken
+     * @Author 周万宁
+     * @Description 验证用户token是否有效
+     * @Date 20:44 2023/5/20
+     * @Param [request]
+     * @return com.example.ssm.util.ServerResponse<java.lang.String>
+     **/
+    @Override
+    public ServerResponse<String> checkToken(HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        String username = tokenUtils.getUsernameFromToken(token);
+        if(username != null && username != ""){
+            return ServerResponse.createBySuccess("token有效", "success");
+        }else{
+            return ServerResponse.createByError("token无效,请重新登录");
+        }
+
     }
 }

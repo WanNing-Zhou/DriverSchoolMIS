@@ -42,4 +42,20 @@ public class UserController {
         System.out.println(requestMap);
         return userService.addUser(requestMap);
     }
+
+
+    /**
+     * @MethodName checkToken
+     * @Author 周万宁
+     * @Description 对token进行验证
+     * @Date 21:40 2023/5/20
+     * @Param [request]
+     * @return com.example.ssm.util.ServerResponse<java.lang.String>
+     **/
+    @RequestMapping(value = "/token", method =  RequestMethod.GET)
+    @ResponseBody
+    public ServerResponse<String> checkToken(HttpServletRequest request){
+        return userService.checkToken(request);
+    }
+
 }

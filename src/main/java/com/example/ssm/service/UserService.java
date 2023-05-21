@@ -5,6 +5,8 @@ import com.example.ssm.util.ServerResponse;
 import com.example.ssm.util.ServiceResult;
 
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.http.HttpResponse;
 import java.util.Map;
@@ -27,5 +29,8 @@ public interface UserService {
 
     //修改用户
     ServerResponse<String> updateUserInfo(Map<String,Object> map);
+
+    //验证token是否有效
+    ServerResponse<String> checkToken(HttpServletRequest request);
 
 }

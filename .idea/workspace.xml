@@ -10,15 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="238aaeca-eb95-49de-896a-35574acbf3d0" name="Changes" comment="阶段五: 权限校验功能实现">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/pages/studentPages/studentIndex.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/CoachCarMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/CoachCarMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/addStudentInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addStudentInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/allStudent.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allStudent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/coachIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/managerIndex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/studentInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/studentInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/StudentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/StudentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/StudentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/login/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allStudent.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allStudent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/managerIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/managerIndex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/studentPages/studentIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/studentPages/studentIndex.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +62,14 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -296,6 +311,7 @@
       <workItem from="1684467293608" duration="60000" />
       <workItem from="1684474393225" duration="2273000" />
       <workItem from="1684564791774" duration="3631000" />
+      <workItem from="1684662940552" duration="6000" />
     </task>
     <task id="LOCAL-00001" summary="简单的提交">
       <created>1683860243861</created>
@@ -395,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684418739902</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="阶段五: 权限校验功能实现">
+      <created>1684570170201</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1684570170201</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -55,16 +55,38 @@
             width: 80%;
             margin: 0 auto;
         }
+
+        .stuInfo-content{
+            margin-top: 30px;
+            background: #fafafa;
+        }
+
     </style>
 </head>
 <body>
-<div>输入学员id查看该学员的信息信息,包括信息卡积分余额</div>
-<form class="layui-form">
-    <div class="layui-form-item">
-        <label>学生姓名</label>
-
+<div class="layui-form layui-row" style="margin-top: 10px">
+    <div class="layui-input-inline layui-col-md-offset3 layui-col-md5">
+        <input type="text" lay-affix="clear" placeholder="输入学员id查看信息" class="layui-input">
     </div>
-</form>
+    <button class="layui-btn">
+        <icon class="layui-icon  layui-icon-search"></icon><span>搜索</span>
+    </button>
+</div>
+<div class="stuInfo-content" >
+    <form class="layui-form layui-row">
+        <div class="layui-form-item layui-col-md6">
+            <label class="layui-form-label">学生姓名</label>
+            <div class="layui-input-block">
+                <input type="text" lay-affix="clear" disabled class="layui-input">
+            </div>
+        </div>
+         
+        <div>
+
+        </div>
+    </form>
+</div>
+
 <script>
 
 </script>

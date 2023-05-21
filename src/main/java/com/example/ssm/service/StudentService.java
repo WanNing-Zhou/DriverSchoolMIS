@@ -2,6 +2,7 @@ package com.example.ssm.service;
 
 import com.example.ssm.pojo.Student;
 import com.example.ssm.util.ServerResponse;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 import java.util.Map;
@@ -15,7 +16,7 @@ import java.util.Map;
 
 public interface StudentService {
     // 获取所有学员信息
-    ServerResponse<List<Student>> getAllStudentInfo(Map<String,Object> map);
+    ServerResponse<PageInfo> getAllStudentInfo(Map<String,Object> map);
 
     // 根据学员ID获取学员信息
     ServerResponse<Student> getStudentInfoById(Integer id);

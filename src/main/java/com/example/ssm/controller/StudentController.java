@@ -4,6 +4,7 @@ import com.example.ssm.pojo.Student;
 import com.example.ssm.service.StudentService;
 import com.example.ssm.util.Permission;
 import com.example.ssm.util.ServerResponse;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +37,7 @@ public class StudentController {
     @RequestMapping(value = "", method = RequestMethod.POST)
     @ResponseBody
     @Permission(1)
-    public ServerResponse<List<Student>> getAllStudentInfo(@RequestBody Map<String,Object> map){
+    public ServerResponse<PageInfo> getAllStudentInfo(@RequestBody Map<String,Object> map) {
         return studentService.getAllStudentInfo(map);
     }
 
