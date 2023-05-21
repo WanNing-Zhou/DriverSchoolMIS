@@ -35,8 +35,8 @@
 
         <div class="layui-form-item">
             <label class="layui-form-label" for="coachGender">性别</label>
-            <div class="layui-input-inline">
-                <select class="layui-input" id="coachGender">
+            <div class="layui-input-inline select">
+                <select class="yselect" id="coachGender">
                     <option value="male">男</option>
                     <option value="female">女</option>
                 </select>
@@ -89,7 +89,7 @@
         }).then(res => res.json())
 
         if (data && data.statu == 100) {
-            await alert('添加成功')
+            await layui.layer.msg('添加成功')
             location.replace('allCoachInfo.html');
         } else {
             console.log('添加失败,请检查网路状态')

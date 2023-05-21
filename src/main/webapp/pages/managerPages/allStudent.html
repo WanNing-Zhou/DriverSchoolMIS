@@ -221,7 +221,7 @@
         if (data.status == 200) {
             showStudentInfos(data.data)
         } else {
-            alert(data.msg)
+            layui.layer.msg(data.msg)
         }
     }
 
@@ -238,10 +238,10 @@
             }
         }).then(res => res.json());
         if (data.status === 200) {
-            alert('删除成功')
+            layui.layer.msg('删除成功')
             await getAllStudentInfo()
         } else {
-            alert('删除失败请检查网络状态')
+            layui.layer.msg('删除失败请检查网络状态')
         }
     }
     getAllStudentInfo();

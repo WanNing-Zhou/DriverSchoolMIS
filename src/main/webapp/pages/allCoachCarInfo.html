@@ -70,7 +70,7 @@
         if (data.statu === 100) {
             showCoachCarInfos(data.data)
         } else {
-            alert(data.msg)
+            layui.layer.msg(data.msg)
         }
     }
 
@@ -87,10 +87,10 @@
             }
         }).then(res => res.json());
         if (data.statu === 100) {
-            alert('删除成功')
+            layui.layer.msg('删除成功')
             await getAllCoachCarInfo()
         } else {
-            alert('删除失败请检查网络状态')
+            layui.layer.msg('删除失败请检查网络状态')
         }
     }
 

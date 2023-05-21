@@ -92,7 +92,7 @@
         }).then(res => res.json())
 
         if (data && data.statu == 100) {
-            await alert('添加成功')
+            await layui.layer.msg('添加成功')
             location.replace('allCoachCarInfo.html');
         } else {
             console.log('添加失败,请检查网路状态')

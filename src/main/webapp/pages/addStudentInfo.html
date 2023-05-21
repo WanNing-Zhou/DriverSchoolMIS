@@ -37,8 +37,8 @@
 
         <div class="layui-form-item">
             <label class=" layui-form-label" for="sex">性别</label>
-            <div class="layui-input-inline">
-                <select class="form-control layui-input" id="sex">
+            <div class="layui-input-inline select">
+                <select class="yselect" id="sex">
                     <option value="m">男</option>
                     <option value="f">女</option>
                 </select>
@@ -54,8 +54,8 @@
 
         <div class="layui-form-item">
             <label class=" layui-form-label" for="coach">教练</label>
-            <div class="layui-input-inline">
-                <select class="form-control layui-input" id="coach">
+            <div class="layui-input-inline select">
+                <select class="yselect" id="coach">
                 </select>
             </div>
         </div>
@@ -105,7 +105,7 @@
         if (data.statu == 100) {
             setCoachCarSelection(data.data)
         } else {
-            alert(data.message)
+            layui.layer.msg(data.message)
         }
     }
 
@@ -158,7 +158,7 @@
             setCoachSelection(data.data)
 
         } else {
-            alert('获取信息失败,请检查网络状态')
+            layui.layer.msg('获取信息失败,请检查网络状态')
         }
     }
 
@@ -174,7 +174,7 @@
         }).then(res=>res.json())
 
         if(data && data.statu == 100){
-            await alert('添加成功')
+            await layui.layer.msg('添加成功')
             location.replace('allStudentInfo.html');
         }else{
             console.log('添加失败,请检查网路状态')

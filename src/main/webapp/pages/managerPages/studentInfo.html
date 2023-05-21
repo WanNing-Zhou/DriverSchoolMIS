@@ -72,8 +72,8 @@
         
             <div class="layui-form-item">
                 <label class="layui-form-label" for="coach">教练</label>
-                <div class="layui-input-inline">
-                    <select class="layui-input" id="coach" style="width: 100%;"></select>
+                <div class="layui-input-inline select">
+                    <select class="yselect" id="coach" style="width: 100%;"></select>
                 </div>
         
             </div>
@@ -95,8 +95,8 @@
             <!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
             <button  type="button" onclick="addStudentCar()" class="btn layui-btn">添加教练车</button>
             
-            <div class="layui-form" style="display:inline-block; width: 300px;vertical-align: top;margin-bottom: 30px;">   
-                <select id="selectCar">
+            <div class="layui-form select" style="display:inline-block; width: 300px;vertical-align: top;margin-bottom: 30px;">   
+                <select id="selectCar" class="yselect">
                     <option selected>选择教练车辆为学生增加权限</option>
                 </select>
             </div>
@@ -156,7 +156,6 @@
 </div>
 
 <script>
-
     // 获取当前也买你的url
     let URL = window.location.href;
 
@@ -259,9 +258,9 @@
         })
 
         if(data && data.status == 200){
-            alert("权限删除成功")
+            layui.layer.msg("权限删除成功")
         }else {
-            alert(data.msg)
+            layui.layer.msg(data.msg)
         }
     }
 
@@ -272,7 +271,7 @@
         if (data.status == 200) {
             setCoachCarSelection(data.data)
         } else {
-            alert(data.message)
+            layui.layer.msg(data.message)
         }
     }
 
@@ -304,7 +303,7 @@
                 studentInfo = data.data;
                 setStudentInfoShow(data.data)
             } else {
-                alert(data.msg)
+                layui.layer.msg(data.msg)
             }
         }
     }
@@ -329,7 +328,7 @@
             setCoachSelection(data.data)
 
         } else {
-            alert('获取信息失败,请检查网络状态')
+            layui.layer.msg('获取信息失败,请检查网络状态')
         }
     }
 
@@ -343,11 +342,11 @@
             }
         }).then(res => res.json())
         if (res.status === 200) {
-            alert("修改成功")
+            layui.layer.msg("修改成功")
             // console.log("修改成功")
             await getStudentInfoById();
         } else {
-            alert(res.msg)
+            layui.layer.msg(res.msg)
         }
     }
 
@@ -382,7 +381,7 @@
         }
 
         if (isStudentHasAuth) {
-            alert('该学生已拥有该车辆时候权限, 无需添加')
+            layui.layer.msg('该学生已拥有该车辆时候权限, 无需添加')
         } else {
             const reqData = {stuId: studentInfo.stuId, carId: value}
             const data = await fetch('/student/carAuth/add', {
@@ -393,10 +392,10 @@
                 }
             }).then(res => res.json())
             if (data && data.status == 200) {
-                alert('添加成功')
+                layui.layer.msg('添加成功')
                 getStudentInfoById();
             } else {
-                alert(data.msg)
+                layui.layer.msg(data.msg)
             }
         }
     }
