@@ -7,7 +7,7 @@
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <!-- <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-     <!-- 引入 layui.css -->
+    <!-- 引入 layui.css -->
     <!-- <link href="//unpkg.com/layui@2.8.0/dist/css/layui.css" rel="stylesheet"> -->
     <link href="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/css/layui.css" rel="stylesheet">
     <!-- 引入 layui.js -->
@@ -16,41 +16,45 @@
     <style>
 
 
-        .tableInfo{
+        .tableInfo {
             width: 100%;
             overflow: hidden;
         }
-        
-        .layui-form-item > a > .btn{
+
+        .layui-form-item > a > .btn {
             margin: 0 20px;
         }
-        .tableOut{
-           display: flex;
-           justify-content: center;
+
+        .tableOut {
+            display: flex;
+            justify-content: center;
         }
-        .tableInfo{
+
+        .tableInfo {
             width: 80%;
         }
-        .tableInfo tr:nth-child(1){
+
+        .tableInfo tr:nth-child(1) {
             background-color: #5781b1;
             color: aliceblue;
         }
-        .tableInfo tr:nth-child(1):hover{
-            background-color:#33333380;
+
+        .tableInfo tr:nth-child(1):hover {
+            background-color: #33333380;
             transition: all 0.5s;
         }
     </style>
 </head>
 <body>
-    
+
 <div class="layui-form-item">
     <div style="padding: 15px; ">
         <div class="blockquote layui-elem-quote layui-text">
             <h2>学员信息总览</h2>
         </div>
     </div>
-    
-    
+
+
 </div>
 <div class="tableOut">
     <div class="tableInfo">
@@ -69,99 +73,94 @@
 </div>
 
 
-
-
-
 <script>
     //数据总数
-    var total = 100;
+    let total = 10;
     //每页显示条数
-    var limit = 10;
+    let limit = 10;
+    // 当前页索引
+    let pageIndex = 1;
+
     // 获取分页数据
-    
-    postPage(1,10)
-    async function postPage(curr,limit){
-        let postdata = JSON.stringify({
-            page : curr,
-            size : limit
-        })
-        const data = await fetch("/student",{
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': localStorage.getItem('token')
-            },
-            body:{ 
-                postdata
-            }
-        }).then(res => {
-            studentList = res.data.data
-            showStudentInfos(studentList)
-            total = res.data.total
+    // postPage(1,10)
+    /* async function postPage(curr,limit){
+         let postdata = JSON.stringify({
+             page : curr,
+             size : limit
+         })
+         const data = await fetch("/student",{
+             method: "POST",
+             headers: {
+                 'Content-Type': 'application/json',
+                 'Authorization': localStorage.getItem('token')
+             },
+             body:{
+                 postdata
+             }
+         }).then(res => {
+             studentList = res.data.data
+             showStudentInfos(studentList)
+             total = res.data.total
 
-        })
-    }
-    // 初始化分页组件
-    layui.use(['laypage', 'jquery'], function(){
-        var laypage = layui.laypage;
-        var $ = layui.jquery;
-        //执行一个laypage实例
-        laypage.render({
-            elem: 'page-container', //注意，这里的 test1 是 ID，不用加 # 号
-            count: total, //数据总数，从服务端得到
-            limit: limit, //每页显示条数
-            jump: function(obj, first){
-            //首次不执行
-            if(!first){
-                postPage(obj.curr,obj.limit)
-            }
-            }
+         })
+     }*/
+
+
+    function flushPage(count, curr) {
+        layui.use(['laypage', 'layer'], function () {
+            laypage = layui.laypage;
+            layer = layui.layer;
+            laypage.render({
+                elem: 'page-container'	//渲染的对象
+                , count: count		//注意这里的count是数据条数
+                , limit: 10		//每页显示8条数据
+                , curr: curr	//当前高亮页
+                , theme: '#1E9FFF'
+                , jump: function (obj, first) { //obj为当前页的属性和方法，第一次加载first为true
+
+                    pageIndex = obj.curr;
+                    limit = obj.limit;
+
+                    //do SomeThing
+                    if (!first) {	//非首次加载
+                        console.log(obj.curr);
+                        getAllStudentInfo();
+                        // getSongByPage(obj.curr);	//执行跳页方法，刷新显示内容，然后再在跳页方法中调用该方法，来改变总页数
+                        //注意这里的总页数是，layui自己给我们算出来的，我们需要提供后台返回的总记录数，以及一页显示记录条数
+                    }
+                }
+            });
         });
-    });
-    
-    let studentTable = document.querySelector('#studentTable')
-    var studentList = []
-    
-    // 测试假数据
-    showNotStudentInfos(studentList);
-
-    function showNotStudentInfos(studentList){
-        let htmlContent = `
-        <tr>
-            <th>id</th>
-            <th>姓名</th>
-            <th>年龄</th>
-            <th>性别</th>
-            <th>邮箱</th>
-            <th>操作</th>
-        </tr>
-    `
-        
-    
-
-        for (let student of studentList) {
-            if (student.sex === 'm') {
-                student.sex = '男'
-            }
-            if (student.sex === 'f') {
-                student.sex = '女'
-            }
-            htmlContent += `
-         <tr>
-            <td>${student.stuId}</td>
-            <td>${student.stuName}</td>
-            <td>${student.age}</td>
-            <td>${student.sex}</td>
-            <td>${student.email}</td>
-            <td>
-                <span><a href="/pages/coachPages/studentInfo.html?id=${student.stuId}">查看或编辑</a></span>
-                <span onclick="deleteStudentInfoById(${student.stuId})"><a>删除</a></span>
-            </td>
-        </tr>`
-
-        }
-        studentTable.innerHTML = htmlContent
     }
+
+    // flushPage(10, 1)
+
+
+    // 初始化分页组件
+    /*    layui.use(['laypage', 'jquery'], function(){
+            var laypage = layui.laypage;
+            var $ = layui.jquery;
+            //执行一个laypage实例
+            laypage.render({
+                elem: 'page-container', //注意，这里的 test1 是 ID，不用加 # 号
+                count: total, //数据总数，从服务端得到
+                limit: limit, //每页显示条数
+                jump: function(obj, first){
+                //首次不执行
+                if(!first){
+                    // postPage(obj.curr,obj.limit)
+                    pageIndex = obj.curr;
+                    limit = obj.limit;
+                }
+                }
+            });
+        });*/
+
+
+    let studentTable = document.querySelector('#studentTable')
+    let studentList = []
+
+
     //渲染学员信息列表
     function showStudentInfos(studentList) {
         let htmlContent = `
@@ -174,7 +173,6 @@
             <th>操作</th>
         </tr>
     `
-        
 
         for (let student of studentList) {
             if (student.sex === 'm') {
@@ -199,7 +197,7 @@
         }
         studentTable.innerHTML = htmlContent
     }
-    
+
 
     //获取学员信息列表
     let getAllStudentInfo = async function () {
@@ -208,10 +206,10 @@
          * page: 当前页索引
          * size: 当前页大小
          */
-        const reqData = {};
-        const data = await fetch("/student",{
+        const reqData = {page: pageIndex, size: limit};
+        const data = await fetch("/student", {
             method: "POST",
-            body:JSON.parse(),
+            body: JSON.stringify(reqData),
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': localStorage.getItem('token')
@@ -219,7 +217,10 @@
         }).then(res => res.json());
         console.log(data)
         if (data.status == 200) {
-            showStudentInfos(data.data)
+            total = data.data.total
+            flushPage(total, pageIndex)
+            showStudentInfos(data.data.list)
+
         } else {
             layui.layer.msg(data.msg)
         }
@@ -227,7 +228,7 @@
 
     let deleteStudentInfoById = async function (id) {
         const reqData = {
-            stuId:id
+            stuId: id
         }
         const data = await fetch("/student/delete", {
             method: "post",
@@ -240,10 +241,12 @@
         if (data.status === 200) {
             layui.layer.msg('删除成功')
             await getAllStudentInfo()
+
         } else {
             layui.layer.msg('删除失败请检查网络状态')
         }
     }
+
     getAllStudentInfo();
 
 </script>

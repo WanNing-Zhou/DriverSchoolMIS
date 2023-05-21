@@ -35,9 +35,6 @@
             background-color: #eee;
         }
 
-/*        table tbody tr:hover{
-            background-color: #ccc;
-        }*/
 
         table tbody tr td:first-child{
             color: black;
@@ -66,29 +63,104 @@
 <body>
 <div class="layui-form layui-row" style="margin-top: 10px">
     <div class="layui-input-inline layui-col-md-offset3 layui-col-md5">
-        <input type="text" lay-affix="clear" placeholder="输入学员id查看信息" class="layui-input">
+        <input type="text" lay-affix="clear" placeholder="输入学员id查看信息" id="searchId" class="layui-input">
     </div>
     <button class="layui-btn">
-        <icon class="layui-icon  layui-icon-search"></icon><span>搜索</span>
+        <icon class="layui-icon  layui-icon-search" onclick=""></icon><span>搜索</span>
     </button>
 </div>
+
+<!--:TODO 这个部分应该与学员信息编辑一致-->
 <div class="stuInfo-content" >
+
     <form class="layui-form layui-row">
         <div class="layui-form-item layui-col-md6">
-            <label class="layui-form-label">学生姓名</label>
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <input type="text" lay-affix="clear" id="stuName" disabled class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-col-md6">
+            <label class="layui-form-label">ID</label>
+            <div class="layui-input-block">
+                <input type="text" lay-affix="clear" id="stuId" disabled class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-col-md6">
+            <label class="layui-form-label">年龄</label>
+            <div class="layui-input-block">
+                <input type="text" lay-affix="clear" id="stuAge" disabled class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-col-md6">
+            <label class="layui-form-label" id="stuSex">性别</label>
             <div class="layui-input-block">
                 <input type="text" lay-affix="clear" disabled class="layui-input">
             </div>
         </div>
-         
-        <div>
 
+        <div class="layui-form-item layui-col-md6">
+            <label class="layui-form-label" id="stuEmail">邮箱</label>
+            <div class="layui-input-block">
+                <input type="text" lay-affix="clear" disabled class="layui-input">
+            </div>
         </div>
+
+        <div class="layui-form-item layui-col-md6">
+            <label class="layui-form-label" id="studentCardNum">学员卡号</label>
+            <div class="layui-input-block">
+                <input type="text" lay-affix="clear" disabled class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-col-md6">
+            <label class="layui-form-label" id="cardConsume">学员卡积分</label>
+            <div class="layui-input-block">
+                <input type="text" lay-affix="clear" disabled class="layui-input">
+            </div>
+        </div>
+
     </form>
 </div>
 
 <script>
+    const searchId = document.querySelector('#searchId');
+    const layer = layui.layer;
+    const stuIdEl = document.querySelector('#stuId')
+    const stuAgeEl = document.querySelector('#stuAge')
+    const stuSexEl = document.querySelector('#stuSex')
+    const stuEmailNumEl = document.querySelector('#stuEmail')
+    const studentCardNumEl = document.querySelector('#studentCardNum')
+    const cardConsumeEl = document.querySelector('#cardConsume')
 
+    //查询功能
+    async function search(){
+        const id = searchId.value;
+        const respData = fetch(`/student/${id}`,{
+            method:'get',
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
+            }
+        }).then(res=>res.json())
+
+        if (respData && respData.status == 200) {
+
+        } else if(respData.status !== 200){
+            layer.msg(respData.msg)
+        }else{
+            layer.msg("登录失败请检查网络状态, 稍后再试")
+        }
+    }
+
+
+    //显示学员信息
+    function showStudentInfo(studentInfo){
+
+    }
 </script>
 </body>
 </html>

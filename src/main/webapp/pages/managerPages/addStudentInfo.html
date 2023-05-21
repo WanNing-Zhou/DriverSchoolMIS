@@ -18,9 +18,6 @@
     <!-- <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     <link rel="stylesheet" href="/static/css/index.css">
 </head>
-<style>
-    
-</style>
 <body>
     <div style="padding: 15px; ">
         <blockquote class="layui-elem-quote layui-text">
@@ -57,12 +54,9 @@
         </div>
     
         <div class="layui-form-item">
-            <label class="layui-form-label " for="coach">教练</label>
-            <div class="layui-input-inline select">
-                <select class="yselect" id="coach " style="width: 100%;">
-                    <option value="1">请选择</option>
-                </select>
-                
+            <label class="layui-form-label" for="coach">教练</label>
+            <div class="layui-input-inline">
+                <select class="layui-input" id="coach" style="width: 100%;"></select>
             </div>
     
             <label class="layui-form-label" for="cardName">练车卡名称</label>
@@ -110,7 +104,7 @@
         if (data.status == 200) {
             setCoachCarSelection(data.data)
         } else {
-            layui.layer.msg(data.message)
+            alert(data.message)
         }
     }
 
@@ -163,7 +157,7 @@
             setCoachSelection(data.data)
 
         } else {
-            layui.layer.msg('获取信息失败,请检查网络状态')
+            alert('获取信息失败,请检查网络状态')
         }
     }
 
@@ -179,7 +173,7 @@
         }).then(res=>res.json())
 
         if(data && data.status == 200){
-            await layui.layer.msg('添加成功')
+            await alert('添加成功')
             location.replace('allStudentInfo.html');
         }else{
             console.log('添加失败,请检查网路状态')
