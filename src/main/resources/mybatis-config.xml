@@ -13,11 +13,10 @@
         <setting name="aggressiveLazyLoading" value="false"/>
     </settings>
 
-    <plugins>
-        <!--设置分页插件-->
+<!--    <plugins>
+        &lt;!&ndash;设置分页插件&ndash;&gt;
         <plugin interceptor="com.github.pagehelper.PageInterceptor">
-
         </plugin>
-    </plugins>
+    </plugins>-->
 
 </configuration>

@@ -116,6 +116,7 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
+        <!--  json格式传参 -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -152,13 +153,6 @@
             <artifactId>jjwt-jackson</artifactId>
             <version>0.11.2</version>
             <scope>runtime</scope>
-        </dependency>
-
-        <!--   分页插件     -->
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-            <version>5.1.2</version>
         </dependency>
 
         <!--        junit 测试库-->

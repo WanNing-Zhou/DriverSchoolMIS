@@ -49,6 +49,14 @@ public class CoachController {
         return coachService.getCoachById(id);
     }
 
+    /**
+     * @MethodName addCoachInfo
+     * @Author 周万宁
+     * @Description 添加教练信息
+     * @Date 21:42 2023/5/20
+     * @Param [requestMap]
+     * @return com.example.ssm.util.ServerResponse<java.lang.String>
+     **/
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> addCoachInfo(@RequestBody Map<String, Object> requestMap){

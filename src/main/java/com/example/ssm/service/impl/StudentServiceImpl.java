@@ -9,6 +9,7 @@ import com.example.ssm.pojo.Student;
 import com.example.ssm.service.StudentService;
 import com.example.ssm.util.ServerResponse;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,12 +46,14 @@ public class StudentServiceImpl implements StudentService {
      * @return com.example.ssm.util.ServerResponse<java.util.List<com.example.ssm.pojo.Student>>
      **/
     @Override
-    public ServerResponse<List<Student>> getAllStudentInfo(Map<String,Object> map) {
-        List<Student> allStudentInfo = studentMapper.getAllStudentInfo();
-        if (allStudentInfo.size() > 0) {
-            return ServerResponse.createBySuccess("查询成功", allStudentInfo);
-        }
+    public ServerResponse<PageInfo> getAllStudentInfo(Map<String,Object> map) {
+
         PageHelper.startPage((int) map.get("page"),(int)map.get("size"),true);
+        List<Student> allStudentInfo = studentMapper.getAllStudentInfo();
+        PageInfo<Student> pageInfo = new PageInfo<>(allStudentInfo);
+        if (allStudentInfo.size() > 0) {
+            return ServerResponse.createBySuccess("查询成功", pageInfo);
+        }
         return ServerResponse.createByError("查询记录为空");
     }
 
