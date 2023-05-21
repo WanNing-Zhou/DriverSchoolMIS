@@ -9,16 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="238aaeca-eb95-49de-896a-35574acbf3d0" name="Changes" comment="阶段五: 权限校验功能实现">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/pages/studentPages/studentIndex.html" afterDir="false" />
+    <list default="true" id="238aaeca-eb95-49de-896a-35574acbf3d0" name="Changes" comment="阶段四: 添加登录功能">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/CoachCarMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/CoachCarMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/addStudentInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addStudentInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/allStudent.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allStudent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/coachIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/managerIndex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/studentInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/studentInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allStudent.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allStudent.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,10 +31,10 @@
         <option value="mybatis-config" />
         <option value="mybatis-mapper" />
         <option value="Interface" />
+        <option value="Class" />
         <option value="AnnotationType" />
         <option value="Enum" />
         <option value="JavaScript File" />
-        <option value="Class" />
         <option value="HTML File" />
       </list>
     </option>
@@ -85,7 +79,6 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.22068965" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -96,7 +89,6 @@
       <recent name="E:\PROJECT\DriverSchoolMIS\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\PROJECT\DriverSchoolMIS\src\main\webapp\pages\managerPages" />
       <recent name="E:\PROJECT\DriverSchoolMIS\db" />
       <recent name="E:\PROJECT\DriverSchoolMIS\src\main\webapp\pages" />
       <recent name="E:\PROJECT\DriverSchoolMIS\src\main\webapp\WEB-INF\templates" />
@@ -104,24 +96,8 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.65">
-    <configuration name="generated-requests#3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3" runType="Run single request">
+    <configuration name="generated-requests#3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3">
       <method v="2" />
-    </configuration>
-    <configuration name="JWTTest.authTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DriverSchoolMIS" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.ssm.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.ssm.test" />
-      <option name="MAIN_CLASS_NAME" value="com.example.ssm.test.JWTTest" />
-      <option name="METHOD_NAME" value="authTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="JWTTest.jwtTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DriverSchoolMIS" />
@@ -244,18 +220,15 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="HTTP Request.generated-requests#3" />
+      <item itemvalue="HTTP 请求.generated-requests#3" />
       <item itemvalue="JUnit.TestUtils.jwtTest" />
       <item itemvalue="JUnit.JWTTest.jwtTest" />
-      <item itemvalue="JUnit.JWTTest.authTest" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.65" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.JWTTest.authTest" />
         <item itemvalue="JUnit.JWTTest.jwtTest" />
         <item itemvalue="JUnit.TestUtils.jwtTest" />
-        <item itemvalue="HTTP Request.generated-requests#3" />
       </list>
     </recent_temporary>
   </component>
@@ -286,16 +259,7 @@
       <workItem from="1684234242558" duration="3589000" />
       <workItem from="1684282040681" duration="1221000" />
       <workItem from="1684292329551" duration="13353000" />
-      <workItem from="1684381593057" duration="16906000" />
-      <workItem from="1684400991672" duration="2212000" />
-      <workItem from="1684403778849" duration="8286000" />
-      <workItem from="1684415827112" duration="3291000" />
-      <workItem from="1684419178775" duration="1070000" />
-      <workItem from="1684420292225" duration="192000" />
-      <workItem from="1684420652617" duration="1249000" />
-      <workItem from="1684467293608" duration="60000" />
-      <workItem from="1684474393225" duration="2273000" />
-      <workItem from="1684564791774" duration="3631000" />
+      <workItem from="1684381593057" duration="16649000" />
     </task>
     <task id="LOCAL-00001" summary="简单的提交">
       <created>1683860243861</created>
@@ -374,28 +338,7 @@
       <option name="project" value="LOCAL" />
       <updated>1684299683875</updated>
     </task>
-    <task id="LOCAL-00012" summary="阶段四: 添加登录功能">
-      <created>1684398572580</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1684398572580</updated>
-    </task>
-    <task id="LOCAL-00013" summary="阶段五: 权限校验功能实现">
-      <created>1684410066820</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1684410066820</updated>
-    </task>
-    <task id="LOCAL-00014" summary="阶段五: 权限校验功能实现">
-      <created>1684418739902</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1684418739902</updated>
-    </task>
-    <option name="localTasksCounter" value="15" />
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,10 +363,23 @@
     <MESSAGE value="完成学员管理" />
     <MESSAGE value="完成阶段二与阶段三" />
     <MESSAGE value="阶段四: 添加登录功能" />
-    <MESSAGE value="阶段五: 权限校验功能实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="阶段五: 权限校验功能实现" />
+    <option name="LAST_COMMIT_MESSAGE" value="阶段四: 添加登录功能" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/ssm/interceptor/AuthInterceptor.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/ssm/interceptor/AuthInterceptor.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="com.sun.proxy.$Proxy26" memberName="h" />
