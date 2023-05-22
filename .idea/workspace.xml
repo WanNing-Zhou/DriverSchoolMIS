@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="238aaeca-eb95-49de-896a-35574acbf3d0" name="Changes" comment="阶段五: 权限校验功能实现">
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/studentInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/studentInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/layui.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/layui.js" afterDir="false" />
+    <list default="true" id="238aaeca-eb95-49de-896a-35574acbf3d0" name="Changes" comment="目录">
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachInfo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/studenInfo.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +39,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="PUSH_TAGS">
       <GitPushTagMode>
         <option name="argument" value="--tags" />

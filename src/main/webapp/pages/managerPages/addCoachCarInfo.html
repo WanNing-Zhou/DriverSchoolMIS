@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>车辆引入信息</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+     <!-- 引入 layui.css -->
+    <!-- <link href="//unpkg.com/layui@2.8.0/dist/css/layui.css" rel="stylesheet"> -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/css/layui.css" rel="stylesheet">
+    <!-- 引入 layui.js -->
+    <!-- <script src="//unpkg.com/layui@2.8.0/dist/layui.js" /> -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/layui.js"></script>
+    <!-- <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/basic.css">
+</head>
+<body>
+    <div style="padding: 15px; ">
+        <blockquote class="layui-elem-quote layui-text">
+            <h2>练习车引入信息</h2>
+        </blockquote>
+    </div>
+<div class="formConent formList">
+    <form class="layui-form" >
+
+        <div class="layui-form-item">
+            <label class=" layui-form-label" for="carBrand">品牌</label>
+            <div class="layui-input-inline">
+                <input class="form-control layui-input" id="carBrand" type="text" placeholder="请输入">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class=" layui-form-label" for="carNumber">车牌号</label>
+            <div class="layui-input-inline">
+                <input class="form-control layui-input" id="carNumber" type="text">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class=" layui-form-label" for="carType">车型</label>
+            <div class="layui-input-inline">
+                <input class="form-control layui-input" id="carType" type="text" >
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class=" layui-form-label" for="carDesc">描述</label>
+            <div class="layui-input-inline">
+                <input class="form-control layui-input" id="carDesc" type="text" placeholder="请输入">
+            </div>
+        </div>
+
+
+        <div class="layui-form-item text-center">
+            <!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
+            <button type="button" onclick="addCoachCar()" class="layui-btn">添加学员信息</button>
+        </div>
+
+    </form>
+</div>
+<script>
+
+    const carBrandEl = document.querySelector('#carBrand')
+    const carNumberEl = document.querySelector('#carNumber')
+    const carTypeEl = document.querySelector('#carType')
+    const carDescEl = document.querySelector('#carDesc')
+
+    let coachCarInfo = {}
+
+
+    //设置提交信息
+    function setInfo() {
+        coachCarInfo.carBrand = carBrandEl.value
+        coachCarInfo.carNumber = carNumberEl.value;
+        coachCarInfo.carType = carTypeEl.value;
+        coachCarInfo.carDesc = carDescEl.value;
+    }
+
+
+    //添加教练车
+    async function addCoachCar() {
+        setInfo();
+        const data = await fetch('/coachcar/add', {
+            method: "post",
+            body: JSON.stringify(coachCarInfo),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+
+        if (data && data.statu == 100) {
+            await layui.layer.msg('添加成功')
+            location.replace('allCoachCarInfo.html');
+        } else {
+            console.log('添加失败,请检查网路状态')
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>添加用户信息</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/css/layui.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/layui.js"></script>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/basic.css">
+
+</head>
+<body>
+    <div style="padding: 15px; ">
+        <blockquote class="layui-elem-quote layui-text">
+            <h2>注册用户</h2>
+        </blockquote>
+    </div>
+<div class="formConent formList">
+    <form class="layui-form">
+
+        <div class="layui-form-item">
+            <label class=" layui-form-label" for="username">用户账号</label>
+            <div class="layui-input-inline">
+                <input class="form-control layui-input" id="username" type="text" placeholder="请输入">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class=" layui-form-label" for="password">密码</label>
+            <div class="layui-input-inline">
+                <input class="form-control layui-input" type="password" id="password">
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class=" layui-form-label" for="role">角色</label>
+            <div class="layui-input-inline select">
+                <select class="yselect" id="role">
+                    <option value="1">管理员</option>
+                    <option value="2">教练员</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item text-center">
+            <!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
+            <button type="button" onclick="addUser()" class="btn layui-btn">注册</button>
+        </div>
+
+    </form>
+</div>
+<script>
+
+    const usernameEl = document.querySelector('#username')
+    const passwordEl = document.querySelector('#password')
+    const roleEl = document.querySelector('#role')
+
+    let userInfo = {}
+
+
+    //设置提交信息
+    function setInfo() {
+        userInfo.username = usernameEl.value
+        userInfo.password = md5(passwordEl.value)
+        userInfo.roleId = parseInt(roleEl.value)
+    }
+
+
+    //用户注册
+    async function addUser() {
+        setInfo();
+        const data = await fetch('/user/add', {
+            method: "post",
+            body: JSON.stringify(userInfo),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+
+        if (data && data.status == 200) {
+            await layui.layer.msg('添加成功')
+            location.replace('allCoachInfo.html');
+        } else if(data && data.status != 200){
+            layui.layer.msg(data.msg)
+        }else{
+            layui.layer.msg('注册失败,请检查网络状态')
+        }
+    }
+
+</script>
+</body>
+</html>

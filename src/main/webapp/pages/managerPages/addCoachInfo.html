@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>教练入职信息</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/css/layui.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/layui.js"></script>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/basic.css">
+</head>
+<body>
+    <div style="padding: 15px; ">
+        <blockquote class="layui-elem-quote layui-text">
+            <h2>教练入职信息</h2>
+        </blockquote>
+    </div>
+<div class="formConent formList">
+    <form class="layui-form">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="coachName">姓名</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" id="coachName" type="text" placeholder="请输入">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="coachPhone">联系电话:</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" id="coachPhone" type="text">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="coachGender">性别</label>
+            <div class="layui-input-inline select">
+                <select class="yselect" id="coachGender">
+                    <option value="male">男</option>
+                    <option value="female">女</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="coachExperience">经验介绍</label>
+            <div class="layui-input-inline">
+                <textarea class="layui-textarea" id="coachExperience" type="text" placeholder="请输入"></textarea>
+            </div>
+        </div>
+
+
+        <div class="layui-form-item text-center">
+            <!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
+            <button type="button" onclick="addCoach()" class="btn layui-btn">添加教练信息</button>
+        </div>
+
+    </form>
+</div>
+<script>
+
+    const coachNameEl = document.querySelector('#coachName')
+    const coachPhoneEl = document.querySelector('#coachPhone')
+    const coachGenderEl = document.querySelector('#coachGender')
+    const coachExperienceEl = document.querySelector('#coachExperience')
+
+    let coachInfo = {}
+
+
+    //设置提交信息
+    function setInfo() {
+        coachInfo.coachName = coachNameEl.value
+        coachInfo.coachPhone = coachPhoneEl.value;
+        coachInfo.coachGender = coachGenderEl.value;
+        coachInfo.coachExperience = coachExperienceEl.value;
+    }
+
+
+    //添加教练
+    async function addCoach() {
+        setInfo();
+        const data = await fetch('/coach/add', {
+            method: "post",
+            body: JSON.stringify(coachInfo),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+
+        if (data && data.statu == 100) {
+            await layui.layer.msg('添加成功')
+            location.replace('allCoachInfo.html');
+        } else {
+            console.log('添加失败,请检查网路状态')
+        }
+    }
+
+</script>
+</body>
+</html>

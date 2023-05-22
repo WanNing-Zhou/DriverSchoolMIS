@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>教练信息</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/css/layui.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/layui.js"></script>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/basic.css">
+</head>
+<body>
+
+<div style="padding: 15px; ">
+    <blockquote class="layui-elem-quote layui-text">
+        <h2>教练信息总览</h2>
+    </blockquote>
+</div>
+<div class="tableOut">
+    <div class="tableInfo">
+        <table class="layui-table" id="studentTable">
+            <tr>
+                <th>id</th>
+                <th>姓名</th>
+                <th>电话</th>
+                <th>性别</th>
+                <th>介绍</th>
+                <th>操作</th>
+            </tr>
+        </table>
+    </div>
+</div>
+<script>
+    let studentTable = document.querySelector('#studentTable')
+
+    function showCoachInfos(coachList) {
+        let htmlContent = `
+      <tr>
+         <th>id</th>
+        <th>姓名</th>
+        <th>电话</th>
+        <th>性别</th>
+        <th>介绍</th>
+        <th>操作</th>
+    </tr>
+    `
+        for (let coach of coachList) {
+            if (coach.coachGender === 'male') {
+                coach.coachGender = '男'
+            }
+            if (coach.coachGender === 'female') {
+                coach.coachGender = '女'
+            }
+            htmlContent += `
+         <tr>
+            <td>${coach.coachId}</td>
+            <td>${coach.coachName}</td>
+            <td>${coach.coachPhone}</td>
+            <td>${coach.coachGender}</td>
+            <td>${coach.coachExperience}</td>
+            <td>
+                <span><a href="/pages/coachInfo.html?id=${coach.coachId}">查看或编辑</a></span>
+                <span onclick="deleteCoachInfoById(${coach.coachId})"><a>删除</a></span>
+            </td>
+        </tr>`
+
+        }
+        studentTable.innerHTML = htmlContent
+    }
+
+    //获取学员信息列表
+    let getAllCoachInfo = async function () {
+        const data = await fetch("/coach").then(res => res.json());
+        console.log(data)
+        if (data.statu === 100) {
+            showCoachInfos(data.data)
+        } else {
+            layui.layer.msg(data.msg)
+        }
+    }
+
+    let deleteCoachInfoById = async function (id) {
+        const reqData = {
+            coachId:id
+        }
+
+        const data = await fetch("/coach/delete", {
+            method: "post",
+            body: JSON.stringify(reqData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json());
+        if (data.statu === 100) {
+            layui.layer.msg('删除成功')
+            await getAllCoachInfo()
+        } else {
+            layui.layer.msg('删除失败请检查网络状态')
+        }
+    }
+
+    getAllCoachInfo();
+
+</script>
+</body>
+</html>
