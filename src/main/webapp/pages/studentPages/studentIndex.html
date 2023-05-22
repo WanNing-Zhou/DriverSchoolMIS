@@ -1,166 +1,295 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>学员信息页面</title>
-    <link rel="stylesheet" href="/static/css/basic.css">
+    <title>学员信息</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 引入 layui.css -->
+    <!-- <link href="//unpkg.com/layui@2.8.0/dist/css/layui.css" rel="stylesheet"> -->
     <link href="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/css/layui.css" rel="stylesheet">
     <!-- 引入 layui.js -->
     <!-- <script src="//unpkg.com/layui@2.8.0/dist/layui.js" /> -->
     <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/layui.js"></script>
+    <!-- <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/basic.css">
     <style>
-        table{
+        .coachCarTable {
             width: 100%;
-            border-collapse: collapse;
+            overflow: hidden;
         }
 
-        table caption{
-            font-size: 2em;
-            font-weight: bold;
-            margin: 1em 0;
+        body {
+            width: 98%;
+            overflow-x: hidden;
         }
 
-        th,td{
-            border: 1px solid #999;
-            text-align: center;
-            padding: 5px 0;
+        .search-center{
+            display: flex;
+            justify-content: center;
         }
 
-        table thead tr, th{
-            background-color: rgba(71, 101, 64, 0.6);
-            color: #fff;
+        .content-title{
+            display: inline-block;
+            font-size: 22px;
+            font-weight: 700;
+            user-select: none;
+
         }
 
-        table tbody tr:nth-child(odd){
-            background-color: #eee;
-        }
-
-
-        table tbody tr td:first-child{
-            color: black;
-        }
-
-        table tfoot tr td{
-            text-align: right;
-            padding-right: 10px;
-        }
-
-        .info-content{
-            width: 100%;
-        }
-        .info-content .info-table{
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        .stuInfo-content{
-            margin-top: 30px;
-            background: #fafafa;
+        .login-enter{
+            font-size:14px;
+            float: right;
+            line-height: 40px;
         }
 
     </style>
 </head>
 <body>
-<div class="layui-form layui-row" style="margin-top: 10px">
-    <div class="layui-input-inline layui-col-md-offset3 layui-col-md5">
-        <input type="text" lay-affix="clear" placeholder="输入学员id查看信息" id="searchId" class="layui-input">
+
+
+
+<div class="content">
+    <div style="padding: 15px; ">
+        <blockquote class="layui-elem-quote layui-text">
+            <span class="content-title">学员信息查看</span>
+            <span class="login-enter"><a href="/pages/login/login.html ">登录</a></span>
+        </blockquote>
     </div>
-    <button class="layui-btn">
-        <icon class="layui-icon  layui-icon-search" onclick=""></icon><span>搜索</span>
-    </button>
-</div>
 
-<!--:TODO 这个部分应该与学员信息编辑一致-->
-<div class="stuInfo-content" >
+    <div class="layui-form layui-row search-center" style="margin-bottom: 10px">
+        <div class="layui-input-inline">
+            <input type="text" lay-affix="clear" style="width: 500px" placeholder="输入学员id查看信息" id="searchId" class="layui-input">
+        </div>
 
-    <form class="layui-form layui-row">
-        <div class="layui-form-item layui-col-md6">
-            <label class="layui-form-label">姓名</label>
-            <div class="layui-input-block">
-                <input type="text" lay-affix="clear" id="stuName" disabled class="layui-input">
+        <button class="layui-btn" onclick="search()">
+            <icon class="layui-icon  layui-icon-search" ></icon>
+            <span>搜索</span>
+        </button>
+    </div>
+
+    <div class="formConent">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="stuId">学员ID</label>
+                <div class="layui-input-inline" style="width:81.6%">
+                    <input class="layui-input form-control layui-input" id="stuId" type="text" disabled>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="stuName">学员姓名</label>
+                <div class="layui-input-inline">
+                    <input class="layui-input" id="stuName" type="text" placeholder="请输入" disabled style="width: 100%;">
+                </div>
+
+                <label class="layui-form-label" for="age">学员年龄</label>
+                <div class="layui-input-inline">
+                    <input class="layui-input" id="age" disabled type="text" style="width: 100%;">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="sex">性别</label>
+                <div class="layui-input-inline">
+                    <input class="layui-input" id="sex" disabled type="text" style="width: 100%;">
+                </div>
+
+                <label class="layui-form-label" for="email">电子邮箱</label>
+                <div class="layui-input-inline">
+                    <input class="layui-input" id="email" type="text" disabled style="width: 100%;">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="coach">教练</label>
+                <div class="layui-input-inline">
+                    <input class="layui-input" id="coach" type="text" disabled style="width: 100%;">
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+
+    <!--学员教练车使用权限-->
+    <h3>学员教练车使用权限</h3>
+    <div class="coachCarTable">
+
+        <div class="tableOut">
+            <div class="tableInfo">
+                <table class="layui-table" id="studentCarTable">
+                    <tr>
+                        <th>ID</th>
+                        <th>品牌</th>
+                        <th>车牌号</th>
+                        <th>车型</th>
+                        <th>描述</th>
+                    </tr>
+                </table>
             </div>
         </div>
 
-        <div class="layui-form-item layui-col-md6">
-            <label class="layui-form-label">ID</label>
-            <div class="layui-input-block">
-                <input type="text" lay-affix="clear" id="stuId" disabled class="layui-input">
-            </div>
-        </div>
 
-        <div class="layui-form-item layui-col-md6">
-            <label class="layui-form-label">年龄</label>
-            <div class="layui-input-block">
-                <input type="text" lay-affix="clear" id="stuAge" disabled class="layui-input">
-            </div>
-        </div>
+        <!--学员练车卡信息-->
+        <h3>学员练车卡信息</h3>
+        <div class="formConent formList">
+            <form class="layui-form">
 
-        <div class="layui-form-item layui-col-md6">
-            <label class="layui-form-label" id="stuSex">性别</label>
-            <div class="layui-input-block">
-                <input type="text" lay-affix="clear" disabled class="layui-input">
-            </div>
-        </div>
+                <div class="layui-form-item">
+                    <label class=" layui-form-label">练车卡ID</label>
+                    <div class="layui-input-inline">
+                        <input class="form-control layui-input layui-input" id="cardId" type="text"
+                               placeholder="该输入框禁止输入..." disabled>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class=" layui-form-label">练车卡号</label>
+                    <div class="layui-input-inline">
+                        <input class="layui-input form-control layui-input" id="cardNumber" type="text"
+                               placeholder="请输入"
+                               disabled>
+                    </div>
+                </div>
 
-        <div class="layui-form-item layui-col-md6">
-            <label class="layui-form-label" id="stuEmail">邮箱</label>
-            <div class="layui-input-block">
-                <input type="text" lay-affix="clear" disabled class="layui-input">
-            </div>
-        </div>
+                <div class="layui-form-item">
+                    <label class=" layui-form-label">练车卡名称</label>
+                    <div class="layui-input-inline">
+                        <input class="layui-input form-control layui-input" id="cardName" type="text"
+                               placeholder="请输入"
+                               disabled>
+                    </div>
+                </div>
 
-        <div class="layui-form-item layui-col-md6">
-            <label class="layui-form-label" id="studentCardNum">学员卡号</label>
-            <div class="layui-input-block">
-                <input type="text" lay-affix="clear" disabled class="layui-input">
-            </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">积分</label>
+                    <div class="layui-input-inline">
+                        <input class="layui-input form-control layui-input" id="cardCosume" type="text"
+                               placeholder="请输入"
+                               disabled>
+                    </div>
+                </div>
+            </form>
         </div>
+    </div>
 
-        <div class="layui-form-item layui-col-md6">
-            <label class="layui-form-label" id="cardConsume">学员卡积分</label>
-            <div class="layui-input-block">
-                <input type="text" lay-affix="clear" disabled class="layui-input">
-            </div>
-        </div>
-
-    </form>
 </div>
 
 <script>
+
+    const stuIdEl = document.querySelector('#stuId');
+    const stuNameEl = document.querySelector('#stuName')
+    const ageEl = document.querySelector('#age')
+    const sexEl = document.querySelector('#sex')
+    const emailEl = document.querySelector('#email')
+    const coachEl = document.querySelector('#coach')
+
+    const cardIdEl = document.querySelector('#cardId')
+    const cardNameEl = document.querySelector('#cardName')
+    const cardNumberEl = document.querySelector('#cardNumber')
+    const cardCosumeEl = document.querySelector('#cardCosume')
+
+    const studentCarTableEl = document.querySelector('#studentCarTable')
+
     const searchId = document.querySelector('#searchId');
     const layer = layui.layer;
-    const stuIdEl = document.querySelector('#stuId')
-    const stuAgeEl = document.querySelector('#stuAge')
-    const stuSexEl = document.querySelector('#stuSex')
-    const stuEmailNumEl = document.querySelector('#stuEmail')
-    const studentCardNumEl = document.querySelector('#studentCardNum')
-    const cardConsumeEl = document.querySelector('#cardConsume')
 
     //查询功能
-    async function search(){
+    async function search() {
+
         const id = searchId.value;
-        const respData = fetch(`/student/${id}`,{
-            method:'get',
-            headers:{
-                'Content-Type': 'application/json',
-                'Authorization': localStorage.getItem('token')
+        console.log(id)
+        getStudentInfoById(id);
+    }
+
+
+    //学员信息
+    let studentInfo = {}
+
+    //设置学员信息
+    function setStudentInfo() {
+        studentInfo.stuId = stuIdEl.value;
+        studentInfo.age = ageEl.value
+        studentInfo.coachId = coachEl.value
+        studentInfo.sex = sexEl.value;
+        studentInfo.email = emailEl.value;
+        studentInfo.stuName = stuNameEl.value;
+    }
+
+
+    //渲染学员信息
+    function setStudentInfoShow(data) {
+        stuIdEl.value = data.stuId;
+        ageEl.value = data.age;
+        coachEl.value = data.coach.coachName;
+
+        sexEl.value = data.sex=='m' ? '男':'女';
+        emailEl.value = data.email;
+        stuNameEl.value = data.stuName;
+
+        const {stuCarCard, coachCars} = data;
+        cardIdEl.value = stuCarCard.cardId;
+        cardNameEl.value = stuCarCard.cardName;
+        cardCosumeEl.value = stuCarCard.cardCosume;
+        cardNumberEl.value = stuCarCard.cardNumber;
+
+        //渲染车辆列表
+        let htmlContent = `
+        <tr>
+            <th>ID</th>
+            <th>品牌</th>
+            <th>车牌号</th>
+            <th>车型</th>
+            <th>描述</th>
+        </tr>
+        `
+        for (let car of coachCars) {
+            htmlContent += `
+            <tr>
+                <td>${car.carId}</td>
+                <td>${car.carBrand}</td>
+                <td>${car.carNumber}</td>
+                <td>${car.carType}</td>
+                <td>${car.carDesc}</td>
+            </tr>
+            `
+        }
+        studentCarTableEl.innerHTML = htmlContent
+    }
+
+
+    //获取学员西信息
+    async function getStudentInfoById(id) {
+        // console.log('id',id)
+        if (id && id != '') {
+            const data = await fetch(`/student/${id}`).then(res => res.json())
+            if (data.status == 200) {
+                studentInfo = data.data;
+                setStudentInfoShow(data.data)
+            } else {
+                layui.layer.msg(data.msg)
             }
-        }).then(res=>res.json())
+        } else {
+            layui.layer.msg("请输入信息后查询")
+        }
 
-        if (respData && respData.status == 200) {
+    }
 
-        } else if(respData.status !== 200){
-            layer.msg(respData.msg)
-        }else{
-            layer.msg("登录失败请检查网络状态, 稍后再试")
+
+    // 获取教练信息
+    async function getCoachInfo() {
+        const data = await fetch('/coach').then(res => res.json());
+        if (data.status === 200) {
+            // console.log(data)
+            // setCoachSelection(data.data)
+
+        } else {
+            layui.layer.msg('获取信息失败,请检查网络状态')
         }
     }
 
-
-    //显示学员信息
-    function showStudentInfo(studentInfo){
-
-    }
+    //获所有取教练信息
+    getCoachInfo()
 </script>
 </body>
 </html>

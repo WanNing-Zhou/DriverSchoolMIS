@@ -10,19 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="238aaeca-eb95-49de-896a-35574acbf3d0" name="Changes" comment="阶段五: 权限校验功能实现">
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/addCoachCarInfo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/addCoachInfo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/addStudentInfo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/addUserInfo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/allCoachCarInfo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/allCoachInfo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/allStudentInfo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachInfo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addStudentInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addStudentInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/managerIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/managerIndex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/studenInfo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/studentInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/studentInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/layui.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/layui.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,7 +288,6 @@
       <workItem from="1684474393225" duration="2273000" />
       <workItem from="1684564791774" duration="3631000" />
       <workItem from="1684727906721" duration="155000" />
-      <workItem from="1684728108426" duration="1133000" />
     </task>
     <task id="LOCAL-00001" summary="简单的提交">
       <created>1683860243861</created>
@@ -396,14 +387,7 @@
       <option name="project" value="LOCAL" />
       <updated>1684418739902</updated>
     </task>
-    <task id="LOCAL-00015" summary="lll">
-      <created>1684728118162</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1684728118162</updated>
-    </task>
-    <option name="localTasksCounter" value="16" />
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,8 +412,7 @@
     <MESSAGE value="完成学员管理" />
     <MESSAGE value="完成阶段二与阶段三" />
     <MESSAGE value="阶段四: 添加登录功能" />
-    <MESSAGE value="lll" />
-    <option name="LAST_COMMIT_MESSAGE" value="lll" />
+    <option name="LAST_COMMIT_MESSAGE" value="阶段四: 添加登录功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

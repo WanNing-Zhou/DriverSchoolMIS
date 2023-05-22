@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/basic.css">
+    <!-- 引入 layui.css -->
+    <!-- <link href="//unpkg.com/layui@2.8.0/dist/css/layui.css" rel="stylesheet"> -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/css/layui.css" rel="stylesheet">
+    <!-- 引入 layui.js -->
+    <!-- <script src="//unpkg.com/layui@2.8.0/dist/layui.js" /> -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/layui.js"></script>
+</head>
+
+<body>
+<header class="page-header"> <span>驾校管理学员系统</span></header>
+
+<!-- 导航栏 -->
+<div class="page-navbar">
+    <ul class="layui-nav layui-nav-tree">
+        <li class="layui-nav-item" onclick="changePage('/pages/coachPages/searchCoachInfo.html')"><a href="javascript:;">教练信息查看</a></li>
+        <li class="layui-nav-item" onclick="changePage('/pages/coachPages/allStudentInfo.html')"><a href="javascript:;">学员查看</a></li>
+    </ul>
+</div>
+
+<!-- 内容区 -->
+<div class="page-main">
+    <iframe id="contentScreen" class="page-content" src="/pages/coachPages/searchCoachInfo.html"></iframe>
+</div>
+
+
+<script>
+    const layer = layui.layer;
+    const contentScreen = document.querySelector('#contentScreen')
+
+    //切换页面
+    function changePage(pageUrl){
+        contentScreen.src = pageUrl;
+    }
+
+    //验证token是否有效
+    async function checkToken(){
+        const token = localStorage.getItem('token');
+        const respData = fetch("/user/token",{
+            method:'GET',
+            headers:{
+                "Authorization":token
+            }
+        }).then(res => res.json())
+
+        if(respData.status !== 200){
+            //验证失败跳转到登录页面
+            layer.msg("登录时效过期,重新登录",{time: 1000}, () => {
+                location.replace("/static/login/login.index")
+            })
+        }else if(!respData){
+            layer.msg("登录失败请检查网络状态, 稍后再试")
+        }
+    }
+
+
+
+</script>
+
+</body>
+</html>
