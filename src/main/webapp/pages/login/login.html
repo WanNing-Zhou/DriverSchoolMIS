@@ -26,8 +26,8 @@
             padding: 0;
             justify-content: left;
             align-items: center;
-
         }
+
     </style>
 </head>
 
@@ -41,7 +41,7 @@
         <!--            <button type="submit" onclick="test()">登录</button>-->
         <div class="rem-content">
             <span style="height: 20px">记住密码</span>
-            <input type="checkbox" id="remUser">
+            <input type="checkbox" checked id="remUser">
         </div>
     </form>
 </div>
@@ -91,12 +91,17 @@
         })
         // console.log('resp',respData)
         if (respData && respData.status == 200) {
-            localStorage.setItem('roleId', respData.data.roleId)
+            const roleId = respData.data.roleId;
+            localStorage.setItem('roleId', roleId)
 
             // console.log(respData)
             layer.msg('登录成功', {time: 1000}, () => {
                 // :TODO 根据roleID决定跳转到哪个页面
-
+                if(roleId  == 1){
+                    location.replace('/pages/managerPages/managerIndex.html')
+                }else if(roleId == 2){
+                    location.replace('/pages/coachPages/coachPageIndex.html')
+                }
             })
         } else if(respData.status !== 200){
             layer.msg("用户名或密码错误")

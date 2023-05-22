@@ -166,7 +166,7 @@
 
         if (id) {
             const data = await fetch(`/coach/${id}`).then(res => res.json())
-            if (data.statu === 100) {
+            if (data.status == 200) {
                 coachInfo = data.data;
                 setCoachInfoShow(data.data)
             } else {
@@ -190,8 +190,7 @@
     // 获取教练信息
     async function getCoachInfo() {
         const data = await fetch('/coach').then(res => res.json());
-        if (data.statu === 100) {
-            // console.log(data)
+        if (data.status == 200) {
             setCoachSelection(data.data)
 
         } else {
@@ -209,7 +208,7 @@
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
-        if (res.statu === 100) {
+        if (res.status == 200) {
             layui.layer.msg("修改成功")
             // console.log("修改成功")
             await getCoachInfoByCoachId();
