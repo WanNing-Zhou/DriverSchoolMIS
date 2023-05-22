@@ -8395,7 +8395,7 @@ layui.define(function (e) {
           i = (n ? 'modules/layer/' : 'theme/') + 'default/layer.css?v=' + m.v
         return n ? layui.addcss(i, e, t) : c.link(i, e, t), this
       },
-      alert: function (e, t, i) {
+      layui.layer.msg: function (e, t, i) {
         var n = 'function' == typeof t
         return m.open(
           h.extend({ content: e, yes: (i = n ? t : i) }, n ? {} : t)
@@ -12479,8 +12479,8 @@ layui.define(['layer', 'util'], function (e) {
                                 : s,
                               { tips: 1 }
                             )
-                          : 'alert' === o
-                          ? h.alert(i, {
+                          : 'layui.layer.msg' === o
+                          ? h.layui.layer.msg(i, {
                               title: '\u63d0\u793a',
                               shadeClose: !0,
                             })
