@@ -92,7 +92,9 @@
         // console.log('resp',respData)
         if (respData && respData.status == 200) {
             const roleId = respData.data.roleId;
+            const userId = respData.data.userId;
             localStorage.setItem('roleId', roleId)
+            localStorage.setItem('userId', userId)
 
             // console.log(respData)
             layer.msg('登录成功', {time: 1000}, () => {

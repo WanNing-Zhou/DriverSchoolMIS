@@ -1,5 +1,6 @@
 package com.example.ssm.controller;
 
+import com.example.ssm.pojo.Student;
 import com.example.ssm.pojo.User;
 import com.example.ssm.service.UserService;
 import com.example.ssm.util.ServerResponse;
@@ -30,6 +31,15 @@ public class UserController {
 
     @Autowired
     private TokenUtils tokenUtils;
+
+    /**
+     * @MethodName userLogin
+     * @Author 周万宁
+     * @Description 用户登录
+     * @Date 10:05 2023/5/23
+     * @Param [requestMap, request, response]
+     * @return com.example.ssm.util.ServerResponse<com.example.ssm.pojo.User>
+     **/
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<User> userLogin(@RequestBody Map<String,Object> requestMap, HttpServletRequest request, HttpServletResponse response){
@@ -92,5 +102,32 @@ public class UserController {
         return  userService.deleteUserInfo(id);
     }
 
+    /**
+     * @MethodName getUserInfoById
+     * @Author 周万宁
+     * @Description 根据id获取学员信息
+     * @Date 10:04 2023/5/23
+     * @Param [id]
+     * @return com.example.ssm.util.ServerResponse<com.example.ssm.pojo.User>
+     **/
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public ServerResponse<User> getUserInfoById(@PathVariable("id") Integer id){
+        return userService.getUserInfoById(id);
+    }
+
+    /**
+     * @MethodName updateUserInfo
+     * @Author 周万宁
+     * @Description 更改用户信息
+     * @Date 10:11 2023/5/23
+     * @Param [map]
+     * @return com.example.ssm.util.ServerResponse<java.lang.String>
+     **/
+    @RequestMapping(value="/update", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> updateUserInfo(@RequestBody Map<String,Object> map){
+        return userService.updateUserInfo(map);
+    }
 
 }

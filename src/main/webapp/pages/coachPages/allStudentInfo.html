@@ -132,6 +132,7 @@
       if (student.sex === 'f') {
         student.sex = '女'
       }
+
       htmlContent += `
          <tr>
             <td>${student.stuId}</td>
@@ -140,7 +141,6 @@
             <td>${student.sex}</td>
             <td>${student.email}</td>
         </tr>`
-
     }
     studentTable.innerHTML = htmlContent
   }

@@ -132,6 +132,14 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * @MethodName deleteUserInfo
+     * @Author 周万宁
+     * @Description 根据用户id删除用户信息
+     * @Date 9:21 2023/5/23
+     * @Param [userId]
+     * @return com.example.ssm.util.ServerResponse<java.lang.String>
+     **/
     @Override
     public ServerResponse<String> deleteUserInfo(int userId) {
         int i = userMapper.deleteByUserId(userId);
@@ -142,4 +150,22 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * @MethodName getUserInfoById
+     * @Author 周万宁
+     * @Description 根据id获取用户信息
+     * @Date 9:21 2023/5/23
+     * @Param [userId]
+     * @return com.example.ssm.util.ServerResponse<com.example.ssm.pojo.User>
+     **/
+    @Override
+    public ServerResponse<User> getUserInfoById(int userId) {
+        User userInfoById = userMapper.getUserInfoById(userId);
+        if(userInfoById != null){
+            return ServerResponse.createBySuccess("查询成功",userInfoById);
+        }else{
+            return ServerResponse.createByError("查询失败");
+        }
+
+    }
 }

@@ -64,6 +64,16 @@ public interface UserMapper {
      **/
     List<User> getAllUser();
 
+    /**
+     * @MethodName deleteByUserId
+     * @Author 周万宁
+     * @Description 根据id删除用户信息
+     * @Date 9:27 2023/5/23
+     * @Param [userId]
+     * @return int
+     **/
     int deleteByUserId(@Param("userId") int userId);
+
+    User getUserInfoById(@Param("userId") int userId);
 
 }

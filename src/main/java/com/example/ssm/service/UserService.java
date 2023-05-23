@@ -39,4 +39,8 @@ public interface UserService {
     //根据id删除用户
     ServerResponse<String> deleteUserInfo(int userId);
 
+    //根据id获取用户信息
+    ServerResponse<User> getUserInfoById(int userId);
+
+
 }

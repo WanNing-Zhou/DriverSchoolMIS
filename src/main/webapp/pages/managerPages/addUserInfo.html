@@ -8,6 +8,7 @@
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <link href="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/css/layui.css" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/layui.js"></script>
+    <script src="/static/js/md5.js"></script>
     <link rel="stylesheet" href="/static/css/index.css">
     <link rel="stylesheet" href="/static/css/basic.css">
 
@@ -60,14 +61,35 @@
 
     let userInfo = {}
 
+    //获取当前时间
+    function getCurrentTime() {
+        // 创建一个日期对象，表示当前时间
+        let now = new Date();
+
+        // 获取年、月、日、小时、分钟和秒数
+        let year = now.getFullYear();
+        let month = ('0' + (now.getMonth() + 1)).slice(-2);
+        let day = ('0' + now.getDate()).slice(-2);
+        let hour = ('0' + now.getHours()).slice(-2);
+        let minute = ('0' + now.getMinutes()).slice(-2);
+        let second = ('0' + now.getSeconds()).slice(-2);
+
+        // 将这些值组合成一个字符串，并用指定的分隔符分隔它们
+        let formattedTime = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+
+        // 返回结果
+        return formattedTime;
+    }
+
 
     //设置提交信息
     function setInfo() {
         userInfo.username = usernameEl.value
         userInfo.password = md5(passwordEl.value)
+        userInfo.authUserId = localStorage.getItem('userId')
         userInfo.roleId = parseInt(roleEl.value)
+        userInfo.createTime = getCurrentTime();
     }
-
 
     //用户注册
     async function addUser() {
@@ -80,9 +102,10 @@
             }
         }).then(res => res.json())
 
+        // console.log('添加用户data',data)
         if (data && data.status == 200) {
             await layui.layer.msg('添加成功')
-            location.replace('allCoachInfo.html');
+            location.replace('allUserInfo.html');
         } else if(data && data.status != 200){
             layui.layer.msg(data.msg)
         }else{
