@@ -66,7 +66,12 @@
 
     //获取教练车信息列表
     let getAllCoachCarInfo = async function () {
-        const data = await fetch("/coachcar").then(res => res.json());
+        const data = await fetch("/coachcar",{
+            method:'GET',
+            headers:{
+                'Authorization': localStorage.getItem('token')
+            }
+        }).then(res => res.json());
         if (data.status === 200) {
             showCoachCarInfos(data.data)
         } else {
@@ -88,7 +93,8 @@
             method: "post",
             body: JSON.stringify(reqData),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
             }
         }).then(res => res.json());
         if (data.status === 200) {

@@ -3,6 +3,7 @@ package com.example.ssm.controller;
 import com.example.ssm.pojo.Coach;
 
 import com.example.ssm.service.CoachService;
+import com.example.ssm.util.Permission;
 import com.example.ssm.util.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,6 +58,7 @@ public class CoachController {
      * @Param [requestMap]
      * @return com.example.ssm.util.ServerResponse<java.lang.String>
      **/
+    @Permission(1)
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> addCoachInfo(@RequestBody Map<String, Object> requestMap){
@@ -72,6 +74,7 @@ public class CoachController {
      * @Param [requestMap]
      * @return com.example.ssm.util.ServerResponse<java.lang.String>
      **/
+    @Permission(1)
     @RequestMapping(value="/update",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> updateCoachInfo(@RequestBody Map<String,Object> requestMap){

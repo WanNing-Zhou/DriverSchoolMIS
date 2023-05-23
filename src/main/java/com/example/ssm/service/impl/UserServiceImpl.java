@@ -107,11 +107,11 @@ public class UserServiceImpl implements UserService {
         String token = request.getHeader("Authorization");
         String username = tokenUtils.getUsernameFromToken(token);
         if(username != null && username != ""){
-            return ServerResponse.createBySuccess("token有效", "success");
+            int roleId = tokenUtils.getRoleCode(token);
+            return ServerResponse.createBySuccess("token有效", ""+roleId);
         }else{
             return ServerResponse.createByError("token无效,请重新登录");
         }
-
     }
 
     /**

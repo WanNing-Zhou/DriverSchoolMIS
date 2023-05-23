@@ -3,6 +3,7 @@ package com.example.ssm.controller;
 import com.example.ssm.pojo.Student;
 import com.example.ssm.pojo.User;
 import com.example.ssm.service.UserService;
+import com.example.ssm.util.Permission;
 import com.example.ssm.util.ServerResponse;
 import com.example.ssm.util.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,11 +48,10 @@ public class UserController {
     }
 
     //添加用户接口
+    @Permission(1)
     @RequestMapping(value="/add", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> addUSer(@RequestBody Map<String,Object> requestMap){
-        System.out.println("kkk");
-        System.out.println(requestMap);
         return userService.addUser(requestMap);
     }
 
@@ -79,6 +79,7 @@ public class UserController {
      * @Param []
      * @return com.example.ssm.util.ServerResponse<java.util.List>
      **/
+    @Permission(1)
     @RequestMapping(value = "",method = RequestMethod.GET)
     @ResponseBody
     public ServerResponse<List> getAllUser(){
@@ -94,6 +95,7 @@ public class UserController {
      * @return com.example.ssm.util.ServerResponse<java.lang.String>
      **/
 
+    @Permission(1)
     @RequestMapping(value = "/delete",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> deleteUserInfo(@RequestBody Map<String,Object> requestMap){
@@ -105,13 +107,14 @@ public class UserController {
     /**
      * @MethodName getUserInfoById
      * @Author 周万宁
-     * @Description 根据id获取学员信息
+     * @Description 根据id获取用户信息
      * @Date 10:04 2023/5/23
      * @Param [id]
      * @return com.example.ssm.util.ServerResponse<com.example.ssm.pojo.User>
      **/
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
+    @Permission(1)
     public ServerResponse<User> getUserInfoById(@PathVariable("id") Integer id){
         return userService.getUserInfoById(id);
     }
@@ -124,6 +127,7 @@ public class UserController {
      * @Param [map]
      * @return com.example.ssm.util.ServerResponse<java.lang.String>
      **/
+    @Permission(1)
     @RequestMapping(value="/update", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> updateUserInfo(@RequestBody Map<String,Object> map){

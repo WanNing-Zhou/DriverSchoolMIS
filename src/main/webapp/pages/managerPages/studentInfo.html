@@ -338,7 +338,12 @@
         }
         // console.log('id',id)
         if (id) {
-            const data = await fetch(`/student/${id}`).then(res => res.json())
+            const data = await fetch(`/student/${id}`,{
+                method:'GET',
+                headers:{
+                    'Authorization': localStorage.getItem('token')
+                }
+            }).then(res => res.json())
             if (data.status == 200) {
                 // console.log(data)
                 studentInfo = data.data;
@@ -363,7 +368,12 @@
 
     // 获取教练信息
     async function getCoachInfo() {
-        const data = await fetch('/coach').then(res => res.json());
+        const data = await fetch('/coach',{
+            method:'GET',
+            headers:{
+                'Authorization': localStorage.getItem('token')
+            }
+        }).then(res => res.json());
         if (data.status === 200) {
             // console.log(data)
             setCoachSelection(data.data)

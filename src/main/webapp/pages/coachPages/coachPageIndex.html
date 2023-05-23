@@ -15,8 +15,25 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/layui.js"></script>
 </head>
 
+<style>
+    .exit{
+        line-height: 40px;
+        font-size: 14px;
+        float: right;
+        margin-right: 20px;
+        color: #fafafa;
+    }
+
+    .exit:hover{
+        color: #01aaed;
+    }
+</style>
+
 <body>
-<header class="page-header"> <span>驾校管理学员系统</span></header>
+<header class="page-header">
+    <span>驾校管理学员系统</span>
+    <a href="/pages/login/login.html" class="exit"><span >退出登录</span></a>
+</header>
 
 <!-- 导航栏 -->
 <div class="page-navbar">
@@ -44,22 +61,33 @@
     //验证token是否有效
     async function checkToken(){
         const token = localStorage.getItem('token');
-        const respData = fetch("/user/token",{
+        const respData = await fetch("/user/token",{
             method:'GET',
             headers:{
                 "Authorization":token
             }
         }).then(res => res.json())
 
+        console.log(respData)
+
         if(respData.status !== 200){
             //验证失败跳转到登录页面
             layer.msg("登录时效过期,重新登录",{time: 1000}, () => {
-                location.replace("/static/login/login.index")
+                location.replace("/pages/login/login.html")
             })
         }else if(!respData){
             layer.msg("登录失败请检查网络状态, 稍后再试")
         }
+        if(respData.data != "2"){
+            //验证失败跳转到登录页面
+            layer.msg("该账号暂未授权",{time: 1000}, () => {
+                location.replace("/pages/login/login..html")
+            })
+        }
+
     }
+
+    checkToken()
 
 
 

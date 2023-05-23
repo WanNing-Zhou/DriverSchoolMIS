@@ -13,8 +13,9 @@
 </head>
 <body>
     <div style="padding: 15px; ">
-        <blockquote class="layui-elem-quote layui-text">
-            <h2>教练信息查看与修改</h2>
+        <blockquote class="layui-elem-quote layui-text page-title">
+            <a href="/pages/managerPages/allCoachInfo.html"> <div class="return-box"><icon style="vertical-align: top" class="layui-icon layui-icon-return"></icon></div></a>
+            <span>教练信息查看与修改</span>
         </blockquote>
     </div>
 <div class="formConent formList">
@@ -77,7 +78,6 @@
                 <th>年龄</th>
                 <th>性别</th>
                 <th>邮箱</th>
-                <th>操作</th>
             </tr>
         </table>
     </div>
@@ -142,7 +142,6 @@
             <th>年龄</th>
             <th>性别</th>
             <th>邮箱</th>
-            <th>操作</th>
         </tr>
         `
         for (let student of students) {
@@ -166,7 +165,12 @@
         }
 
         if (id) {
-            const data = await fetch(`/coach/${id}`).then(res => res.json())
+            const data = await fetch(`/coach/${id}`,{
+                method:'GET',
+                headers:{
+                    'Authorization': localStorage.getItem('token')
+                }
+            }).then(res => res.json())
             if (data.status === 200) {
                 coachInfo = data.data;
                 setCoachInfoShow(data.data)

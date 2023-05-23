@@ -234,7 +234,12 @@
     async function getStudentInfoById(id) {
         // console.log('id',id)
         if (id && id != '') {
-            const data = await fetch(`/student/${id}`).then(res => res.json())
+            const data = await fetch(`/student/${id}`,{
+                method:'GET',
+                headers:{
+                    'Authorization': localStorage.getItem('token')
+                }
+            }).then(res => res.json())
             if (data.status == 200) {
                 studentInfo = data.data;
                 currentCardId = data.data.stuCarCard.cardId;

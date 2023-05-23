@@ -26,77 +26,114 @@ public class StudentController {
 
 
     /**
+     * @return com.example.ssm.util.ServerResponse<java.util.List < com.example.ssm.pojo.Student>>
      * @MethodName getAllStudentInfo
      * @Author 周万宁
      * @Description 获取全部学生信息接口
      * @Date 17:02 2023/5/4
      * @Param []
-     * @return com.example.ssm.util.ServerResponse<java.util.List<com.example.ssm.pojo.Student>>
      **/
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     @ResponseBody
-    @Permission(1)
-    public ServerResponse<PageInfo> getAllStudentInfo(@RequestBody Map<String,Object> map) {
+
+    public ServerResponse<PageInfo> getAllStudentInfo(@RequestBody Map<String, Object> map) {
         return studentService.getAllStudentInfo(map);
     }
 
 
     /**
+     * @return com.example.ssm.util.ServerResponse<com.example.ssm.pojo.Student>
      * @MethodName getStudentInfoById
      * @Author 周万宁
      * @Description 根据id获取学生信息接口
      * @Date 17:02 2023/5/4
      * @Param [id]
-     * @return com.example.ssm.util.ServerResponse<com.example.ssm.pojo.Student>
      **/
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public ServerResponse<Student> getStudentInfoById(@PathVariable("id") Integer id){
+    public ServerResponse<Student> getStudentInfoById(@PathVariable("id") Integer id) {
         return studentService.getStudentInfoById(id);
     }
 
     /**
+     * @return com.example.ssm.util.ServerResponse<java.lang.String>
      * @MethodName upDataStudentInfo
      * @Author 周万宁
      * @Description 学生数据修改
      * @Date 17:36 2023/5/5
      * @Param [requestMap]
-     * @return com.example.ssm.util.ServerResponse<java.lang.String>
      **/
-    @RequestMapping(value="/update",method=RequestMethod.POST)
+    @Permission(1)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
-    public  ServerResponse<String> upDataStudentInfo(@RequestBody Map<String,Object> requestMap){
+    public ServerResponse<String> upDataStudentInfo(@RequestBody Map<String, Object> requestMap) {
 /*        System.out.println("输出resquestMap");
         System.out.println(requestMap.get("stuName"));
         System.out.println(requestMap);*/
         return studentService.updateStudentInfo(requestMap);
     }
 
-    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    /**
+     * @return com.example.ssm.util.ServerResponse<java.lang.String>
+     * @MethodName deleteStudentInfo
+     * @Author 周万宁
+     * @Description 删除学员信息
+     * @Date 10:53 2023/5/23
+     * @Param [requestMap]
+     **/
+    @Permission(1)
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<String> deleteStudentInfo(@RequestBody Map<String,Object> requestMap){
+    public ServerResponse<String> deleteStudentInfo(@RequestBody Map<String, Object> requestMap) {
         int id = (int) requestMap.get("stuId");
-        return  studentService.deleteStudentInfo(id);
+        return studentService.deleteStudentInfo(id);
     }
 
-    @RequestMapping(value = "/carAuth/delete",method = RequestMethod.POST)
+    /**
+     * @return com.example.ssm.util.ServerResponse<java.lang.String>
+     * @MethodName cancelStudentUseCarAuth
+     * @Author 周万宁
+     * @Description 取消学员车辆授权
+     * @Date 10:53 2023/5/23
+     * @Param [requestMap]
+     **/
+    @RequestMapping(value = "/carAuth/delete", method = RequestMethod.POST)
     @ResponseBody
-    public  ServerResponse<String> cancelStudentUseCarAuth(@RequestBody Map<String,Object> requestMap){
+    @Permission(1)
+    public ServerResponse<String> cancelStudentUseCarAuth(@RequestBody Map<String, Object> requestMap) {
 
         return studentService.cancelStudentUseCarAuth(requestMap);
     }
 
-    @RequestMapping(value = "/carAuth/add",method = RequestMethod.POST)
+    /**
+     * @return com.example.ssm.util.ServerResponse<java.lang.String>
+     * @MethodName addStudentUseCarAuth
+     * @Author 周万宁
+     * @Description 添加学员车辆授权
+     * @Date 10:53 2023/5/23
+     * @Param [requestMap]
+     **/
+    @Permission(1)
+    @RequestMapping(value = "/carAuth/add", method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<String> addStudentUseCarAuth(@RequestBody Map<String,Object> requestMap){
+    public ServerResponse<String> addStudentUseCarAuth(@RequestBody Map<String, Object> requestMap) {
         return studentService.addStudentUseCarAuth(requestMap);
     }
 
-    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    /**
+     * @return com.example.ssm.util.ServerResponse<java.lang.String>
+     * @MethodName addStudentInfo
+     * @Author 周万宁
+     * @Description 添加学员信息
+     * @Date 10:54 2023/5/23
+     * @Param [requestMap]
+     **/
+    @Permission(1)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<String> addStudentInfo(@RequestBody Map<String, Object> requestMap){
+    public ServerResponse<String> addStudentInfo(@RequestBody Map<String, Object> requestMap) {
         return studentService.addStudentInfo(requestMap);
     }
 

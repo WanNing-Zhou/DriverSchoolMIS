@@ -75,7 +75,12 @@
 
     //获取学员信息列表
     let getAllStudentInfo = async function () {
-        const data = await fetch("/student").then(res => res.json());
+        const data = await fetch("/student",{
+            method:'GET',
+            headers:{
+                'Authorization': localStorage.getItem('token')
+            }
+        }).then(res => res.json());
         if (data.statu === 100) {
             showStudentInfos(data.data)
         } else {
@@ -83,6 +88,7 @@
         }
     }
 
+    //删除学员信息
     let deleteStudentInfoById = async function (id) {
         const reqData = {
             stuId:id
@@ -91,7 +97,8 @@
             method: "post",
             body: JSON.stringify(reqData),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
             }
         }).then(res => res.json());
         if (data.statu === 100) {

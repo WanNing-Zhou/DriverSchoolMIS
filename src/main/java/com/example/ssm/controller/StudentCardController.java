@@ -1,6 +1,7 @@
 package com.example.ssm.controller;
 
 import com.example.ssm.service.StudentCarCardService;
+import com.example.ssm.util.Permission;
 import com.example.ssm.util.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,7 @@ public class StudentCardController {
     StudentCarCardService studentCarCardService;
     @RequestMapping("/recharge")
     @ResponseBody
+    @Permission(1)
     public ServerResponse<String> cardRecharge(@RequestBody Map<String, Object> map){
         return studentCarCardService.rechargeCardConsume(map);
     }

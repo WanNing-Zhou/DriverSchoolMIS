@@ -30,8 +30,9 @@
 <body>
 <div class="content">
     <div style="padding: 15px; ">
-        <blockquote class="layui-elem-quote layui-text">
-            <h2>学员信息查看与修改</h2>
+        <blockquote class="layui-elem-quote layui-text page-title">
+            <a href="/pages/managerPages/allCoachInfo.html"> <div class="return-box"><icon style="vertical-align: top" class="layui-icon layui-icon-return"></icon></div></a>
+            <span>学员信息查看与修改</span>
         </blockquote>
     </div>
 
@@ -254,7 +255,8 @@
             method: "post",
             body: JSON.stringify(reqData),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
             }
         })
 
@@ -267,7 +269,12 @@
 
     //获取教练车数据
     async function getAllCoachCarData() {
-        const data = await fetch('/coachcar').then(res => res.json())
+        const data = await fetch('/coachcar',{
+            method:'GET',
+            headers:{
+                'Authorization': localStorage.getItem('token')
+            }
+        }).then(res => res.json())
         console.log('教练车', data)
         if (data.status == 200) {
             setCoachCarSelection(data.data)
