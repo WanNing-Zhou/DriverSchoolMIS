@@ -5,7 +5,7 @@
     <title>学员信息</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-     <!-- 引入 layui.css -->
+    <!-- 引入 layui.css -->
     <!-- <link href="//unpkg.com/layui@2.8.0/dist/css/layui.css" rel="stylesheet"> -->
     <link href="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/css/layui.css" rel="stylesheet">
     <!-- 引入 layui.js -->
@@ -15,12 +15,12 @@
     <link rel="stylesheet" href="/static/css/index.css">
     <link rel="stylesheet" href="/static/css/basic.css">
     <style>
-        .coachCarTable{
+        .coachCarTable {
             width: 100%;
             overflow: hidden;
         }
 
-        body{
+        body {
             width: 98%;
             overflow-x: hidden;
         }
@@ -40,7 +40,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label" for="stuId">学员ID</label>
                 <div class="layui-input-inline" style="width:81.6%">
-                    <input  class="layui-input form-control layui-input" id="stuId" type="text" placeholder="该输入框禁止输入..." disabled>
+                    <input class="layui-input form-control layui-input" id="stuId" type="text" placeholder="该输入框禁止输入..."
+                           disabled>
                 </div>
             </div>
             <div class="layui-form-item">
@@ -48,70 +49,77 @@
                 <div class="layui-input-inline">
                     <input class="layui-input" id="stuName" type="text" placeholder="请输入" style="width: 100%;">
                 </div>
-        
-                <label class="layui-form-label"  for="age">学员年龄</label>
+
+                <label class="layui-form-label" for="age">学员年龄</label>
                 <div class="layui-input-inline">
                     <input class="layui-input" id="age" type="text" style="width: 100%;">
                 </div>
             </div>
-        
+
             <div class="layui-form-item">
                 <label class="layui-form-label" for="sex">性别</label>
                 <div class="layui-input-inline">
-                    <div id="sex">
-                        <input type="radio" name="sex" value="m" title="男" >
-                        <input type="radio" name="sex" value="f" title="女">
+                   <!-- <div id="sex">
+                        <input type="radio" checked="checked" id="sexMale" name="sex" value="m" title="男">
+                        <input type="radio"  id="sexFemale" name="sex" value="f" title="女">
+                    </div>-->
+
+                    <div class="layui-input-inline select">
+                        <select class="yselect" id="sex" style="width: 100%;">
+                            <option value="m">男</option>
+                            <option value="f">女</option>
+                        </select>
                     </div>
                 </div>
-        
+
                 <label class="layui-form-label" for="email">电子邮箱</label>
                 <div class="layui-input-inline">
                     <input class="layui-input" id="email" type="text" placeholder="请输入" style="width: 100%;">
                 </div>
             </div>
-        
+
             <div class="layui-form-item">
                 <label class="layui-form-label" for="coach">教练</label>
                 <div class="layui-input-inline select">
                     <select class="yselect" id="coach" style="width: 100%;"></select>
                 </div>
-        
+
             </div>
-        
-        
+
+
             <div class="layui-form-item text-center">
-                <button type="button" onclick="addStudent()" class="layui-btn btn">添加学员信息</button>
+                <button type="button" onclick="subStudentInfo()" class="layui-btn btn">修改学员信息</button>
             </div>
         </form>
-        
+
     </div>
 
 
-
-<!--学员教练车使用权限-->
+    <!--学员教练车使用权限-->
     <h3>学员教练车使用权限</h3>
-    <div class="coachCarTable" >
-        <div  >
+    <div class="coachCarTable">
+        <div>
             <!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
-            <button  type="button" onclick="addStudentCar()" class="btn layui-btn">添加教练车</button>
-            
-            <div class="layui-form select" style="display:inline-block; width: 300px;vertical-align: top;margin-bottom: 30px;">   
+            <button type="button" onclick="addStudentCar()" class="btn layui-btn">添加教练车</button>
+
+            <div class="layui-form select"
+                 style="display:inline-block; width: 300px;vertical-align: top;margin-bottom: 30px;">
                 <select id="selectCar" class="yselect">
                     <option selected>选择教练车辆为学生增加权限</option>
                 </select>
             </div>
-            
+
 
         </div>
         <div class="tableOut">
             <div class="tableInfo">
-                <table class="layui-table" id="studentTable">
+                <table class="layui-table" id="studentCarTable">
                     <tr>
-                        <th>id</th>
-                        <th>姓名</th>
-                        <th>年龄</th>
-                        <th>性别</th>
-                        <th>邮箱</th>
+                        <th>ID</th>
+                        <th>品牌</th>
+                        <th>车牌号</th>
+                        <th>车型</th>
+                        <th>描述</th>
                         <th>操作</th>
                     </tr>
                 </table>
@@ -128,27 +136,31 @@
             <div class="layui-form-item">
                 <label class=" layui-form-label">练车卡ID</label>
                 <div class="layui-input-inline">
-                    <input class="form-control layui-input layui-input" id="cardId" type="text" placeholder="该输入框禁止输入..." disabled>
+                    <input class="form-control layui-input layui-input" id="cardId" type="text"
+                           placeholder="该输入框禁止输入..." disabled>
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class=" layui-form-label">练车卡号</label>
                 <div class="layui-input-inline">
-                    <input class="layui-input form-control layui-input" id="cardNumber" type="text" placeholder="请输入" disabled >
+                    <input class="layui-input form-control layui-input" id="cardNumber" type="text" placeholder="请输入"
+                           disabled>
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class=" layui-form-label">练车卡名称</label>
                 <div class="layui-input-inline">
-                    <input class="layui-input form-control layui-input" id="cardName" type="text" placeholder="请输入" disabled>
+                    <input class="layui-input form-control layui-input" id="cardName" type="text" placeholder="请输入"
+                           disabled>
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">积分</label>
                 <div class="layui-input-inline">
-                    <input class="layui-input form-control layui-input" id="cardCosume" type="text" placeholder="请输入" disabled>
+                    <input class="layui-input form-control layui-input" id="cardCosume" type="text" placeholder="请输入"
+                           disabled>
                 </div>
             </div>
         </form>
@@ -189,6 +201,9 @@
     const selectCarEl = document.querySelector('#selectCar')
     const studentCarTableEl = document.querySelector('#studentCarTable')
 
+    const sexMaleEl = document.querySelector('#sexMale')
+    const sexFemaleEl = document.querySelector('#sexFemale')
+
     //学员信息
     let studentInfo = {}
 
@@ -198,6 +213,7 @@
         studentInfo.age = ageEl.value
         studentInfo.coachId = coachEl.value
         studentInfo.sex = sexEl.value;
+        // studentInfo.sex = sexFemaleEl.checked == true ? 'f':'m'
         studentInfo.email = emailEl.value;
         studentInfo.stuName = stuNameEl.value;
     }
@@ -208,6 +224,22 @@
         ageEl.value = data.age;
         coachEl.value = data.coach.coachId;
         sexEl.value = data.sex;
+        // console.log('sex',data.sex);
+
+        /*if(data.sex === 'm'){
+            sexMaleEl.checked = true
+            sexFemaleEl.checked = false
+        }else{
+            sexMaleEl.checked = false
+            sexFemaleEl.checked = true
+        }*/
+
+/*        // 渲染radio
+        layui.form.render('radio')
+
+        console.log('sexMaleEl',sexMaleEl)
+        console.log('sexFeMaleEl',sexFemaleEl)*/
+
         emailEl.value = data.email;
         stuNameEl.value = data.stuName;
 
@@ -253,20 +285,27 @@
             method: "post",
             body: JSON.stringify(reqData),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
             }
         })
 
-        if(data && data.status == 200){
+        if (data && data.status == 200) {
             layui.layer.msg("权限删除成功")
-        }else {
+            getStudentInfoById()
+        } else {
             layui.layer.msg(data.msg)
         }
     }
 
     //获取教练车数据
     async function getAllCoachCarData() {
-        const data = await fetch('/coachcar').then(res => res.json())
+        const data = await fetch('/coachcar',{
+            method:'get',
+            headers:{
+                'Authorization': localStorage.getItem('token')
+            }
+        }).then(res => res.json())
         console.log('教练车', data)
         if (data.status == 200) {
             setCoachCarSelection(data.data)
@@ -292,8 +331,10 @@
 
     //获取学员西信息
     async function getStudentInfoById(id) {
+        console.log(id)
         if (!id) {
             id = getUrlParams(URL).id
+            console.log(id)
         }
         // console.log('id',id)
         if (id) {
@@ -338,7 +379,8 @@
             method: "post",
             body: JSON.stringify(studentInfo),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
             }
         }).then(res => res.json())
         if (res.status === 200) {
@@ -348,11 +390,6 @@
         } else {
             layui.layer.msg(res.msg)
         }
-    }
-
-    //添加学员信息
-    async function addStudentInfo() {
-
     }
 
     //提交学员信息
@@ -388,7 +425,8 @@
                 method: "post",
                 body: JSON.stringify(reqData),
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': localStorage.getItem('token')
                 }
             }).then(res => res.json())
             if (data && data.status == 200) {

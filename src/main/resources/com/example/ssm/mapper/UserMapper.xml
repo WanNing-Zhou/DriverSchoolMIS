@@ -7,7 +7,7 @@
     <resultMap id="userInfoMap" type="com.example.ssm.pojo.User">
         <id column="user_id" property="userId"/>
         <result column="username" property="username"/>
-        <result column="role_id" property="roleId"></result>
+        <result column="role_id" property="roleId"/>
         <result column="role_code" property="roleCode"/>
         <result column="create_time" property="createTime"/>
         <result column="role_name" property="roleName"/>
@@ -31,19 +31,23 @@
         </set>
         where user_id = #{params.userId}
     </update>
+    <delete id="deleteByUserId">
+        delete from t_user where user_id = #{userId}
+    </delete>
 
     <select id="findUserLogin" resultMap="userInfoMap">
-        select * from t_user
+        select user_id, username, t_user.role_id, create_time, auth_user_id, role_name
+        from t_user
             left join  t_role tr on t_user.role_id = tr.role_id
         where password = #{params.password} and username = #{params.username}
     </select>
 
     <select id="getUserByUsername" resultMap="userInfoMap">
-        select * from t_user where username = #{username}
+        select user_id, username, role_id, create_time, auth_user_id from t_user where username = #{username}
     </select>
 
     <select id="getAllUser" resultMap="userInfoMap">
-        select * from t_user
+        select user_id, username, role_id, create_time, auth_user_id from t_user
     </select>
 
 </mapper>

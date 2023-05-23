@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>教练信息</title>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <link href="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/css/layui.css" rel="stylesheet">
+  <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/layui.js"></script>
+  <link rel="stylesheet" href="/static/css/index.css">
+  <link rel="stylesheet" href="/static/css/basic.css">
+
+</head>
+<body>
+<div style="padding: 15px; ">
+  <blockquote class="layui-elem-quote layui-text">
+    <h2>教练信息查看与修改</h2>
+  </blockquote>
+</div>
+<div class="formConent formList">
+  <form class="layui-form">
+    <div class="layui-form-item">
+      <label class=" layui-form-label" for="coachId">教练ID</label>
+      <div class="layui-input-inline">
+        <input class="form-control layui-input" id="coachId" type="text" placeholder="该输入框禁止输入..." disabled>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class=" layui-form-label" for="coachName">姓名</label>
+      <div class="layui-input-inline">
+        <input class="form-control layui-input" id="coachName" type="text" placeholder="请输入">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class=" layui-form-label" for="coachPhone">联系电话:</label>
+      <div class="layui-input-inline">
+        <input class="form-control layui-input" id="coachPhone" type="text" value="">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class=" layui-form-label" for="coachGender">性别</label>
+      <div class="layui-input-inline select">
+        <select class="yselect" id="coachGender">
+          <option value="male">男</option>
+          <option value="female">女</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class=" layui-form-label" for="coachExperience">经验介绍</label>
+      <div class="layui-input-inline">
+        <textarea class="form-control layui-textarea" id="coachExperience" type="text" placeholder="请输入"></textarea>
+
+      </div>
+    </div>
+
+
+    <div class="layui-form-item text-center">
+      <!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
+      <button type="button" onclick="subCoachInfo()" class="btn layui-btn">修改教练信息</button>
+    </div>
+
+  </form>
+</div>
+
+
+
+<div class="tableOut">
+  <div class="tableInfo">
+    <h3 class="text-center">所带学员信息</h3>
+    <table class="layui-table" id="studentsTable">
+      <tr>
+        <th>id</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>邮箱</th>
+        <th>操作</th>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+<script>
+
+  // 获取当前也买你的url
+  let URL = window.location.href;
+
+  function getUrlParams(url) {
+    // 通过 ? 分割获取后面的参数字符串
+    let urlStr = url.split('?')[1]
+    // 创建空对象存储参数
+    let obj = {};
+    // 再通过 & 将每一个参数单独分割出来
+    let paramsArr = urlStr.split('&')
+    for (let i = 0, len = paramsArr.length; i < len; i++) {
+      // 再通过 = 将每一个参数分割为 key:value 的形式
+      let arr = paramsArr[i].split('=')
+      obj[arr[0]] = arr[1];
+    }
+    return obj
+  }
+
+  const coachIdEl = document.querySelector('#coachId');
+  const coachNameEl = document.querySelector('#coachName')
+  const coachPhoneEl = document.querySelector('#coachPhone')
+  const coachGenderEl = document.querySelector('#coachGender')
+  const coachExperienceEl = document.querySelector('#coachExperience')
+
+  const studentsTableEl = document.querySelector('#studentsTable')
+
+  //教练信息
+  let coachInfo = {}
+
+  //设置提交信息
+  function setInfo() {
+    coachInfo.coachId =  coachIdEl.value;
+    coachInfo.coachName = coachNameEl.value
+    coachInfo.coachPhone = coachPhoneEl.value;
+    coachInfo.coachGender = coachGenderEl.value;
+    coachInfo.coachExperience = coachExperienceEl.value;
+  }
+
+  //渲染教练信息
+  function setCoachInfoShow(data) {
+    coachIdEl.value = data.coachId;
+    coachNameEl.value = data.coachName;
+    coachPhoneEl.value = data.coachPhone;
+    coachGenderEl.value = data.coachGender;
+    coachExperienceEl.value = data.coachExperience;
+
+    const {students} = data;
+
+    //渲染学员列表
+    let htmlContent = `
+        <tr>
+            <th>id</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>邮箱</th>
+            <th>操作</th>
+        </tr>
+        `
+    for (let student of students) {
+      htmlContent += `
+            <tr>
+             <td>${student.stuId}</td>
+            <td>${student.stuName}</td>
+            <td>${student.age}</td>
+            <td>${student.sex}</td>
+            <td>${student.email}</td>
+            </tr>
+            `
+    }
+    studentsTableEl.innerHTML = htmlContent
+  }
+
+  //获取教练信息
+  async function getCoachInfoByCoachId(id) {
+    if (!id) {
+      id = getUrlParams(URL).id
+    }
+
+    if (id) {
+      const data = await fetch(`/coach/${id}`).then(res => res.json())
+      if (data.status === 200) {
+        coachInfo = data.data;
+        setCoachInfoShow(data.data)
+      } else {
+        layui.layer.msg(data.msg)
+      }
+    }
+  }
+
+
+  //修改教练信息
+  async function updateCoachInfo() {
+    setInfo()
+    const res = await fetch("/coach/update", {
+      method: "post",
+      body: JSON.stringify(coachInfo),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      }
+    }).then(res => res.json())
+    if (res.status === 200) {
+      layui.layer.msg("修改成功")
+      // console.log("修改成功")
+      await getCoachInfoByCoachId();
+    } else {
+      layui.layer.msg(res.msg)
+    }
+  }
+
+
+  //提交修改信息
+  function subCoachInfo() {
+    setInfo();
+    let {id} = getUrlParams(URL)
+    //如果id存在则为修改学员信息
+    if (id) {
+      updateCoachInfo();
+    }
+  }
+
+
+
+  //根据coachId获取coach信息
+  getCoachInfoByCoachId()
+
+
+</script>
+</body>
+</html>

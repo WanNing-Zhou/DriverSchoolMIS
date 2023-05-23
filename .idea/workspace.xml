@@ -9,9 +9,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="238aaeca-eb95-49de-896a-35574acbf3d0" name="Changes" comment="目录">
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachInfo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/studenInfo.html" beforeDir="false" />
+    <list default="true" id="238aaeca-eb95-49de-896a-35574acbf3d0" name="Changes" comment="阶段五: 学员样式">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allUserInfo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/pointRecharge.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/userInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/ssm/mapper/StudentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/ssm/mapper/StudentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/ssm/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/ssm/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addCoachCarInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addCoachCarInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addCoachInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addCoachInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addStudentInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addStudentInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allCoachCarInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allCoachCarInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allCoachInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allCoachInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allStudent.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allStudent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allStudentInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allStudentInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/coachInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/coachInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/managerIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/managerIndex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/studenInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/studenInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/studentInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/studentInfo.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +58,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="PUSH_TAGS">
       <GitPushTagMode>
         <option name="argument" value="--tags" />
@@ -147,8 +165,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="managerIndex.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DriverSchoolMIS/src/main/webapp/pages/managerPages/managerIndex.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <configuration name="Tomcat 9.0.65" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.65" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/pages/" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/pages/studentPAges/studentIndex.html" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="DriverSchoolMIS:war exploded">
@@ -236,13 +257,15 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="HTTP 请求.generated-requests#3" />
+      <item itemvalue="HTTP Request.generated-requests#3" />
+      <item itemvalue="JavaScript Debug.managerIndex.html" />
       <item itemvalue="JUnit.TestUtils.jwtTest" />
       <item itemvalue="JUnit.JWTTest.jwtTest" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.65" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.managerIndex.html" />
         <item itemvalue="JUnit.JWTTest.jwtTest" />
         <item itemvalue="JUnit.TestUtils.jwtTest" />
       </list>
@@ -286,6 +309,7 @@
       <workItem from="1684474393225" duration="2273000" />
       <workItem from="1684564791774" duration="3631000" />
       <workItem from="1684727906721" duration="155000" />
+      <workItem from="1684801148056" duration="110000" />
     </task>
     <task id="LOCAL-00001" summary="简单的提交">
       <created>1683860243861</created>

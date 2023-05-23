@@ -64,4 +64,6 @@ public interface UserMapper {
      **/
     List<User> getAllUser();
 
+    int deleteByUserId(@Param("userId") int userId);
+
 }

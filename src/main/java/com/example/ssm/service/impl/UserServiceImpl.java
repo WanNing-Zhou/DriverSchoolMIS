@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.http.HttpResponse;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -112,4 +113,33 @@ public class UserServiceImpl implements UserService {
         }
 
     }
+
+    /**
+     * @MethodName getAllUser
+     * @Author 周万宁
+     * @Description 获取所有用户
+     * @Date 16:21 2023/5/22
+     * @Param []
+     * @return com.example.ssm.util.ServerResponse<java.util.List>
+     **/
+    @Override
+    public ServerResponse<List> getAllUser() {
+        List<User> allUser = userMapper.getAllUser();
+        if(allUser.size() > 0){
+            return  ServerResponse.createBySuccess("查询成功",allUser);
+        }else {
+            return ServerResponse.createByError("查询失败");
+        }
+    }
+
+    @Override
+    public ServerResponse<String> deleteUserInfo(int userId) {
+        int i = userMapper.deleteByUserId(userId);
+        if(i>0){
+            return ServerResponse.createBySuccess("删除成功","ok");
+        }else{
+            return ServerResponse.createByError("删除失败");
+        }
+    }
+
 }

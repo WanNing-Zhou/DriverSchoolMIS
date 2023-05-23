@@ -65,6 +65,8 @@
     </form>
 </div>
 
+
+
 <div class="tableOut">
     <div class="tableInfo">
         <h3 class="text-center">所带学员信息</h3>
@@ -130,7 +132,6 @@
         coachGenderEl.value = data.coachGender;
         coachExperienceEl.value = data.coachExperience;
 
-
         const {students} = data;
 
         //渲染学员列表
@@ -166,7 +167,7 @@
 
         if (id) {
             const data = await fetch(`/coach/${id}`).then(res => res.json())
-            if (data.statu === 100) {
+            if (data.status === 200) {
                 coachInfo = data.data;
                 setCoachInfoShow(data.data)
             } else {
@@ -175,29 +176,6 @@
         }
     }
 
-    //设置教练选择框中的选项元素
-    function setCoachSelection(data) {
-        let optionsHtml = '';
-        for (let coach of data) {
-            optionsHtml += `
-                <option value="${coach.coachId}">${coach.coachName
-            }</option>
-            `
-        }
-        coachEl.innerHTML += optionsHtml;
-    }
-
-    // 获取教练信息
-    async function getCoachInfo() {
-        const data = await fetch('/coach').then(res => res.json());
-        if (data.statu === 100) {
-            // console.log(data)
-            setCoachSelection(data.data)
-
-        } else {
-            layui.layer.msg('获取信息失败,请检查网络状态')
-        }
-    }
 
     //修改教练信息
     async function updateCoachInfo() {
@@ -206,10 +184,11 @@
             method: "post",
             body: JSON.stringify(coachInfo),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
             }
         }).then(res => res.json())
-        if (res.statu === 100) {
+        if (res.status === 200) {
             layui.layer.msg("修改成功")
             // console.log("修改成功")
             await getCoachInfoByCoachId();
@@ -221,7 +200,7 @@
 
     //提交修改信息
     function subCoachInfo() {
-        setStudentInfo();
+        setInfo();
         let {id} = getUrlParams(URL)
         //如果id存在则为修改学员信息
         if (id) {
@@ -231,9 +210,7 @@
 
 
 
-    //获所教练信息
-    getCoachInfo()
-    //根据coachId获取学员信息
+    //根据coachId获取coach信息
     getCoachInfoByCoachId()
 
 

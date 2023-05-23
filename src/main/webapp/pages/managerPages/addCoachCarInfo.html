@@ -67,9 +67,7 @@
     const carNumberEl = document.querySelector('#carNumber')
     const carTypeEl = document.querySelector('#carType')
     const carDescEl = document.querySelector('#carDesc')
-
     let coachCarInfo = {}
-
 
     //设置提交信息
     function setInfo() {
@@ -79,7 +77,6 @@
         coachCarInfo.carDesc = carDescEl.value;
     }
 
-
     //添加教练车
     async function addCoachCar() {
         setInfo();
@@ -87,15 +84,16 @@
             method: "post",
             body: JSON.stringify(coachCarInfo),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
             }
         }).then(res => res.json())
 
-        if (data && data.statu == 100) {
+        if (data && data.status == 200) {
             await layui.layer.msg('添加成功')
-            location.replace('allCoachCarInfo.html');
+            location.replace('/pages/managerPages/allCoachCarInfo.html');
         } else {
-            console.log('添加失败,请检查网路状态')
+            layui.layer.msg('添加失败,请检查网路状态')
         }
     }
 

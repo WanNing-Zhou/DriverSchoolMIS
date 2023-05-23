@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学员信息</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 引入 layui.css -->
+    <!-- <link href="//unpkg.com/layui@2.8.0/dist/css/layui.css" rel="stylesheet"> -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/css/layui.css" rel="stylesheet">
+    <!-- 引入 layui.js -->
+    <!-- <script src="//unpkg.com/layui@2.8.0/dist/layui.js" /> -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.7.6/layui.js"></script>
+    <!-- <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/basic.css">
+    <style>
+        .coachCarTable {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            width: 98%;
+            overflow-x: hidden;
+        }
+
+        .search-center {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .content-title {
+            display: inline-block;
+            font-size: 22px;
+            font-weight: 700;
+            user-select: none;
+
+        }
+
+        .login-enter {
+            font-size: 14px;
+            float: right;
+            line-height: 40px;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div class="content">
+    <div style="padding: 15px; ">
+        <blockquote class="layui-elem-quote layui-text">
+            <span class="content-title">练车卡充值</span>
+        </blockquote>
+    </div>
+
+    <div class="layui-form layui-row search-center" style="margin-bottom: 10px">
+
+        <div class="search-box">
+            <div class="layui-input-inline">
+                <input type="text" lay-affix="clear" style="width: 200px" placeholder="输入学员id查看信息" id="searchId"
+                       class="layui-input">
+            </div>
+
+            <button class="layui-btn" onclick="search()">
+                <icon class="layui-icon  layui-icon-search"></icon>
+                <span>搜索</span>
+            </button>
+        </div>
+
+        <div class="recharge-box">
+            <div class="layui-input-inline">
+                <input type="text" lay-affix="clear" style="width: 200px" placeholder="输入充值金额" id="rechargeValue"
+                       class="layui-input">
+            </div>
+
+            <button class="layui-btn" onclick="recharge()">
+                <icon class="layui-icon  layui-icon-addition"></icon>
+                <span>充值</span>
+            </button>
+        </div>
+
+
+    </div>
+
+    <div class="formConent">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="stuId">学员ID</label>
+                <div class="layui-input-inline" style="width:81.6%">
+                    <input class="layui-input form-control layui-input" id="stuId" type="text" disabled>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="stuName">学员姓名</label>
+                <div class="layui-input-inline">
+                    <input class="layui-input" id="stuName" type="text" placeholder="请输入" disabled style="width: 100%;">
+                </div>
+
+                <label class="layui-form-label" for="age">学员年龄</label>
+                <div class="layui-input-inline">
+                    <input class="layui-input" id="age" disabled type="text" style="width: 100%;">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="sex">性别</label>
+                <div class="layui-input-inline">
+                    <input class="layui-input" id="sex" disabled type="text" style="width: 100%;">
+                </div>
+
+                <label class="layui-form-label" for="email">电子邮箱</label>
+                <div class="layui-input-inline">
+                    <input class="layui-input" id="email" type="text" disabled style="width: 100%;">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="coach">教练</label>
+                <div class="layui-input-inline">
+                    <input class="layui-input" id="coach" type="text" disabled style="width: 100%;">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="formConent formList">
+        <form class="layui-form">
+
+            <div class="layui-form-item">
+                <label class=" layui-form-label">练车卡ID</label>
+                <div class="layui-input-inline">
+                    <input class="form-control layui-input layui-input" id="cardId" type="text"
+                           placeholder="该输入框禁止输入..." disabled>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class=" layui-form-label">练车卡号</label>
+                <div class="layui-input-inline">
+                    <input class="layui-input form-control layui-input" id="cardNumber" type="text"
+                           placeholder="请输入"
+                           disabled>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class=" layui-form-label">练车卡名称</label>
+                <div class="layui-input-inline">
+                    <input class="layui-input form-control layui-input" id="cardName" type="text"
+                           placeholder="请输入"
+                           disabled>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">积分</label>
+                <div class="layui-input-inline">
+                    <input class="layui-input form-control layui-input" id="cardCosume" type="text"
+                           placeholder="请输入"
+                           disabled>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</div>
+
+<script>
+
+    const stuIdEl = document.querySelector('#stuId');
+    const stuNameEl = document.querySelector('#stuName')
+    const ageEl = document.querySelector('#age')
+    const sexEl = document.querySelector('#sex')
+    const emailEl = document.querySelector('#email')
+    const coachEl = document.querySelector('#coach')
+
+    const cardIdEl = document.querySelector('#cardId')
+    const cardNameEl = document.querySelector('#cardName')
+    const cardNumberEl = document.querySelector('#cardNumber')
+    const cardCosumeEl = document.querySelector('#cardCosume')
+    const rechargeValueEl = document.querySelector('#rechargeValue');
+
+    const searchId = document.querySelector('#searchId');
+    const layer = layui.layer;
+
+    let currentCardId = null;
+    let currentStuId = null;
+    //查询功能
+    async function search() {
+
+        const id = searchId.value;
+        currentStuId = id;
+        console.log(id)
+        getStudentInfoById(id);
+    }
+
+
+    //学员信息
+    let studentInfo = {}
+
+    //设置学员信息
+    function setStudentInfo() {
+        studentInfo.stuId = stuIdEl.value;
+        studentInfo.age = ageEl.value
+        studentInfo.coachId = coachEl.value
+        studentInfo.sex = sexEl.value;
+        studentInfo.email = emailEl.value;
+        studentInfo.stuName = stuNameEl.value;
+    }
+
+
+    //渲染学员信息
+    function setStudentInfoShow(data) {
+        stuIdEl.value = data.stuId;
+        ageEl.value = data.age;
+        coachEl.value = data.coach.coachName;
+
+        sexEl.value = data.sex == 'm' ? '男' : '女';
+        emailEl.value = data.email;
+        stuNameEl.value = data.stuName;
+
+        const {stuCarCard, coachCars} = data;
+        cardIdEl.value = stuCarCard.cardId;
+        cardNameEl.value = stuCarCard.cardName;
+        cardCosumeEl.value = stuCarCard.cardCosume;
+        cardNumberEl.value = stuCarCard.cardNumber;
+
+    }
+
+    //获取学员西信息
+    async function getStudentInfoById(id) {
+        // console.log('id',id)
+        if (id && id != '') {
+            const data = await fetch(`/student/${id}`).then(res => res.json())
+            if (data.status == 200) {
+                studentInfo = data.data;
+                currentCardId = data.data.stuCarCard.cardId;
+                console.log('currentCardId',currentCardId)
+                setStudentInfoShow(data.data)
+            } else {
+                layui.layer.msg(data.msg)
+            }
+        } else {
+            layui.layer.msg("请输入信息后查询")
+        }
+
+    }
+
+    // 获取教练信息
+    async function getCoachInfo() {
+        const data = await fetch('/coach').then(res => res.json());
+        if (data.status === 200) {
+
+        } else {
+            layui.layer.msg('获取信息失败,请检查网络状态')
+        }
+    }
+
+    //练车卡充值
+    async function recharge(){
+        if(!currentCardId && currentCardId!= 0 && currentCardId == ''){
+            console.log(currentCardId)
+            layui.layer.msg('请先查看学员状态')
+            return ;
+        }
+
+        const reqData = {
+            cardId:currentCardId,
+            AmountMoney:rechargeValueEl.value
+        }
+        const data = await fetch('/card/recharge',{
+            method:'POST',
+            body:JSON.stringify(reqData),
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
+            }
+        }).then(res=>res.json())
+
+        // console.log(data)
+        if(data.status == 200){
+            getStudentInfoById(currentStuId)
+            rechargeValueEl.value = 0
+            layui.layer.msg('充值成功,请检查余额是否正确')
+        }else if(data.status !== 200){
+            layui.layer.msg('充值失败,请检查网络状态')
+        }
+
+    }
+
+    //获所有取教练信息
+    getCoachInfo()
+</script>
+</body>
+</html>

@@ -18,7 +18,7 @@
 
 <div class="tableOut">
     <div class="tableInfo">
-        <table class="layui-table" id="studentTable">
+        <table class="layui-table" id="carTable">
             <tr>
                 <th>id</th>
                 <th>品牌</th>
@@ -32,7 +32,7 @@
 </div>
 <script>
 
-    let studentTable = document.querySelector('#studentTable')
+    let carTable = document.querySelector('#carTable')
 
 
     function showCoachCarInfos(carList) {
@@ -61,19 +61,24 @@
         </tr>`
 
         }
-        studentTable.innerHTML = htmlContent
+        carTable.innerHTML = htmlContent
     }
 
-    //获取学员信息列表
+    //获取教练车信息列表
     let getAllCoachCarInfo = async function () {
         const data = await fetch("/coachcar").then(res => res.json());
-        if (data.statu === 100) {
+        if (data.status === 200) {
             showCoachCarInfos(data.data)
         } else {
             layui.layer.msg(data.msg)
         }
     }
 
+    /**
+     * 删除教练车信息
+     * @param id
+     * @returns {Promise<void>}
+     */
     let deleteCoachCarInfoById = async function (id) {
         const reqData = {
             carId: id
@@ -86,7 +91,7 @@
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json());
-        if (data.statu === 100) {
+        if (data.status === 200) {
             layui.layer.msg('删除成功')
             await getAllCoachCarInfo()
         } else {

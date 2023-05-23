@@ -84,13 +84,14 @@
             method: "post",
             body: JSON.stringify(coachInfo),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
             }
         }).then(res => res.json())
 
-        if (data && data.statu == 100) {
+        if (data && data.status == 200) {
             await layui.layer.msg('添加成功')
-            location.replace('allCoachInfo.html');
+            location.replace('/pages/managerPages/allCoachInfo.html');
         } else {
             console.log('添加失败,请检查网路状态')
         }
