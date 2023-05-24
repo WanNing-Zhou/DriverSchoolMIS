@@ -11,7 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="238aaeca-eb95-49de-896a-35574acbf3d0" name="Changes" comment="阶段五:项目初期完成">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/coachPageIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/coachPageIndex.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/searchCoachInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/searchCoachInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/userInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/userInfo.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -292,6 +294,7 @@
       <workItem from="1684727906721" duration="155000" />
       <workItem from="1684801148056" duration="12055000" />
       <workItem from="1684834476232" duration="4961000" />
+      <workItem from="1684912325569" duration="659000" />
     </task>
     <task id="LOCAL-00001" summary="简单的提交">
       <created>1683860243861</created>
@@ -412,7 +415,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684837044111</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="阶段五:项目初期完成">
+      <created>1684912345509</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1684912345509</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
