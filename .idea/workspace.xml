@@ -11,24 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="238aaeca-eb95-49de-896a-35574acbf3d0" name="Changes" comment="阶段五:项目初期完成">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachCarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachCarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/StudentCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/StudentCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/StudentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/coachPageIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/coachPageIndex.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/searchCoachInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/searchCoachInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addUserInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addUserInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allCoachCarInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allCoachCarInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allStudentInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/allStudentInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/coachInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/coachInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/managerIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/managerIndex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/pointRecharge.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/pointRecharge.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/studenInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/studenInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/studentInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/studentInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/userInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/userInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/basic.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/basic.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -308,7 +291,7 @@
       <workItem from="1684564791774" duration="3631000" />
       <workItem from="1684727906721" duration="155000" />
       <workItem from="1684801148056" duration="12055000" />
-      <workItem from="1684834476232" duration="2389000" />
+      <workItem from="1684834476232" duration="4961000" />
     </task>
     <task id="LOCAL-00001" summary="简单的提交">
       <created>1683860243861</created>
@@ -422,7 +405,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684810281996</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="阶段五:项目初期完成">
+      <created>1684837044111</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1684837044111</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
