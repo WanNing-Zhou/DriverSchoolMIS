@@ -20,6 +20,7 @@ import java.util.Map;
  * @create 2023/5/12-10:53
  * @description
  */
+
 @Controller
 @RequestMapping("/coachcar")
 public class CoachCarController {
@@ -70,5 +71,4 @@ public class CoachCarController {
     public ServerResponse<String> deleteCoachCarInfo(@RequestBody Map<String,Object> requestMap){
         return coachCarService.deleteCoachCar((int) requestMap.get("carId"));
     }
-
 }

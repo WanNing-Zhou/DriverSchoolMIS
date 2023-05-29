@@ -45,6 +45,7 @@ public class StudentServiceImpl implements StudentService {
      * @Param []
      * @return com.example.ssm.util.ServerResponse<java.util.List<com.example.ssm.pojo.Student>>
      **/
+
     @Override
     public ServerResponse<PageInfo> getAllStudentInfo(Map<String,Object> map) {
 
@@ -66,6 +67,7 @@ public class StudentServiceImpl implements StudentService {
      * @Param [id]
      * @return com.example.ssm.util.ServerResponse<com.example.ssm.pojo.Student>
      **/
+
     @Override
     public ServerResponse<Student> getStudentInfoById(Integer id) {
         Student res = studentMapper.getStudentInfoById(id);

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="GROUP_BY_SEVERITY" value="true" />
+  </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
       <artifact name="DriverSchoolMIS:war exploded" />
@@ -9,11 +12,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="238aaeca-eb95-49de-896a-35574acbf3d0" name="Changes" comment="阶段五:项目初期完成">
+    <list default="true" id="238aaeca-eb95-49de-896a-35574acbf3d0" name="Changes" comment="阶段六:项目完成">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/ssm/test/pluginTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/coachPageIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/coachPageIndex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/searchCoachInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/coachPages/searchCoachInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/userInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/userInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachCarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachCarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/StudentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/StudentServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,11 +35,11 @@
         <option value="mybatis-config" />
         <option value="mybatis-mapper" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="AnnotationType" />
         <option value="Enum" />
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -96,6 +99,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.22068965" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -294,7 +298,14 @@
       <workItem from="1684727906721" duration="155000" />
       <workItem from="1684801148056" duration="12055000" />
       <workItem from="1684834476232" duration="4961000" />
-      <workItem from="1684912325569" duration="659000" />
+      <workItem from="1684912325569" duration="1050000" />
+      <workItem from="1684917923286" duration="698000" />
+      <workItem from="1684919560639" duration="17000" />
+      <workItem from="1685076352553" duration="311000" />
+      <workItem from="1685077653857" duration="1327000" />
+      <workItem from="1685088636858" duration="75000" />
+      <workItem from="1685088737659" duration="207000" />
+      <workItem from="1685104468118" duration="11000" />
     </task>
     <task id="LOCAL-00001" summary="简单的提交">
       <created>1683860243861</created>
@@ -422,7 +433,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684912345509</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="阶段六:项目完成">
+      <created>1684913012983</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1684913012983</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -449,7 +467,8 @@
     <MESSAGE value="阶段四: 添加登录功能" />
     <MESSAGE value="阶段五: 学员样式" />
     <MESSAGE value="阶段五:项目初期完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="阶段五:项目初期完成" />
+    <MESSAGE value="阶段六:项目完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="阶段六:项目完成" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
