@@ -51,6 +51,7 @@ public class CoachCarController {
      * @Param [requestMap]
      * @return com.example.ssm.util.ServerResponse<java.lang.String>
      **/
+    //http:// localhost:8080/coachcar/add
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> addCoachCarInfo(@RequestBody Map<String, Object> requestMap){

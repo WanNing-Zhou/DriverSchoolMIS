@@ -14,7 +14,7 @@
 <body>
 <div style="padding: 15px; ">
     <blockquote class="layui-elem-quote layui-text page-title">
-        <a href="/pages/managerPages/allCoachInfo.html"> <div class="return-box"><icon style="vertical-align: top" class="layui-icon layui-icon-return"></icon></div></a>
+        <a href="/pages/managerPages/allUserInfo.html"> <div class="return-box"><icon style="vertical-align: top" class="layui-icon layui-icon-return"></icon></div></a>
         <span>用户信息查看与修改</span>
     </blockquote>
 </div>
@@ -116,7 +116,12 @@
     //设置提交信息
     function setInfo() {
         userInfo.userId = userIdEl.value;
-        userInfo.password = md5(passwordEl.value)
+        if(passwordEl.value || passwordEl.value==''){
+            userInfo.password = null;
+        }else{
+            userInfo.password = md5(passwordEl.value)
+        }
+
         userInfo.roleId = roleIdEl.value;
     }
 

@@ -25,7 +25,7 @@ import java.util.Map;
  */
 
 @Service
-@Transactional
+@Transactional //事务
 public class StudentServiceImpl implements StudentService {
 
     @Autowired

@@ -15,6 +15,7 @@ public class ServerResponse<T> {
     private int status;
     //数据
     private T data;
+
     //描述信息
     private String msg;
 

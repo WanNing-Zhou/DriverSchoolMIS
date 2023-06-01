@@ -34,6 +34,14 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private TokenUtils tokenUtils;
 
+    /**
+     * @MethodName loginService
+     * @Author 周万宁
+     * @Description 用户登录
+     * @Date 18:02 2023/5/29
+     * @Param [map, response]
+     * @return com.example.ssm.util.ServerResponse<com.example.ssm.pojo.User>
+     **/
     @Override
     public ServerResponse<User> loginService(Map<String, Object> map, HttpServletResponse response) {
         User user = userMapper.findUserLogin(map);
@@ -62,6 +70,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ServerResponse<String> addUser(Map<String, Object> map) {
+        //在添加用户之前, 会判断用户是否已经存在
         User userByName = userMapper.getUserByUsername((String) map.get("username"));
 
         if(userByName != null && userByName.getUsername() != null){
@@ -81,7 +90,14 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
-    //修改用户信息
+    /**
+     * @MethodName updateUserInfo
+     * @Author 周万宁
+     * @Description 修改用户信息
+     * @Date 18:00 2023/5/29
+     * @Param [map]
+     * @return com.example.ssm.util.ServerResponse<java.lang.String>
+     **/
     @Override
     public ServerResponse<String> updateUserInfo(Map<String, Object> map) {
 

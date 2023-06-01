@@ -22,6 +22,16 @@ import java.util.Map;
 public class StudentCardController {
     @Autowired
     StudentCarCardService studentCarCardService;
+
+    /**
+     * @MethodName cardRecharge
+     * @Author 周万宁
+     * @Description 学员练车卡积分充值
+     * @Date 17:59 2023/5/29
+     * @Param [map]
+     * @return com.example.ssm.util.ServerResponse<java.lang.String>
+     **/
+
     @RequestMapping("/recharge")
     @ResponseBody
     @Permission(1)

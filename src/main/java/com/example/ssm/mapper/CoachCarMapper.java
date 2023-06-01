@@ -16,12 +16,20 @@ public interface CoachCarMapper {
     /**
      * @MethodName getAllCoachCar
      * @Author 周万宁
-     * @Description 获取所有教练车西信息
+     * @Description 获取所有教练车信息
      * @Date 9:40 2023/5/12
      * @Param []
      * @return java.util.List<com.example.ssm.pojo.CoachCar>
      **/
     List<CoachCar> getAllCoachCar();
+    /**
+     * @MethodName getCoachCarById
+     * @Author 周万宁
+     * @Description 根据id获取教练车信息
+     * @Date 18:29 2023/5/29
+     * @Param [id]
+     * @return com.example.ssm.pojo.CoachCar
+     **/
     CoachCar getCoachCarById(@Param("id") int id);
     int updateCoachCarById(@Param("coachCar") Map<String,Object> coachCar);
 

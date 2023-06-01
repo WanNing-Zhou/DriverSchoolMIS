@@ -42,6 +42,8 @@ public interface UserMapper {
      * @Param [params]
      * @return int
      **/
+
+    // map key=username value=admin
     int addUser(@Param("params") Map<String,Object> params);
     /**
      * @MethodName updateUserInfo

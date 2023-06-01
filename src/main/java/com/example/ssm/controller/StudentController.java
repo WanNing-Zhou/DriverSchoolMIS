@@ -69,9 +69,6 @@ public class StudentController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> upDataStudentInfo(@RequestBody Map<String, Object> requestMap) {
-/*        System.out.println("输出resquestMap");
-        System.out.println(requestMap.get("stuName"));
-        System.out.println(requestMap);*/
         return studentService.updateStudentInfo(requestMap);
     }
 

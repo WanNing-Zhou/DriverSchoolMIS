@@ -16,6 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
+
+/**
+ * @author 周万宁
+ */
 @Component
 public class AuthInterceptor implements HandlerInterceptor {
 
@@ -71,7 +75,7 @@ public class AuthInterceptor implements HandlerInterceptor {
                 // 检查的权限是否都被允许
                 Permission annotation = method.getAnnotation(Permission.class);
                 int roleId = tokenUtils.getRoleCode(token);
-                System.out.println("roleId:" + roleId);
+
                 int permissionCode = annotation.value();
                 boolean isPermitted = true;
                 if (roleId != permissionCode) {

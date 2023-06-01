@@ -23,7 +23,7 @@
     <update id="updateUserInfo">
         update t_user
         <set>
-            <if test="params.password!= null and params.password != ''">
+            <if test="params.password != null and params.password != ''">
                 password = #{params.password},
             </if>
             <if test="params.roleId != null and params.roleId != ''">
