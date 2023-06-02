@@ -14,7 +14,7 @@
 
 </head>
 <body>
-    <div style="padding: 15px; ">
+    <div style="padding: 15px;">
         <blockquote class="layui-elem-quote layui-text">
             <h2>注册用户</h2>
         </blockquote>
@@ -105,8 +105,10 @@
 
         // console.log('添加用户data',data)
         if (data && data.status == 200) {
-            await layui.layer.msg('添加成功')
-            location.replace('allUserInfo.html');
+            await layui.layer.msg('添加成功',{time:1000}, ()=>{
+                location.replace('allUserInfo.html');
+            })
+
         } else if(data && data.status != 200){
             layui.layer.msg(data.msg)
         }else{

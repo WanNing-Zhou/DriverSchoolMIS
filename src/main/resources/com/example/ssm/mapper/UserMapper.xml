@@ -52,7 +52,7 @@
     <select id="getAllUser" resultMap="userInfoMap">
         select t_user.user_id, t_user.username, t_user.role_id, t_user.create_time,role_name, t_user.auth_user_id,tu.username as auth_name
         from t_user
-            left join  t_role tr
+            left join t_role tr
                 on t_user.role_id = tr.role_id
             left join t_user tu
                 on tu.user_id = t_user.auth_user_id

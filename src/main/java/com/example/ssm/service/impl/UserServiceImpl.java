@@ -26,9 +26,10 @@ import java.util.Map;
  */
 
 @Service
-@Transactional
+@Transactional //事务操作
 public class UserServiceImpl implements UserService {
 
+    //自动装载
     @Autowired
     private UserMapper userMapper;
     @Autowired
@@ -73,7 +74,7 @@ public class UserServiceImpl implements UserService {
         //在添加用户之前, 会判断用户是否已经存在
         User userByName = userMapper.getUserByUsername((String) map.get("username"));
 
-        if(userByName != null && userByName.getUsername() != null){
+        if(userByName != null || userByName.getUsername() != null){
             return ServerResponse.createByError("该用户已被注册");
         }
 
@@ -138,6 +139,7 @@ public class UserServiceImpl implements UserService {
      * @Param []
      * @return com.example.ssm.util.ServerResponse<java.util.List>
      **/
+
     @Override
     public ServerResponse<List> getAllUser() {
         List<User> allUser = userMapper.getAllUser();
@@ -182,6 +184,5 @@ public class UserServiceImpl implements UserService {
         }else{
             return ServerResponse.createByError("查询失败");
         }
-
     }
 }

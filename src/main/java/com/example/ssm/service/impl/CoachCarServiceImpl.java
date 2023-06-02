@@ -21,6 +21,7 @@ import java.util.Map;
 @Service
 @Transactional
 public class CoachCarServiceImpl implements CoachCarService {
+    //自动装载
     @Autowired
     private CoachCarMapper coachCarMapper;
 

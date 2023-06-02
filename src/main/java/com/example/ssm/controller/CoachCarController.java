@@ -54,6 +54,7 @@ public class CoachCarController {
     //http:// localhost:8080/coachcar/add
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ResponseBody
+
     public ServerResponse<String> addCoachCarInfo(@RequestBody Map<String, Object> requestMap){
         return coachCarService.addCoachCar(requestMap);
     }

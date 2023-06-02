@@ -12,21 +12,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="238aaeca-eb95-49de-896a-35574acbf3d0" name="Changes" comment="阶段六:项目完成">
+    <list default="true" id="238aaeca-eb95-49de-896a-35574acbf3d0" name="Changes" comment="日常修改bug&#10;1: 修改返回跳转链接指向">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachCarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachCarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/StudentCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/StudentCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/StudentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/interceptor/AuthInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/interceptor/AuthInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/CoachCarMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/CoachCarMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/StudentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/StudentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/CoachCarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/CoachCarServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/util/ServerResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/util/ServerResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/ssm/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/ssm/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/studentInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/studentInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/userInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/userInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addCoachCarInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addCoachCarInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addUserInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addUserInfo.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +102,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.22068965" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -128,6 +121,9 @@
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.65">
     <configuration name="generated-requests#3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests#5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="5" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="JWTTest.jwtTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -255,6 +251,7 @@
     </configuration>
     <list>
       <item itemvalue="HTTP Request.generated-requests#3" />
+      <item itemvalue="HTTP Request.generated-requests#5" />
       <item itemvalue="JavaScript Debug.managerIndex.html" />
       <item itemvalue="JUnit.TestUtils.jwtTest" />
       <item itemvalue="JUnit.JWTTest.jwtTest" />
@@ -262,6 +259,7 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.generated-requests#5" />
         <item itemvalue="JavaScript Debug.managerIndex.html" />
         <item itemvalue="JUnit.JWTTest.jwtTest" />
         <item itemvalue="JUnit.TestUtils.jwtTest" />
@@ -317,7 +315,8 @@
       <workItem from="1685088737659" duration="207000" />
       <workItem from="1685104468118" duration="11000" />
       <workItem from="1685353308940" duration="6112000" />
-      <workItem from="1685624576193" duration="1250000" />
+      <workItem from="1685624576193" duration="4562000" />
+      <workItem from="1685664648923" duration="193000" />
     </task>
     <task id="LOCAL-00001" summary="简单的提交">
       <created>1683860243861</created>
@@ -459,7 +458,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685353414470</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="日常修改bug&#10;1: 修改返回跳转链接指向">
+      <created>1685625875492</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1685625875492</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -487,7 +493,8 @@
     <MESSAGE value="阶段五: 学员样式" />
     <MESSAGE value="阶段五:项目初期完成" />
     <MESSAGE value="阶段六:项目完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="阶段六:项目完成" />
+    <MESSAGE value="日常修改bug&#10;1: 修改返回跳转链接指向" />
+    <option name="LAST_COMMIT_MESSAGE" value="日常修改bug&#10;1: 修改返回跳转链接指向" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
