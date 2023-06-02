@@ -35,6 +35,7 @@
         </set>
         where car_id=#{carId}
     </update>
+
     <delete id="deleteByCarId">
         delete from t_coachcar where car_id = #{carId}
     </delete>

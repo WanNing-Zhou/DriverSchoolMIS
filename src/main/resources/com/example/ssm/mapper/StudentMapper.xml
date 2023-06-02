@@ -75,6 +75,7 @@
         </set>
         where stu_id = #{params.stuId}
     </update>
+
     <delete id="deleteStudentInfo">
         delete from t_student where stu_id=#{id}
     </delete>
