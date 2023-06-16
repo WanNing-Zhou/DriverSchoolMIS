@@ -1,12 +1,12 @@
 package com.example.ssm.service.impl;
 
-import com.example.ssm.mapper.StudentMapper;
+
 import com.example.ssm.mapper.UserMapper;
 import com.example.ssm.pojo.User;
 import com.example.ssm.service.UserService;
-import com.example.ssm.util.ResponseDataCode;
+
 import com.example.ssm.util.ServerResponse;
-import com.example.ssm.util.ServiceResult;
+
 import com.example.ssm.util.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.net.http.HttpResponse;
+
 import java.util.List;
 import java.util.Map;
 

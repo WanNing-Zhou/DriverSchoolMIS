@@ -13,13 +13,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="238aaeca-eb95-49de-896a-35574acbf3d0" name="Changes" comment="日常修改bug&#10;1: 修改返回跳转链接指向">
+      <change afterPath="$PROJECT_DIR$/markimgs/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/markimgs/img2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/markimgs/img3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/markimgs/img4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/markimgs/img_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/markimgs/img_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/markimgs/img_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/markimgs/img_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pages/login/bkimg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachCarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/CoachCarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/CoachCarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/CoachCarServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ssm/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/ssm/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/ssm/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addCoachCarInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addCoachCarInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addUserInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/managerPages/addUserInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/login/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/login/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,41 +89,51 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\mave-repository" />
+        <option name="mavenHome" value="D:/Program/apache-maven-3.8.6" />
+        <option name="userSettingsFile" value="D:\Program\apache-maven-3.8.6\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="2P9HLZFZQKwGWKKfwLEPmtip6A1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="flattenModules" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mysql" />
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/pages/coachPages" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.22068965" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/PROJECT/DriverSchoolMIS/src/main/webapp/pages/login",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "spring.configuration.checksum": "8fea3f3687ad4086fb1dfcbc1176f7c0",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\PROJECT\DriverSchoolMIS\src\main\webapp\pages\login" />
       <recent name="E:\PROJECT\DriverSchoolMIS\src\main\webapp\pages\coachPages" />
       <recent name="E:\PROJECT\DriverSchoolMIS\src\main\webapp\static\css" />
       <recent name="E:\PROJECT\DriverSchoolMIS\src\main\webapp\static\js" />
       <recent name="E:\PROJECT\DriverSchoolMIS\src\main\webapp\pages" />
-      <recent name="E:\PROJECT\DriverSchoolMIS\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\PROJECT\DriverSchoolMIS\markimgs" />
       <recent name="E:\PROJECT\DriverSchoolMIS\db" />
       <recent name="E:\PROJECT\DriverSchoolMIS\src\main\webapp\pages" />
       <recent name="E:\PROJECT\DriverSchoolMIS\src\main\webapp\WEB-INF\templates" />
@@ -316,7 +337,13 @@
       <workItem from="1685104468118" duration="11000" />
       <workItem from="1685353308940" duration="6112000" />
       <workItem from="1685624576193" duration="4562000" />
-      <workItem from="1685664648923" duration="193000" />
+      <workItem from="1685664648923" duration="3267000" />
+      <workItem from="1685668090088" duration="544000" />
+      <workItem from="1685942384861" duration="21000" />
+      <workItem from="1686032395886" duration="703000" />
+      <workItem from="1686220215336" duration="119000" />
+      <workItem from="1686666700081" duration="709000" />
+      <workItem from="1686915080277" duration="2776000" />
     </task>
     <task id="LOCAL-00001" summary="简单的提交">
       <created>1683860243861</created>
@@ -465,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685625875492</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="日常修改bug&#10;1: 修改返回跳转链接指向">
+      <created>1685664990199</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1685664990199</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,7 +515,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -502,5 +535,9 @@
         <PinnedItemInfo parentTag="com.sun.proxy.$Proxy26" memberName="h" />
       </pinned-members>
     </pin-to-top-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
